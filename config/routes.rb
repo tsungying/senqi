@@ -1,4 +1,9 @@
 Miracode::Application.routes.draw do
+  root to: "pages#index"
+  get "product5" => "pages#product5"
+  get "product55" => "pages#product55"
+  get "product6" => "pages#product6"
+  get "product7" => "pages#product7"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
