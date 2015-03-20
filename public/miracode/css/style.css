@@ -985,6 +985,7 @@ ul#navlist > li:last-child a{
 
 .coll-box {
   position: relative;
+  box-shadow: 5px 5px 5px #CCC;
 }
 
 .coll-text {
@@ -6089,3 +6090,14 @@ footer h1 {
 .green-header{
   background: #7dc05d;
 }
+
+.hero{
+  position: absolute;
+  z-index: 99999;
+  right: 0px !important;
+  top: -20px;
+  text-align: -webkit-right;
+  text-align: -moz-right;
+    float: right;
+}
+
