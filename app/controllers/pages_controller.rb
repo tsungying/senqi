@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
 
   def index
+
+  end
+
+  def about
+
   end
 
   def product5
@@ -14,5 +19,5 @@ class PagesController < ApplicationController
 
   def product7
   end
-  
+
 end

@@ -621,7 +621,7 @@ form.signin input::-webkit-input-placeholder {   color: #424242;  }
 .logo {
   position: absolute;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -80px;
 }
 
 .cart:hover .hover-cart {
@@ -6098,7 +6098,7 @@ footer h1 {
   top: -20px;
   text-align: -webkit-right;
   text-align: -moz-right;
-    float: right;
+  float: right;
 }
 
 /*.sliderbkg{

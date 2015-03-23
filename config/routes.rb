@@ -1,19 +1,17 @@
-Miracode::Application.routes.draw do
-
-  
-
-  
+Miracode::Application.routes.draw do  
 
   root to: "pages#index"
-  get "product5" => "pages#product5"
+
+  get "product5"  => "pages#product5"
   get "product55" => "pages#product55"
-  get "product6" => "pages#product6"
-  get "product7" => "pages#product7"
+  get "product6"  => "pages#product6"
+  get "product7"  => "pages#product7"
+  get "about"     => "pages#about"
+  
   resources :products
 
   namespace :admin do
-  # Directs /admin/products/* to Admin::ProductsController
-  # (app/controllers/admin/products_controller.rb)
+    root to: "products#index"
     resources :products
   end
 

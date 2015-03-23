@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #   
+	Admin.create(email: "tsungying721@gmail.com", password: "11111111", password_confirmation: "11111111")
+
   product_category_name = %w[絲快染 光摩棒 指膜 髮膜]
   product_category_name.each { |name| ProdCategory.create( name: name ) }
 	
