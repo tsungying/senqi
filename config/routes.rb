@@ -1,9 +1,23 @@
 Miracode::Application.routes.draw do
+
+  
+
+  
+
   root to: "pages#index"
   get "product5" => "pages#product5"
   get "product55" => "pages#product55"
   get "product6" => "pages#product6"
   get "product7" => "pages#product7"
+  resources :products
+
+  namespace :admin do
+  # Directs /admin/products/* to Admin::ProductsController
+  # (app/controllers/admin/products_controller.rb)
+    resources :products
+  end
+
+  devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

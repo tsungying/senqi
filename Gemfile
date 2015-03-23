@@ -6,8 +6,12 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
-
+gem 'mysql2'
+gem 'strong_parameters'
+gem 'will_paginate', '3.0.7'
+gem 'carrierwave'	, 	'0.10.0'
+gem 'mini_magick'	, 	'3.8.0' 
+gem 'devise'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
