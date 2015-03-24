@@ -2,13 +2,15 @@ Miracode::Application.routes.draw do
 
   root to: "pages#index"
 
-  get "product5"  => "pages#product5"
-  get "product55" => "pages#product55"
-  get "product6"  => "pages#product6"
-  get "product7"  => "pages#product7"
+  # get "product5"  => "pages#product5"
+  # get "product55" => "pages#product55"
+  # get "product6"  => "pages#product6"
+  # get "product7"  => "pages#product7"
   get "about"     => "pages#about"
   
-  resources :products
+  resources :prod_categories, only: [:index, :show] do
+    resources :products, only: [:show]
+  end
 
   namespace :admin do
     root to: "products#index"

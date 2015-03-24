@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-
+    @prod_categories = ProdCategory.all
   end
 
   def about

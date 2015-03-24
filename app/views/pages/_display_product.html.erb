@@ -1,126 +1,53 @@
-			<!-- our work portfolio -->
-			<div class="arrivals">
-				<div class="container">
+<div class="arrivals">
+	<div class="container">
 
+		<div class="filters">
 
-					<div class="filters">
-						<div class="filter clearfix">
-							<div class="holder">
-								<ul>
-									<li><a href="#" class="active" data-filter="*">全部商品</a></li>
-									<li><a href="#" data-filter=".class1"><i class="fa fa-star"></i>絲快染</a></li>
-									<li><a href="#" data-filter=".class2"><i class="fa fa-star"></i>光摩棒</a></li>
-									<li><a href="#" data-filter=".class3"><i class="fa fa-star"></i>指膜</a></li>
-									<li><a href="#" data-filter=".class4"><i class="fa fa-star"></i>髮膜<i class="fa fa-star"></i></a></li>
-								</ul>
-								<div class="holder-border"></div>
-							</div>
-						</div>
-						<div class="clear"></div>
-
-						<div class="demo1 clearfix">
-							<ul class="filter-container clearfix">
-								<li class="class1">
-									<div class="arrival-overlay">
-									<%= link_to product5_path do %>
-										<img src="/images/product_thumb_A.png" alt="">
-									<% end %>
-<!-- 										<img src="/miracode/upload/new.png" alt="" class="new">
-										<div class="arrival-mask">
-											<a href="#" class="medium-button button-red add-cart">Add to Cart</a>
-											<a href="#" class="wishlist"><i class="fa fa-heart"></i> Add to Wishlist</a>
-											<a href="#" class="compare"><i class="fa fa-retweet"></i>Add to Compare</a>
-										</div> -->
-									</div>
-									<div class="arr-content">
-										<%= link_to product5_path do %>
-										<p>絲快染1分鐘快速染髮劑 - 自然棕</p>
-										<% end %>
-										<!-- <a href="/pages/product5"><p>絲快染1分鐘快速染髮劑 - 自然棕</p></a> -->
-										<ul>
-											<li><span class="low-price">NT499</span></li>
-										</ul>
-										
-										<div class="stars"><img src="/miracode/upload/stars.png" alt=""></div>
-									</div>
-								</li>
-
-								<li class="class1">
-									<div class="arrival-overlay">
-									<%= link_to product55_path do %>
-										<img src="/images/product_thumb_B.png" alt="">
-									<% end %>
-<!-- 										<img src="/miracode/upload/sale.png" alt="" class="sale">
-										<div class="arrival-mask">
-											<a href="#" class="medium-button button-red add-cart">Add to Cart</a>
-											<a href="#" class="wishlist"><i class="fa fa-heart"></i> Add to Wishlist</a>
-											<a href="#" class="compare"><i class="fa fa-retweet"></i>Add to Compare</a>
-										</div> -->
-									</div>
-									<div class="arr-content">
-										<%= link_to product55_path do %>
-										<p>絲快染1分鐘快速染髮劑 - 酒紅棕</p>
-										<% end %>
-										<ul>
-											<li><span class="low-price">NT499</span></li>
-										</ul>
-										
-										<div class="stars"><img src="/miracode/upload/stars.png" alt=""></div>
-									</div>
-								</li>
-								<li class="class1">
-									<div class="arrival-overlay">
-										<%= link_to product6_path do %>
-										<img src="/images/product_thumb_C.png" alt="">
-										<% end %>
-		<!-- 								<div class="arrival-mask">
-											<a href="#" class="medium-button button-red add-cart">Add to Cart</a>
-											<a href="#" class="wishlist"><i class="fa fa-heart"></i> Add to Wishlist</a>
-											<a href="#" class="compare"><i class="fa fa-retweet"></i>Add to Compare</a>
-										</div> -->
-									</div>
-									<div class="arr-content">
-										<%= link_to product6_path do %>
-										<p>絲快染1分鐘快速染髮劑 - 深邃黑</p>
-										<% end %>
-										<ul>
-											<li><span class="low-price">NT499</span></li>
-										</ul>
-										
-										<div class="stars"><img src="/miracode/upload/stars.png" alt=""></div>
-									</div>
-								</li>
-								<li class="class1">
-									<div class="arrival-overlay">
-										<%= link_to product7_path do %>
-										<img src="/images/product_thumb_D.png" alt="">
-										<% end %>
-<!-- 										<img src="/miracode/upload/out.png" alt="" class="out">
-										<div class="arrival-mask">
-											<a href="#" class="medium-button button-red add-cart">Add to Cart</a>
-											<a href="#" class="wishlist"><i class="fa fa-heart"></i> Add to Wishlist</a>
-											<a href="#" class="compare"><i class="fa fa-retweet"></i>Add to Compare</a>
-										</div> -->
-									</div>
-									<div class="arr-content">
-									<%= link_to product7_path do %>
-										<p>絲快染1分鐘快速染髮劑 - 自然黑</p>
-									<% end %>
-										<ul>
-											<!-- <li><span class="high-price">NT 499</span></li> -->
-											<li><span class="low-price">NT499</span></li>
-										</ul>
-										
-										<div class="stars"><img src="/miracode/upload/stars.png" alt=""></div>
-									</div>
-								</li>
-
-
-							</ul>
-						</div>
-					</div>	
-					<!-- End Filters -->
-
+			<div class="filter clearfix">
+				<div class="holder">
+					<ul>
+						<li><a href="#" class="active" data-filter="*">全部商品</a></li>
+						<% @prod_categories.each do |category| %>
+						<li><a href="#" data-filter=".class<%= category.id%>"><i class="fa fa-star"></i><%= category.name %></a></li>
+						<% end %>
+					</ul>
+					<div class="holder-border"></div>
 				</div>
-
 			</div>
+
+			<div class="clear"></div>
+
+			<div class="demo1 clearfix">
+				<ul class="filter-container clearfix">
+
+					<% @prod_categories.each do |category| %>
+						<% category.products.each do |product| %>
+							<li class="class<%= category.id %>">
+								<div class="arrival-overlay">
+								<%= link_to prod_category_product_path(category, product) do %>
+									<%= image_tag product.home_image_url %>
+								<% end %>
+
+								</div>
+								<div class="arr-content">
+									<%= link_to prod_category_product_path(category, product) do %>
+									<p><%= product.name %></p>
+									<% end %>
+									<ul>
+										<li><span class="low-price">NT&nbsp;<%= product.selling_price %></span></li>
+									</ul>
+									
+									<div class="stars"><img src="/miracode/upload/stars.png" alt=""></div>
+								</div>
+							</li>
+						<% end %>
+					<% end %>
+
+				</ul>
+			</div>
+
+		</div>	
+		<!-- End Filters -->
+
+	</div>
+</div>

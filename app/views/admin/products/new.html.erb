@@ -1,2 +1,131 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<section class="content-header">
+  <h1>
+    建立新產品
+    <small><%= link_to "返回產品列表", admin_products_path %></small>
+  </h1>
+</section>
+
+<section class="content">
+
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+      <!-- general form elements -->
+      <div class="box box-primary">
+<!--         <div class="box-header">
+          <h3 class="box-title">New Product</h3>
+        </div> --><!-- /.box-header -->
+        <!-- form start -->
+
+        <%= form_for [:admin, @product], html: { multipart: true, role: "form" } do |f| %>
+        	<div class="box-body">
+
+	        	<% if @product.errors.any? %>
+							<div id="error_explanation">
+
+								<div class="alert alert-danger">
+									The forms contains <%= pluralize(@product.errors.count, "error") %>
+								</div>
+
+								<ul>
+									<% @product.errors.full_messages.each do |msg| %>
+									<li><%= msg %></li>    
+									<% end %>
+								</ul>
+
+							</div>	        	
+	        	<% end %>
+
+		        <div class="form-group">
+	            <%= f.label :home_image, "首頁產品圖（最佳尺寸：270 x 320）" %>
+	            <%= f.file_field :home_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
+	          </div>
+
+	          <div class="form-group">
+	          	<%= f.fields_for :pictures, @product.pictures.build do |builder| %>
+	          	<%= builder.label :img, "單一產品頁的此產品圖片（最佳尺寸：600 x 499）" %>
+	            <%= builder.file_field :img, multiple: true, name: "pictures[image]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+	            <% end %>
+	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
+	          </div>
+
+	          <div class="form-group">
+	          	<%= f.label :prod_category_id, "選擇產品目錄"%>
+	          	<%= f.select :prod_category_id, ProdCategory.all.collect{ |c| [c.name, c.id] }, { selected: @product.prod_category_id }, { :class => "form-control" } %>
+	          </div>
+
+            <div class="form-group">
+              <%= f.label :name, "產品名稱" %>
+              <%=f.text_field :name, placeholder: "Name", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :part_number, "產品編號（不可重複）" %>
+              <%=f.text_field :part_number, placeholder: "Part number", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :original_price, "原價" %>
+              <%=f.number_field :original_price, placeholder: "Original price", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :selling_price, "售價" %>
+              <%=f.number_field :selling_price, placeholder: "Selling price", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :brief, "產品簡述" %>
+              <%=f.text_area :brief, placeholder: "Brief", id: "brief_editor", class: "form-control" %>
+            </div>
+
+        	</div>
+
+      	  <div class="box-footer">
+          	<button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        <% end %>
+<!--         <form role="form">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Check me out
+              </label>
+            </div>
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form> -->
+
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+</section><!-- /.content -->
+
+<script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('brief_editor');
+        //bootstrap WYSIHTML5 - text editor
+        //$(".textarea").wysihtml5();
+      });
+    </script>

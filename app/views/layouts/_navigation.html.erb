@@ -10,12 +10,11 @@
 						<li>
 							<%= link_to "公司簡介", about_path %>
 						</li>
-						<li><%= link_to "商品櫥窗", products_path %>
+						<li><%= link_to "商品櫥窗", prod_categories_path %>
 							<ul class="sub-menu">
-								<li><a href="#"><span>--</span>絲快染</a></li>
-								<li><a href="#"><span>--</span>光摩棒</a></li>
-								<li><a href="#"><span>--</span>指膜</a></li>
-								<li><a href="#"><span>--</span>髮膜</a></li>
+								<% ProdCategory.all.each do |category| %>
+								<li><%= link_to category.name, prod_category_path(category) %></li>
+								<% end %>
 							</ul>
 						</li>
 						<li><a href="#">部落格</a></li>
