@@ -1,20 +1,22 @@
 Miracode::Application.routes.draw do  
 
   root to: "pages#index"
-
-  # get "product5"  => "pages#product5"
-  # get "product55" => "pages#product55"
-  # get "product6"  => "pages#product6"
-  # get "product7"  => "pages#product7"
   get "about"     => "pages#about"
   
   resources :prod_categories, only: [:index, :show] do
     resources :products, only: [:show]
   end
 
+  resources :blog_categories, only: [:index, :show] do
+    resources :articles, only: [:show]
+  end
+
   namespace :admin do
     root to: "products#index"
-    resources :products
+    resources :products, :blog_categories
+    resources :blog_categories do
+      resources :articles
+    end
   end
 
   devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 

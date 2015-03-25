@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+        <%= link_to "Miracode Admin", admin_root_path, class: "logo"  %>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -139,15 +139,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><%=link_to "返回前台", root_path %></li>
-            <li class="active"><%=link_to "商品櫥窗", admin_products_path %><!-- <a href="#"><span>Link</span></a> --></li>
-            <li><a href="#"><span>Another Link</span></a></li>
+            <li class="active"><%=link_to "商品櫥窗", admin_products_path %></li>
+            <li class="active"><%=link_to "部落格", admin_blog_categories_path %></li>
+<!--             <li><a href="#"><span>Another Link</span></a></li>
             <li class="treeview">
               <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="#">Link in level 2</a></li>
                 <li><a href="#">Link in level 2</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

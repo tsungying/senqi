@@ -7,51 +7,33 @@
 					</div>
 
 					<div class="row">
+
+					<% @articles.each do |article| %>
+
 						<div class="col-md-4">
 							<div class="blog-item">
 								<div class="blog-img">
-									<a href="#"><img src="/images/blog-A.png" alt=""></a>
+									<%= link_to blog_category_article_path(article.blog_category, article) do %>
+										<%= image_tag article.home_image_url %>
+									<% end %>
+
 									<div class="calendar">
-										<p>02</p>
-										<span>dec</span>	
+										<p><%= article.created_at.strftime("%d") %></p>
+										<span><%= article.created_at.strftime("%b") %></span>	
 									</div>
-									<a href="#"><h3>【5個要知道的錯誤潔面觀念！】</h3></a>
+									<%= link_to blog_category_article_path(article.blog_category, article) do %>
+										<h3><%= article.title %></h3>
+									<% end %>									
+
 									<div class="blog-border"></div>
-									<p>調查顯示，高達7成女性沒有選對適合自己的潔面產品，洗臉方法也有不同程度的錯誤！若不及時改正，這些錯誤的潔面觀念，反而會令皮膚變差！</p>
+									<%= raw article.summary %>
+
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
-							<div class="blog-item">
-								<div class="blog-img">
-									<a href="#"><img src="/images/blog-B.png" alt=""></a>
-									<div class="calendar">
-										<p>12</p>
-										<span>jan</span>	
-									</div>
-									<a href="#"><h3>【5招教你防止頭髮出油】</h3></a>
-									<div class="blog-border"></div>
-									<p>頭髮出油真是女生的天敵呀！快來看看有什麼方法改善！！</p>
-									<p>▲ 洗髮前注意事項</p>
-									<p>1.洗髮前，先梳理頭髮一次，確保頭髮不纏結。</p>
-									<p>2.選擇合適的洗髮產品。</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="blog-item">
-								<div class="blog-img">
-									<a href="#"><img src="/images/blog-C.png" alt=""></a>
-									<div class="calendar">
-										<p>18</p>
-										<span>MAr</span>	
-									</div>
-									<a href="#"><h3>【女性黃金水果 越吃越美麗】</h3></a>
-									<div class="blog-border"></div>
-									<p>注重身材的朋友應該有發現，現在市面上開始流行起覆盆莓熱！覆盆莓？不就是一種水果嗎？事情可沒有那麼簡單，從現在起，別再這樣小看它囉～</p>
-								</div>
-							</div>
-						</div>
+
+					<% end %>	
+
 					</div>
 				</div>
 			</div>

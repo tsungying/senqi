@@ -6,8 +6,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def new
-  	@product = Product.new
-  	
+  	@product = Product.new  	
   end
 
   def create
@@ -22,10 +21,24 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    
+    if @product.update_attributes(product_params)
+      params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
+      redirect_to admin_products_url
+    else
+      render :edit
+    end    
   end
 
   private
+
    	def product_params
    		params.require(:product).permit(:name, :part_number, :original_price, :selling_price, :brief, :prod_category_id, :home_image, pictures_attributes: [:img])
    	end
+
 end

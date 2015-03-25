@@ -1,0 +1,71 @@
+<section class="content-header">
+  <h1>在< <%= @blog_category.name %> >分類 - 建立新文章
+    <small><%= link_to "返回文章列表", admin_blog_category_path(@blog_category) %></small>
+  </h1>
+</section>
+
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+
+        <%= form_for [:admin, @blog_category, @article], html: { multipart: true, role: "form" } do |f| %>
+          <div class="box-body">
+
+            <%= render 'admin/shared/error_messages', object: @article %>   
+
+            <div class="form-group">
+              <%= f.label :home_image, "首頁文章圖（小圖）（建議尺寸：370 x 215）" %>
+              <%= f.file_field :home_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+              <%= f.hidden_field :home_image_cache %>
+              <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
+            </div>       
+
+            <div class="form-group">
+              <%= f.label :article_image, "文章圖（大圖）（建議尺寸：770 x 404）" %>
+              <%= f.file_field :article_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+              <%= f.hidden_field :article_image_cache %>
+              <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
+            </div> 
+
+            <div class="form-group has-error">
+              <%= f.label :title, "標題" %>
+              <%=f.text_field :title, placeholder: "Title", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :summary, "摘要" %>
+              <%=f.text_area :summary, id: "article_summary", placeholder: "Summary", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :content, "內容" %>
+              <%=f.text_area :content, id: "article_content", placeholder: "Content", class: "form-control" %>
+            </div>
+
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">更新文章</button>
+          </div>
+        <% end %>
+
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+</section><!-- /.content -->
+
+<script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+
+<script type="text/javascript">
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('article_summary');
+    CKEDITOR.replace('article_content');
+    //bootstrap WYSIHTML5 - text editor
+    //$(".textarea").wysihtml5();
+  });
+</script>

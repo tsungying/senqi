@@ -1,0 +1,52 @@
+<section class="content-header">
+  <h1>
+    文章分類 - <%= @blog_category.name %>
+    <small><%= link_to "建立新文章", new_admin_blog_category_article_path(@blog_category) %></small> 
+    <small><%= link_to "返回文章分類列表", admin_blog_categories_path %></small>
+  </h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>標題</th>
+              <th>摘要</th>              
+              <th>更新時間</th>
+              <th>建立時間</th>
+              <th>管理</th>
+            </tr>
+            
+            <% @articles.each do |article| %>
+            <tr>
+              <td><%= article.id %></td>
+              <td><%= link_to article.title, admin_blog_category_article_path(article.blog_category, article) %></td>
+              <td><%= raw article.summary %></td>
+              <td><%= article.created_at %></td>
+              <td><%= article.updated_at %></td>
+              <td>
+              <%= link_to "編輯", edit_admin_blog_category_article_path(article.blog_category, article) %>
+              <%= link_to "刪除", admin_blog_category_article_path(article), :method => :delete, :confirm => "Are you sure?" %>
+              </td>
+            </tr>
+            <% end %>
+            
+
+            <!--
+              <td><span class="label label-success">Approved</span></td>
+              <td><span class="label label-warning">Pending</span></td>
+              <td><span class="label label-primary">Approved</span></td>
+              <td><span class="label label-danger">Denied</span></td>
+            -->
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  </div>
+<!-- @categories -->
+</section>
