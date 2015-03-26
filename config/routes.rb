@@ -13,8 +13,13 @@ Miracode::Application.routes.draw do
   end
 
   namespace :admin do
-    root to: "products#index"
-    resources :products
+    root to: "prod_categories#index"
+    # resources :products
+
+    resources :prod_categories do
+      resources :products
+    end
+
     resources :blog_categories do
       resources :articles
     end

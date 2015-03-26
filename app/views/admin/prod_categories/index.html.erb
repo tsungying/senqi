@@ -1,0 +1,45 @@
+<section class="content-header">
+  <h1>
+    商品分類
+    <small><%= link_to "建立新分類", new_admin_prod_category_path %></small>
+  </h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>分類名稱</th>
+              <th>商品數</th>
+              <th>更新時間</th>
+              <th>建立時間</th>
+              <th>管理</th>
+            </tr>
+
+            <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.id %></td>
+              <td><%= link_to category.name, admin_prod_category_path(category) %></td>
+              <td><%= category.products_count %></td>
+              <td><%= l(category.created_at, formate: :long) %></td>
+              <td><%= l(category.updated_at, formate: :long) %></td>
+              <td><%= link_to "編輯", edit_admin_prod_category_path(category) %></td>
+            </tr>
+            <% end %>
+
+            <!--
+              <td><span class="label label-success">Approved</span></td>
+              <td><span class="label label-warning">Pending</span></td>
+              <td><span class="label label-primary">Approved</span></td>
+              <td><span class="label label-danger">Denied</span></td>
+            -->
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  </div>
