@@ -6,30 +6,35 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def new
-  	@product = Product.new  	
+  	@category = ProdCategory.find(params[:prod_category_id])
+    @product = @category.products.new  	
   end
 
   def create
-  	@product = Product.new(product_params)
+    @category = ProdCategory.find(params[:prod_category_id])
+  	@product = @category.products.new(product_params)
   	
   	if @product.save
   		params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
-  		redirect_to admin_products_url
+  		redirect_to admin_prod_category_url(@category)
   	else
   		render :new
   	end
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @category = ProdCategory.find(params[:prod_category_id])
+    @product = @category.products.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
+
+    @category = ProdCategory.find(params[:prod_category_id])
+    @product = @category.products.find(params[:id])
     
     if @product.update_attributes(product_params)
       params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
-      redirect_to admin_products_url
+      redirect_to admin_prod_category_url(@category)
     else
       render :edit
     end    
@@ -38,7 +43,7 @@ class Admin::ProductsController < Admin::BaseController
   private
 
    	def product_params
-   		params.require(:product).permit(:name, :part_number, :original_price, :selling_price, :brief, :prod_category_id, :home_image, pictures_attributes: [:img])
+   		params.require(:product).permit(:name, :part_number, :original_price, :selling_price, :brief, :home_image, pictures_attributes: [:img])
    	end
 
 end

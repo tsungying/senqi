@@ -1,2 +1,34 @@
-<h1>Admin::ProdCategories#new</h1>
-<p>Find me in app/views/admin/prod_categories/new.html.erb</p>
+<section class="content-header">
+  <h1>編輯商品分類名稱
+    <small><%= link_to "返回商品分類列表", admin_prod_categories_path %></small>
+  </h1>
+</section>
+
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+
+        <%= form_for [:admin, @prod_category], html: { role: "form" } do |f| %>
+          <div class="box-body">
+
+            <%= render 'admin/shared/error_messages', object: @prod_category %>          
+
+            <div class="form-group">
+              <%= f.label :name, "分類名稱" %>
+              <%=f.text_field :name, placeholder: "Name", class: "form-control" %>
+            </div>
+
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        <% end %>
+
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+</section><!-- /.content -->

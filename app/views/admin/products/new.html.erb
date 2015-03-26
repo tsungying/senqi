@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>
     建立新產品
-    <small><%= link_to "返回產品列表", admin_products_path %></small>
+    <small><%= link_to "返回產品列表", admin_prod_category_path(@category) %></small>
   </h1>
 </section>
 
@@ -17,7 +17,7 @@
         </div> --><!-- /.box-header -->
         <!-- form start -->
 
-        <%= form_for [:admin, @product], html: { multipart: true, role: "form" } do |f| %>
+        <%= form_for [:admin, @category ,@product], html: { multipart: true, role: "form" } do |f| %>
         	<div class="box-body">
 
 	        	<% if @product.errors.any? %>
@@ -50,10 +50,10 @@
 	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
 	          </div>
 
-	          <div class="form-group">
-	          	<%= f.label :prod_category_id, "選擇產品目錄"%>
-	          	<%= f.select :prod_category_id, ProdCategory.all.collect{ |c| [c.name, c.id] }, { selected: @product.prod_category_id }, { :class => "form-control" } %>
-	          </div>
+<!-- 	          <div class="form-group">
+	          	<%#= f.label :prod_category_id, "選擇產品目錄"%>
+	          	<%#= f.select :prod_category_id, ProdCategory.all.collect{ |c| [c.name, c.id] }, { selected: @product.prod_category_id }, { :class => "form-control" } %>
+	          </div> -->
 
             <div class="form-group">
               <%= f.label :name, "產品名稱" %>

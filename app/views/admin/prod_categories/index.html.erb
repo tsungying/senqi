@@ -25,9 +25,9 @@
             <tr>
               <td><%= category.id %></td>
               <td><%= link_to category.name, admin_prod_category_path(category) %></td>
-              <td><%= category.products_count %></td>
-              <td><%= l(category.created_at, formate: :long) %></td>
+              <td><%= category.products_count %></td>              
               <td><%= l(category.updated_at, formate: :long) %></td>
+              <td><%= l(category.created_at, formate: :long) %></td>
               <td><%= link_to "編輯", edit_admin_prod_category_path(category) %></td>
             </tr>
             <% end %>
