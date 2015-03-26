@@ -6,5 +6,7 @@ class BlogCategoriesController < ApplicationController
   end
 
   def show
+  	@categories = BlogCategory.all
+		@articles = BlogCategory.find(params[:id]).articles.order("id desc")
   end
 end

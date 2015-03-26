@@ -1,0 +1,62 @@
+							<aside>
+
+								<div class="blog-search mb30">
+									<input type="text" placeholder="Search">
+									<input type="submit" value="">
+								</div>
+
+								<div class="shop-categories mb30">
+									<h1 class="asidetitle">文章分類</h1>
+									<ul>
+										<% @categories.each do |category| %>
+										<li>
+											<%= link_to blog_category_path(category) do %>
+												<%= category.name %>	<span>(<%= category.articles_count %>)</span>
+											<% end %>
+										</li>
+										<% end %>
+									</ul>
+								</div>
+
+								<div class="normal-tabs left-widget mb30">
+									<div class="tabs-widget clearfix">
+							    		<ul class="tab-links clearfix">
+							    			<li class="active"><a href="#description">最新文章</a></li>
+							    		</ul>
+
+							    		<div id="description" style="display: block;">
+							    			<ul>
+							    				<% @articles.each do |article| %>
+							    				<li>
+							    					<%= link_to blog_category_article_path(article.blog_category, article) do %>
+							    						<%= article.title %>
+							    						<%= raw article.summary %>
+							    						<span><i class="fa fa-clock-o"></i><%= I18n.l(article.created_at, format: :long ) %></span>
+							    					<% end %>
+							    				</li>
+							    				<% end %>
+							    			</ul>
+							    		</div>
+
+<!-- 							    		<div id="clean" style="display: none;">
+							    			<ul>
+							    				<li><a href="#">
+							    					<img src="upload/tabswidget1.jpg" alt="">
+							    					<p>Sweet Pick lorem ipsum is a simple and elegant</p>
+							    					<span><i class="fa fa-clock-o"></i> 15 June, 2014</span>
+							    				</a></li>
+
+							    				<li><a href="#">
+							    					<img src="upload/tabswidget2.jpg" alt="">
+							    					<p>Sweet Pick lorem ipsum is a simple and elegant</p>
+							    					<span><i class="fa fa-clock-o"></i> 15 June, 2014</span>
+							    				</a></li>
+							    			</ul>
+							    		</div> -->
+
+									</div>
+									
+								</div>
+								<!-- End Normal Tabs -->
+
+							</aside>
