@@ -2,10 +2,21 @@
 	
 	<div class="row">
 
-		<% if params[:prod_category_id] == '1' %>
-	  <iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/eKUyMRzzmvw?loop=1&autoplay=1" frameborder="0" allowfullscreen></iframe>
-  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
-		<div class="clear"></div>
+		<% case params[:prod_category_id] %>
+			<% when '1' %>
+			  <iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/eKUyMRzzmvw?autoplay=1" frameborder="0" allowfullscreen></iframe>
+		  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+				<div class="clear"></div>
+			<% when '2' %>
+			  <iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/-Wb_vz43m4Q?autoplay=1" frameborder="0" allowfullscreen></iframe>
+		  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+		  	<iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/xChhaGcn7b0" frameborder="0" allowfullscreen></iframe>
+		  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+		  	<iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/y70xEz4woCU" frameborder="0" allowfullscreen></iframe>
+		  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+		  	<iframe class="col-lg-12 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/w1DgJvD223s" frameborder="0" allowfullscreen></iframe>
+		  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+				<div class="clear"></div>			
 		<% end %>
 
 		<div class="col-md-6">
