@@ -26,8 +26,8 @@
               <td><%= category.id %></td>
               <td><%= link_to category.name, admin_blog_category_path(category) %></td>
               <td><%= category.articles_count %></td>
-              <td><%= category.created_at %></td>
-              <td><%= category.updated_at %></td>
+              <td><%= l(category.created_at, formate: :long) %></td>
+              <td><%= l(category.updated_at, formate: :long) %></td>
               <td><%= link_to "編輯", edit_admin_blog_category_path(category) %></td>
             </tr>
             <% end %>

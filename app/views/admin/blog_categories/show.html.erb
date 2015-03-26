@@ -27,8 +27,8 @@
               <td><%= article.id %></td>
               <td><%= link_to article.title, admin_blog_category_article_path(article.blog_category, article) %></td>
               <td><%= raw article.summary %></td>
-              <td><%= article.created_at %></td>
-              <td><%= article.updated_at %></td>
+              <td><%= l(article.created_at, formate: :short) %></td>
+              <td><%= l(article.updated_at, formate: :short) %></td>
               <td>
               <%= link_to "編輯", edit_admin_blog_category_article_path(article.blog_category, article) %>
               <%= link_to "刪除", admin_blog_category_article_path(article), :method => :delete, :confirm => "Are you sure?" %>

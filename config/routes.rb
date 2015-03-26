@@ -2,6 +2,7 @@ Miracode::Application.routes.draw do
 
   root to: "pages#index"
   get "about"     => "pages#about"
+  get "contact"   => "pages#contact"
   
   resources :prod_categories, only: [:index, :show] do
     resources :products, only: [:show]
@@ -13,7 +14,7 @@ Miracode::Application.routes.draw do
 
   namespace :admin do
     root to: "products#index"
-    resources :products, :blog_categories
+    resources :products
     resources :blog_categories do
       resources :articles
     end
