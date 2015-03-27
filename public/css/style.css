@@ -6091,7 +6091,7 @@ footer h1 {
   background: #7dc05d;
 }
 
-.hero{
+/*.hero{
   position: absolute;
   z-index: 99999;
   right: 0px !important;
@@ -6099,5 +6099,10 @@ footer h1 {
   text-align: -webkit-right;
   text-align: -moz-right;
     float: right;
-}
+}*/
 
+#hero{
+  position: absolute;
+  z-index: 9999;
+  /*right: 30px;*/
+}

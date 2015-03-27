@@ -32,8 +32,13 @@
 	<link rel="icon" href="/images/favicon.png" type="image/png" />
 </head>
 <body>
+
+
 	<!-- Container -->
 	<div id="container">
+		<div id="hero">
+		<%= image_tag "/images/small_hero.png" %>
+		</div> <!-- End hero -->
 		<!-- Header -->
 		<header class="clearfix green-header">
 			<!-- topline 最上黑色區域部份(My Account, ......., Login) -->
@@ -59,7 +64,45 @@
 
 		<!-- footer -->
 		<%= render 'layouts/footer' %>
-	</div>	
+
+	</div>	<!-- End Container -->
 
 </body>
+
+<!-- console.log("width = " + width + ", height = " + height); -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var $window = $(window), //視窗物件
+				$hero = $('#hero').css('opacity', 0).show(),
+				width = $hero.width(), //取得 hero 寬度
+				height = $hero.height(), //取得 hero 長度
+				diffX = 10, //hero 與右方邊距
+				diffY = 10, //hero 與下方邊距
+				speed = 800; //移動速度，花多少ms完成移動，越小越快
+
+				
+		//先將 hero 移到定點		
+		$hero.css({
+			top : $(document).height(), //移到最下面
+			left : $window.width()-width-diffX, //移到右邊定點
+			opacity : 1 //解除透明
+		});
+		console.log("top : $(document).height() = " + $(document).height());
+		console.log("left : $window.width()-width-diffX = " + $window.width());
+		console.log("width = hero 寬度) : " + width);
+
+    //加上scroll和resize事件
+    $window.on("scroll resize", function(){
+      //控制 hero 移動
+      $hero.stop().animate({
+          top: $(this).scrollTop() + $(this).height() - height - diffY,
+          left: $(this).scrollLeft() + $(this).width() - width - diffX
+      },speed);
+    }).scroll(); //啟動scroll
+
+
+	});
+</script>
+
 </html>
