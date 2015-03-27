@@ -88,15 +88,15 @@
 			left : $window.width()-width-diffX, //移到右邊定點
 			opacity : 1 //解除透明
 		});
-		console.log("top : $(document).height() = " + $(document).height());
-		console.log("left : $window.width()-width-diffX = " + $window.width());
-		console.log("width = hero 寬度) : " + width);
+		// console.log("top : $(document).height() = " + $(document).height());
+		// console.log("left : $window.width()-width-diffX = " + $window.width());
+		// console.log("width = hero 寬度 : " + width);
 
     //加上scroll和resize事件
     $window.on("scroll resize", function(){
       //控制 hero 移動
       $hero.stop().animate({
-          top: $(this).scrollTop() + $(this).height() - height - diffY,
+          top: $(this).scrollTop() + $(this).height()/2.5 - height - diffY,
           left: $(this).scrollLeft() + $(this).width() - width - diffX
       },speed);
     }).scroll(); //啟動scroll

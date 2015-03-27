@@ -6103,6 +6103,6 @@ footer h1 {
 
 #hero{
   position: absolute;
-  z-index: 9999;
+  z-index: 99999;
   /*right: 30px;*/
 }
