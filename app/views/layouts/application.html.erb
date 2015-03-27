@@ -36,9 +36,9 @@
 
 	<!-- Container -->
 	<div id="container">
-		<div id="hero">
-		<%= image_tag "/images/small_hero.png" %>
-		</div> <!-- End hero -->
+<!-- 		<div id="hero">
+		<%#= image_tag "/images/small_hero.png" %>
+		</div> --> <!-- End hero -->
 		<!-- Header -->
 		<header class="clearfix green-header">
 			<!-- topline 最上黑色區域部份(My Account, ......., Login) -->
@@ -79,7 +79,7 @@
 				height = $hero.height(), //取得 hero 長度
 				diffX = 10, //hero 與右方邊距
 				diffY = 10, //hero 與下方邊距
-				speed = 800; //移動速度，花多少ms完成移動，越小越快
+				speed = 300; //移動速度，花多少ms完成移動，越小越快
 
 				
 		//先將 hero 移到定點		
@@ -90,7 +90,8 @@
 		});
 		// console.log("top : $(document).height() = " + $(document).height());
 		// console.log("left : $window.width()-width-diffX = " + $window.width());
-		// console.log("width = hero 寬度 : " + width);
+		console.log("width = hero 寬度 : " + width);
+		console.log("width = hero 高度 : " + height);
 
     //加上scroll和resize事件
     $window.on("scroll resize", function(){

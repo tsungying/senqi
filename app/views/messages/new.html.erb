@@ -13,13 +13,30 @@
 							<div class="title-border"></div>
 						</div>
 
-						<p class="subtitle">您有任何問題，歡迎來信詢問！</p>
+						<p class="subtitle">您有任何問題，歡迎來信詢問！</p>						
 
 						<div class="row">
 
+							<% if @message.errors.any? %>
+						  <ul class="list">
+						    <% @message.errors.full_messages.each do |msg| %>
+						    <li><%= msg[1] %></li>    
+						    <% end %>
+						  </ul>
+							<% end %>
+
 							<div class="col-md-8">
 								<!-- <h2>Contact Us</h2> -->
-								<form id="contact-form" action="#">
+
+								<%= form_for @message do |f| %>													
+									<%= f.text_field :name, placeholder: "名字" %>
+									<%= f.text_field :email, placeholder: "信箱" %>
+									<%= f.text_field :subject, placeholder: "問題" %>
+									<%= f.text_area :content, placeholder: "描述詢問的問題" %>
+									<%= f.submit "送出", class: "medium-button button-red" %>
+								<% end %>
+								
+<!-- 								<form id="contact-form" action="#">
 									<input name="name" id="name" type="text" placeholder="*名字">
 
 									<input name="mail" id="mail" type="text"  placeholder="*信箱">
@@ -30,7 +47,7 @@
 
 				  					<input type="submit" value="Send"  id="submit_contact" class="medium-button button-red">
 					  				<div id="msg" class="message"></div>
-					  			</form>
+					  			</form> -->
 							</div>
 							<!-- end contactfort -->
 							<div class="col-md-4 touch">

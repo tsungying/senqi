@@ -2,9 +2,12 @@ Miracode::Application.routes.draw do
 
   root to: "pages#index"
   get "about"     => "pages#about"
-  get "contact"   => "pages#contact"
-  get "news"      => "pages#news"
+  # get "contact"   => "messages#new"
+  # get "news"      => "pages#news"
   
+  resources :messages, only: [:new, :create] 
+  get "contact"   => "messages#new"
+
   resources :prod_categories, only: [:index, :show] do
     resources :products, only: [:show]
   end

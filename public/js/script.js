@@ -312,7 +312,7 @@ $(document).ready(function($) {
 	/* ---------------------------------------------------------------------- */
 	/*	Contact Map
 	/* ---------------------------------------------------------------------- */
-	var contact = {"lat":"40.714623", "lon":"-74.006605"}; //Change a map coordinate here!
+	var contact = {"lat":"25.044402", "lon":"121.511612"}; //Change a map coordinate here!
 
 	try {
 		$('#map').gmap3({

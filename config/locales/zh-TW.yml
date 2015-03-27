@@ -1,5 +1,12 @@
 ---
 zh-TW:
+  activerecord:
+    attributes:
+      message:
+        name: "名字"
+        email: "信箱"
+        subject: "問題"
+        content: "問題描述"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
