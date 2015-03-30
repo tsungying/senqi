@@ -1,0 +1,7 @@
+<% %i[name email subject].each do |attribute| %>
+	<%= Message.human_attribute_name attribute %>：<%= @contact.send(attribute) %>
+<% end %>
+
+## <%= Message.human_attribute_name :content %> ##
+
+<%= @contact.content %>

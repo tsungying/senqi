@@ -3,10 +3,12 @@
 		<div class="fullwidthbanner-container" style="top: -1px">
 			<div class="fullwidthbanner" id="intro">
 				<ul>
+					<% for i in 1..2 %>
 					<!-- First SLIDE -->
 					<li data-transition="random" data-slotamount="10" data-masterspeed="300">
 					<!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-					<img src="/images/slider.jpeg" data-fullwidthcentering="on" alt="slide">
+					<%= image_tag "/images/slider-#{i}.jpeg", "data-fullwidthcentering" => "on", alt: "slide" %>
+					<!-- <img src="/images/slider.jpeg" data-fullwidthcentering="on" alt="slide"> -->
 					<!-- THE CAPTIONS IN THIS SLDIE -->
 					<div class="caption small_text lft" 
 					data-x="center" 
@@ -17,7 +19,7 @@
 					data-end="7000" 
 					data-endspeed="300" 
 					data-endeasing="easeInSine">
-						MIRACODE
+						<%= image_tag "/images/miracode-bold.png" %>
 					</div>
 
 					<div class="caption lfl" 
@@ -41,7 +43,7 @@
 					data-end="7100" 
 					data-endspeed="300" 
 					data-endeasing="easeInSine">
-						fun & beauty
+						<%= image_tag "/images/font-2.png" %>
 					</div>
 
 <!-- 					<div class="caption lfb stt" 
@@ -54,66 +56,10 @@
 					data-endspeed="300" 
 					data-endeasing="easeInSine">
 						<a href="#" class="slider-button">SHOP NOW </a>
-					</div> -->
-
-					
+					</div> -->					
 					</li>
-
-					<li data-transition="random" data-slotamount="10" data-masterspeed="300">
-					<!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-					<img src="/images/slider.jpeg" data-fullwidthcentering="on" alt="slide">
-					<!-- THE CAPTIONS IN THIS SLDIE -->
-					<div class="caption small_text lft" 
-					data-x="center" 
-					data-y="230" 
-					data-speed="300" 
-					data-start="1200" 
-					data-easing="easeOutExpo" 
-					data-end="7000" 
-					data-endspeed="300" 
-					data-endeasing="easeInSine">
-						MIRACODE
-					</div>
-
-					<div class="caption lfl" 
-					data-x="center" 
-					data-y="280" 
-					data-speed="400" 
-					data-start="1800" 
-					data-easing="easeOutExpo" 
-					data-end="7200" 
-					data-endspeed="300" 
-					data-endeasing="easeInSine">
-						<img src="/miracode/upload/revolution/s-border.png" alt="Image 1">
-					</div>
-
-					<div class="caption big_white lfb stt" 
-					data-x="center" 
-					data-y="350" 
-					data-speed="500" 
-					data-start="1800" 
-					data-easing="easeOutExpo" 
-					data-end="7100" 
-					data-endspeed="300" 
-					data-endeasing="easeInSine">
-						fun & beauty
-					</div>
-
-<!-- 					<div class="caption lfb stt" 
-					data-x="center" 
-					data-y="440" 
-					data-speed="640" 
-					data-start="2100" 
-					data-easing="easeOutExpo" 
-					data-end="7100" 
-					data-endspeed="300" 
-					data-endeasing="easeInSine">
-						<a href="#" class="slider-button">SHOP NOW </a>
-					</div> -->
-
-					
-					</li>
-					
+					<% end %>
+				
 				</ul>
 				
 				</div>
