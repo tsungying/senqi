@@ -97,6 +97,7 @@ GEM
     rake (10.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.4.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.4.13)
@@ -142,6 +143,7 @@ DEPENDENCIES
   mini_magick (= 3.8.0)
   mysql2
   rails (= 3.2.13)
+  recaptcha
   sass-rails (~> 3.2.3)
   sqlite3
   strong_parameters

@@ -4453,7 +4453,7 @@ a.thumbnail.active {
   right: -21px;
   color: inherit;
 }
-.alert-success {
+.alert-success, .alert-notice {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
@@ -4486,7 +4486,7 @@ a.thumbnail.active {
 .alert-warning .alert-link {
   color: #66512c;
 }
-.alert-danger {
+.alert-danger, .alert-recaptcha_error {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;

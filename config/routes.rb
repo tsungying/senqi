@@ -11,10 +11,10 @@ Miracode::Application.routes.draw do
   resources :prod_categories, only: [:index, :show] do
     resources :products, only: [:show]
   end
-
+  
   resources :blog_categories, only: [:index, :show] do
     resources :articles, only: [:show]
-  end
+  end 
 
   namespace :admin do
     root to: "prod_categories#index"

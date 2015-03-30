@@ -16,13 +16,13 @@
 						<p class="subtitle">您有任何問題，歡迎來信詢問！</p>						
 
 						<div class="row">
-
-							<% if @message.errors.any? %>
-						  <ul class="list">
-						    <% @message.errors.full_messages.each do |msg| %>
-						    <li><%= msg[1] %></li>    
-						    <% end %>
-						  </ul>
+						
+							<% if flash.any? %>
+							<div class="col-md-12">
+								<% flash.each do |message_type, message| %>
+									<%= content_tag(:div, message, class: "alert alert-#{message_type}" ) %>
+								<% end %>
+							</div>
 							<% end %>
 
 							<div class="col-md-8">
@@ -32,7 +32,8 @@
 									<%= f.text_field :name, placeholder: "名字" %>
 									<%= f.text_field :email, placeholder: "信箱" %>
 									<%= f.text_field :subject, placeholder: "問題" %>
-									<%= f.text_area :content, placeholder: "描述詢問的問題" %>
+									<%= f.text_area :content, placeholder: "描述您的問題並留下您的聯絡方式" %>
+									<%= recaptcha_tags %><br>
 									<%= f.submit "送出", class: "medium-button button-red" %>
 								<% end %>
 								
@@ -97,3 +98,4 @@
   <!-- jQuery KenBurn Slider  -->
   <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
