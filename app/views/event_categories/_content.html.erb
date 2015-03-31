@@ -1,0 +1,85 @@
+			<div class="blog-container">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-8">
+
+							<% @events.each do |event| %>
+							<div class="blog-post mb50">
+
+								<div class="blog-item">
+
+									<div class="blog-img">
+										<%= link_to event_category_event_path(event.event_category, event) do %>
+											<%= image_tag event.event_image_url %>
+										<% end %>
+										<!-- <a href="#"><img src="upload/blog/部落格A_695x404.png" alt=""></a> -->
+										<div class="calendar">
+											<p><%= event.created_at.strftime("%d") %></p>
+											<span><%= event.created_at.strftime("%b") %></span>	
+										</div>
+										<div class="blog-content">
+
+											<h1><%= event.title %></h1>
+											<div class="post-meta"></div>
+											<%= raw event.summary %>
+<!-- 											<div class="post-meta">
+												<a href="#"><i class="fa fa-user"></i> Joeby Ragpa</a>
+												<a href="#"><i class="fa fa-bookmark"></i> Design</a>
+												<a href="#"><i class="fa fa-comment"></i> 15 Comments</a>
+											</div> -->
+											
+<!-- 											<p>We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. Our subconscious mind contains such power and complexity that it literally staggers the imagination.</p> -->
+											<%= link_to "詳細內容", event_category_event_path(event.event_category, event), class: "small-button button-red mb10" %>
+											<!-- <a href="#" class="small-button button-red mb10">Read More</a> -->
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<% end %>
+
+							<!-- 				  
+								<div class="pagenation blog-pagenation clearfix">
+									<ul>
+										<li class="active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">&gt;</a></li>
+									</ul>
+								</div> 
+							-->
+			        	<div class="clear"></div>
+
+						</div>
+
+						<div class="col-md-4">
+							<%= render 'event_aside' %>
+							<!-- End aside -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.superfish.js"></script>
+	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
+	<script type="text/javascript" src="/js/plugins-scroll.js"></script>
+  <script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.appear.js"></script>
+	<script type="text/javascript" src="/js/jquery.countTo.js"></script>
+	<script src="/js/jquery.parallax.js"></script>
+  <!-- jQuery KenBurn Slider  -->
+  <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>

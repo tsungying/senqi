@@ -1,17 +1,8 @@
 Miracode::Application.routes.draw do  
 
-  get "events/index"
-
-  get "events/show"
-
-  get "events/new"
-
-  get "events/edit"
-
   root to: "pages#index"
-  get "about"     => "pages#about"
-
-  # get "news"      => "pages#news"
+  get "about"       => "pages#about"
+  get "promotions"  => "event_categories#index"
   
   resources :messages, only: [:new, :create] 
   get "contact"   => "messages#new"
@@ -24,9 +15,12 @@ Miracode::Application.routes.draw do
     resources :articles, only: [:show]
   end 
 
+  resources :event_categories, only: [:index, :show] do
+    resources :events, only: [:show]
+  end
+
   namespace :admin do
     root to: "prod_categories#index"
-    # resources :products
 
     resources :prod_categories do
       resources :products
@@ -38,8 +32,7 @@ Miracode::Application.routes.draw do
 
     resources :event_categories do
       resources :events
-    end
-    
+    end    
   end
 
   devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 
