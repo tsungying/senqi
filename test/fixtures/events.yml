@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_category: 
+  title: MyString
+  summary: MyText
+  content: MyText
+  home_image: MyString
+  event_image: MyString
+
+two:
+  event_category: 
+  title: MyString
+  summary: MyText
+  content: MyText
+  home_image: MyString
+  event_image: MyString

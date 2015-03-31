@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150325043247) do
+ActiveRecord::Schema.define(:version => 20150331044758) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -50,6 +50,26 @@ ActiveRecord::Schema.define(:version => 20150325043247) do
     t.datetime "updated_at",                    :null => false
     t.integer  "articles_count", :default => 0
   end
+
+  create_table "event_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "events_count", :default => 0
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "event_category_id"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "home_image"
+    t.string   "event_image"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "events", ["event_category_id"], :name => "index_events_on_event_category_id"
 
   create_table "pictures", :force => true do |t|
     t.string   "img"

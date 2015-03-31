@@ -1,8 +1,16 @@
 Miracode::Application.routes.draw do  
 
+  get "events/index"
+
+  get "events/show"
+
+  get "events/new"
+
+  get "events/edit"
+
   root to: "pages#index"
   get "about"     => "pages#about"
-  # get "contact"   => "messages#new"
+
   # get "news"      => "pages#news"
   
   resources :messages, only: [:new, :create] 
@@ -27,6 +35,11 @@ Miracode::Application.routes.draw do
     resources :blog_categories do
       resources :articles
     end
+
+    resources :event_categories do
+      resources :events
+    end
+    
   end
 
   devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 
