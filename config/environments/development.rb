@@ -15,6 +15,7 @@ Miracode::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
   # config.action_mailer.delivery_method = :test
   # host = "localhost:3000"
   # config.action_mailer.default_url_options = { host: host }
@@ -27,6 +28,8 @@ Miracode::Application.configure do
     :domain               => 'miracode.com',
     :user_name            => 'miracode.service@gmail.com',
     :password             => '23882158',
+    # :user_name            => 'tsungying721@gmail.com',
+    # :password             => 'o92$o3335l',
     :enable_starttls_auto => true,
     :authentication       => 'plain' 
   }

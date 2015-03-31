@@ -9,7 +9,8 @@ class ContactMailer < ActionMailer::Base
   def ask_question contact
     @contact = contact
     # mail to: "miracode.service@gmail.com", from: contact.email
-    mail to: "miracode.service@gmail.com", from: contact.email, subject: contact.subject
+    # mail to: "miracode.service@gmail.com", from: contact.email, subject: contact.subject
+    mail to: "tsungying721@gmail.com", from: contact.email, subject: contact.subject
 
   end
 end
