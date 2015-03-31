@@ -10,7 +10,7 @@ class ContactMailer < ActionMailer::Base
     @contact = contact
     # mail to: "miracode.service@gmail.com", from: contact.email
     # mail to: "miracode.service@gmail.com", from: contact.email, subject: contact.subject
-    mail to: "tsungying721@gmail.com", from: contact.email, subject: contact.subject
+    mail to: "miracode.service@gmail.com", from: contact.email, subject: contact.subject
 
   end
 end
