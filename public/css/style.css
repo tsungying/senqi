@@ -982,6 +982,10 @@ ul#navlist > li:last-child a{
   width: 100%;
 }
 
+.collection{
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
 
 .coll-box {
   position: relative;
@@ -1042,7 +1046,8 @@ ul#navlist > li:last-child a{
 }
 
 .arrivals {
-  padding: 60px 0 20px;
+  /*padding: 60px 0 20px;*/
+  
 }
 
 .arrival-overlay img {
@@ -1251,7 +1256,8 @@ margin-bottom: 0;
 }
 
 .middle-content {
-  padding: 50px 0;
+  /*padding: 50px 0;*/
+  padding: 20px 0;
   background: #fff;
 }
 

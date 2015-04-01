@@ -31,7 +31,7 @@
               <td><%= l(event.created_at, formate: :short) %></td>              
               <td>
               <%= link_to "編輯", edit_admin_event_category_event_path(event.event_category, event) %>
-              <%= link_to "刪除", admin_event_category_event_path(event), :method => :delete, :confirm => "Are you sure?" %>
+              <%= link_to "刪除", admin_event_category_event_path(event.event_category, event), :method => :delete, :confirm => "Are you sure?" %>
               </td>
             </tr>
             <% end %>

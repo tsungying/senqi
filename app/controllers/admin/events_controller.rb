@@ -37,13 +37,16 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def destroy
-
+  	@event_category = EventCategory.find(params[:event_category_id])
+  	@event = @event_category.events.find(params[:id])
+  	@event.destroy
+  	redirect_to admin_event_category_url(@event_category)
   end
 
   private
 
   	def event_params
-  		params.require(:event).permit(:title, :event_image, :home_image, :content, :summary)
+  		params.require(:event).permit(:title, :event_image, :home_image, :content, :summary, :publish_at)
   	end
 
 end

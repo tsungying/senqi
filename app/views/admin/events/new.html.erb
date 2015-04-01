@@ -33,6 +33,11 @@
               <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
             </div>
 
+            <div class="form-group has-error">
+              <%= f.label :publish_at, "發佈時間" %>
+              <%= f.datetime_select :publish_at, class: "form-control" %>
+            </div>
+
             <div class="form-group">
               <%= f.label :summary, "摘要" %>
               <%= f.text_area :summary, id: "event_summary", placeholder: "Summary", class: "form-control" %>

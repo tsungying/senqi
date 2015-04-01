@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150331044758) do
+ActiveRecord::Schema.define(:version => 20150401110954) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20150331044758) do
     t.string   "event_image"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.datetime "publish_at"
   end
 
   add_index "events", ["event_category_id"], :name => "index_events_on_event_category_id"

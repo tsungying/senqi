@@ -1,13 +1,23 @@
 			<div class="collection clearfix">
 				<div class="container">
+					<div class="title">
+						<h1><i class="fa fa-star"></i> 促銷活動 <i class="fa fa-star"></i></h1>
+						<div class="title-border"></div>
+
+					</div>
 					
 					<div class="row">
+
+						<% @events.each do |event| %>
 						
 						<div class="col-md-4">
 							<div class="coll-item clearfix">
 
 								<div class="coll-box">
-										<a href="#"><img src="/images/event-A.png" alt=""></a>
+										<%= link_to event_category_event_path(event.event_category, event) do %>
+											<%= image_tag event.home_image_url %>
+										<% end %>
+										<!-- <a href="#"><img src="/images/event-A.png" alt=""></a> -->
 <!-- 										<div class="coll-text">
 											<span>Summer Collection</span>
 											<p>For Women</p>
@@ -17,17 +27,19 @@
 
 							</div>
 						</div>
+
+						<% end %>
 						
-						<div class="col-md-4">
+<!-- 						<div class="col-md-4">
 						<div class="coll-item clearfix">
 
 							<div class="coll-box">
 								<a href="#"><img src="/images/event-B.png" alt=""></a>
-<!-- 								<div class="coll-text">
+								<div class="coll-text">
 									<span>Collection 2014</span>
 									<p>Accessories</p>
 									<a href="#"> Get The Look <i class="fa fa-angle-right"></i></a>
-								</div> -->
+								</div>
 							</div>
 						</div>
 						</div>
@@ -37,14 +49,14 @@
 
 							<div class="coll-box">
 								<a href="#"><img src="/images/event-C.png" alt=""></a>
-<!-- 								<div class="coll-text">
+								<div class="coll-text">
 									<span>Starts From $150</span>
 									<p>Men Collection</p>
 									<a href="#"> Get The Look <i class="fa fa-angle-right"></i></a>
-								</div> -->
+								</div>
 							</div>
 						</div>
-						</div>
+						</div> -->
 
 					</div>
 
