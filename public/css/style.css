@@ -1054,6 +1054,11 @@ ul#navlist > li:last-child a{
   width: 100%;
 }
 
+.product-shadow {
+  box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+}
+
+
 .holder {
   position: relative;
   margin-bottom: 50px
