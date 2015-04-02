@@ -19,6 +19,8 @@ Miracode::Application.routes.draw do
     resources :events, only: [:show]
   end
 
+  resources :comments
+
   namespace :admin do
     root to: "prod_categories#index"
 

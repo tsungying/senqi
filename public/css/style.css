@@ -6116,3 +6116,9 @@ footer h1 {
   z-index: 99999;
   /*right: 30px;*/
 }
+
+/*.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}*/
