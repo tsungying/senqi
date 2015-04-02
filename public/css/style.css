@@ -1055,9 +1055,8 @@ ul#navlist > li:last-child a{
 }
 
 .product-shadow {
-  box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+  box-shadow:4px 4px 3px rgba(20%,20%,40%,0.2);
 }
-
 
 .holder {
   position: relative;
