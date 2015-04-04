@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150402101442) do
+ActiveRecord::Schema.define(:version => 20150403034707) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(:version => 20150402101442) do
     t.text     "content"
     t.string   "home_image"
     t.string   "article_image"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "comments_count",   :default => 0
   end
 
   add_index "articles", ["blog_category_id"], :name => "index_articles_on_blog_category_id"

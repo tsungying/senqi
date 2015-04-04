@@ -21,10 +21,11 @@
 								<div class="normal-tabs left-widget mb30">
 									<div class="tabs-widget clearfix">
 							    		<ul class="tab-links clearfix">
-							    			<li class="active"><a href="#description">最新文章</a></li>
+							    			<li class="active"><a href="#latest_articles">最新文章</a></li>
+							    			<li class=""><a href="#latest_comments">最新迴響</a></li>
 							    		</ul>
 
-							    		<div id="description" style="display: block;">
+							    		<div id="latest_articles" style="display: block;">
 							    			<ul>
 							    				<% @articles.each do |article| %>
 							    				<li>
@@ -38,21 +39,31 @@
 							    			</ul>
 							    		</div>
 
-<!-- 							    		<div id="clean" style="display: none;">
+							    		<div id="latest_comments" style="display: none;">
 							    			<ul>
-							    				<li><a href="#">
-							    					<img src="upload/tabswidget1.jpg" alt="">
-							    					<p>Sweet Pick lorem ipsum is a simple and elegant</p>
-							    					<span><i class="fa fa-clock-o"></i> 15 June, 2014</span>
-							    				</a></li>
+							    				<% @comments.each do |comment| %>
+							    				<li>
+							    					<%= link_to blog_category_article_path(comment.commentable.blog_category, comment.commentable, section: "comments") do %>
+							    					<%= comment.commentable.title %>
+							    					<% end  %>
+								    				<!-- <a href="#"> -->
+								    					<%= comment.content %>
+								    					<!-- <p>Sweet Pick lorem ipsum is a simple and elegant</p> -->
+								    					<span>
+								    					<i class="fa fa-clock-o"></i><%= l(comment.created_at, format: :long ) %>&nbsp;
+															<i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %>
+								    					</span>
+								    				
+							    				</li>
+							    				<% end %>
 
-							    				<li><a href="#">
+<!-- 							    				<li><a href="#">
 							    					<img src="upload/tabswidget2.jpg" alt="">
 							    					<p>Sweet Pick lorem ipsum is a simple and elegant</p>
 							    					<span><i class="fa fa-clock-o"></i> 15 June, 2014</span>
-							    				</a></li>
+							    				</a></li> -->
 							    			</ul>
-							    		</div> -->
+							    		</div>
 
 									</div>
 									

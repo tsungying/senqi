@@ -4039,10 +4039,10 @@ color: #969696;
       color: #9b9b9b;
     }
 
-    .post-meta a:after {
+/*    .post-meta a:after {
       content: "|";
       padding: 0 10px;
-    }
+    }*/
 
     .post-meta a:hover {
       color: #000;
@@ -4222,8 +4222,10 @@ margin-left: 20px;
 }
 
 .blog-tags {
-  float: left;
+  /*float: left;*/
+  float: right;
   margin-top: 5px;
+  margin-bottom: 25px;
 }
 
 .blog-share {
@@ -4366,7 +4368,8 @@ font-style: italic;
   float: left;
   font-family: 'Noticia Text';
   font-size: 14px;
-  color: #000;
+  /*color: #000;*/
+  color: #7dc05d;
   font-weight: normal;
   margin: 0;
 }
