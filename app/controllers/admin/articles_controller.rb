@@ -41,8 +41,9 @@ class Admin::ArticlesController < Admin::BaseController
   	@blog_category = BlogCategory.find(params[:blog_category_id])
   	article = @blog_category.articles.find(params[:id])  	
   	article.destroy
-  	redirect_to admin_blog_categories_url
+  	redirect_to [:admin, @blog_category]
   end
+
   private
 
   	def article_params

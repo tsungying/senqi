@@ -31,11 +31,11 @@
               <td><%= l(article.updated_at, formate: :short) %></td>
               <td>
               <%= link_to "編輯", edit_admin_blog_category_article_path(article.blog_category, article) %>
-              <%= link_to "刪除", admin_blog_category_article_path(article), :method => :delete, :confirm => "Are you sure?" %>
+              <%= button_to "刪除", [:admin, article.blog_category, article], method: :delete, data: { confirm: "Are you sure?" } %>
               </td>
             </tr>
             <% end %>
-            
+            <!-- :confirm => "Are you sure?" -->
 
             <!--
               <td><span class="label label-success">Approved</span></td>
