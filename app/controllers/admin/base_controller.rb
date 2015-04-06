@@ -1,4 +1,8 @@
-class Admin::BaseController < ApplicationController
+class Admin::BaseController < ActionController::Base
+	protect_from_forgery
 	layout 'admin'
-	before_filter :authenticate_admin!
+	before_action :authenticate_admin!
+
+
+
 end

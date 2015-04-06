@@ -1,14 +1,16 @@
-<section class="content-header">
-  <h1>
-    文章分類
-    <small><%= link_to "建立新分類", new_admin_blog_category_path %></small>
-  </h1>
-</section>
+<% breadcrumb :blog %>
 
 <section class="content">
+
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
+      
+        <div class="box-header with-border">
+          <%= link_to new_admin_blog_category_path, class: "btn btn-danger btn-sm" do %>
+            <li class="fa fa-fw fa-plus-square"></li> 建立新分類
+          <% end %>
+        </div>
 
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
@@ -26,9 +28,12 @@
               <td><%= category.id %></td>
               <td><%= link_to category.name, admin_blog_category_path(category) %></td>
               <td><%= category.articles_count %></td>
-              <td><%= l(category.created_at, formate: :long) %></td>
-              <td><%= l(category.updated_at, formate: :long) %></td>
-              <td><%= link_to "編輯", edit_admin_blog_category_path(category) %></td>
+              <td><%= l(category.updated_at, format: :long) %></td>
+              <td><%= l(category.created_at, format: :long) %></td>              
+              <td>
+                <%= link_to "修改名稱", edit_admin_blog_category_path(category), class: "btn btn-primary btn-xs" %>
+                <%= link_to "刪除此分類", [:admin, category], method: :delete, data: { confirm: "刪除此分類會同時刪除該分類底下的所有文章喔！" }, class: "btn btn-warning btn-xs" %>
+              </td>
             </tr>
             <% end %>
 

@@ -1,14 +1,14 @@
-<section class="content-header">
-  <h1>建立部落格文章新分類
-    <small><%= link_to "返回部落格文章分類列表", admin_blog_categories_path %></small>
-  </h1>
-</section>
+<% breadcrumb :new_blog %>
 
 <section class="content">
 
   <div class="row">
     <div class="col-md-6">
       <div class="box box-primary">
+
+        <div class="box-header with-border">
+          <h3 class="box-title">建立新分類</h3>
+        </div>
 
         <%= form_for [:admin, @blog_category], html: { role: "form" } do |f| %>
           <div class="box-body">
@@ -23,7 +23,8 @@
           </div>
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">建立新分類</button>
+            <%= link_to "返回上一頁", admin_blog_categories_path, class: "btn btn-primary" %>
           </div>
         <% end %>
 

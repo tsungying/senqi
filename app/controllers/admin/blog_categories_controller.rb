@@ -35,6 +35,12 @@ class Admin::BlogCategoriesController < Admin::BaseController
   	end
   end
 
+  def destroy
+    @blog_category = BlogCategory.find(params[:id])
+    @blog_category.destroy
+    redirect_to admin_blog_categories_url
+  end
+
   private
 
   	def blog_category_params

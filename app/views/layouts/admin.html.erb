@@ -7,7 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="UTF-8">
     <title>Miracode Admin</title>
-    <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'admin/application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -138,10 +139,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><%=link_to "返回前台", root_path %></li>
-            <li class="active"><%=link_to "商品櫥窗", admin_prod_categories_path %></li>
-            <li class="active"><%=link_to "部落格", admin_blog_categories_path %></li>
-            <li class="active"><%=link_to "促銷活動", admin_event_categories_path %></li>
+            <li><%=link_to "返回前台", root_path %></li>
+            <%= nav_link "商品櫥窗", admin_prod_categories_path %>
+            <%= nav_link "部落格", admin_blog_categories_path %>
+            <%= nav_link "促銷活動", admin_event_categories_path %>
+            <!-- <li><%#=link_to "商品櫥窗", admin_prod_categories_path %></li> -->
+            <!-- <li><%#=link_to "部落格", admin_blog_categories_path %></li> -->
+            <!-- <li><%#=link_to "促銷活動", admin_event_categories_path %></li> -->
 
             <!-- 
             <li><a href="#"><span>Another Link</span></a></li>
@@ -160,6 +164,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
+      <section class="content-header">
+        <%= breadcrumbs pretext: "目前位置：",
+                separator: "<li class='fa fa-fw fa-angle-right'></li>",
+                autoroot: false,
+                display_single_fragment: true %>
+      </section>
       <%= yield %>
       </div><!-- /.content-wrapper -->
 

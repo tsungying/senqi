@@ -1,14 +1,15 @@
-<section class="content-header">
-  <h1>在< <%= @blog_category.name %> >分類 - 建立新文章
-    <small><%= link_to "返回文章列表", admin_blog_category_path(@blog_category) %></small>
-  </h1>
-</section>
+<% breadcrumb :edit_article, @article %>
+
 
 <section class="content">
 
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
+
+        <div class="box-header with-border">
+          <h3 class="box-title">編輯文章</h3>
+        </div>
 
         <%= form_for [:admin, @blog_category, @article], html: { multipart: true, role: "form" } do |f| %>
           <div class="box-body">

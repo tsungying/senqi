@@ -4,6 +4,9 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def show
+    @blog_category = BlogCategory.find(params[:blog_category_id])
+    @article = @blog_category.articles.find(params[:id])      
+    @url = blog_category_article_url(@blog_category, @article)
   end
 
   def new
@@ -15,7 +18,7 @@ class Admin::ArticlesController < Admin::BaseController
   	@blog_category = BlogCategory.find(params[:blog_category_id])
   	@article = @blog_category.articles.new(article_params)  	
   	if @article.save
-  		redirect_to admin_blog_category_articles_url(@article.blog_category)
+      redirect_to [:admin, @blog_category, @article]
   	else
   		render :new
   	end
