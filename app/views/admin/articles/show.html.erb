@@ -5,7 +5,15 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
-				<iframe src="<%= @url %>" height="500" width="100%"></iframe>
+
+        <div class="box-header">
+          <%= link_to "編輯文章", [:edit, :admin, @blog_category, @article], class: "btn btn-danger btn-sm" %>
+        </div>
+
+	      <div class="box-body">
+					<iframe src="<%= @url %>" height="500" width="100%"></iframe>
+				</div>
+
 			</div>
 		</div>
 	</div>

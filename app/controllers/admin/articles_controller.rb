@@ -34,7 +34,7 @@ class Admin::ArticlesController < Admin::BaseController
   	@article = @blog_category.articles.find(params[:id]) 
 
   	if @article.update_attributes(article_params)
-  		redirect_to admin_blog_category_articles_url(@article.blog_category)
+  		redirect_to [:admin, @blog_category, @article]
   	else
   		render :edit
   	end 	
