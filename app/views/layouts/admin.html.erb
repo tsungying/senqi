@@ -140,12 +140,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
             <li><%=link_to "返回前台", root_path %></li>
+            <%= nav_link "公司簡介", "#" %>
             <%= nav_link "商品櫥窗", admin_prod_categories_path %>
             <%= nav_link "部落格", admin_blog_categories_path %>
             <%= nav_link "促銷活動", admin_event_categories_path %>
-            <!-- <li><%#=link_to "商品櫥窗", admin_prod_categories_path %></li> -->
-            <!-- <li><%#=link_to "部落格", admin_blog_categories_path %></li> -->
-            <!-- <li><%#=link_to "促銷活動", admin_event_categories_path %></li> -->
 
             <!-- 
             <li><a href="#"><span>Another Link</span></a></li>
