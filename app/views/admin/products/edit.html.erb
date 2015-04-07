@@ -1,40 +1,20 @@
-<section class="content-header">
-  <h1>
-    建立新產品
-    <small><%= link_to "返回產品列表", admin_prod_category_path(@category) %></small>
-  </h1>
-</section>
+<% breadcrumb :edit_product, @product %>
 
 <section class="content">
 
   <div class="row">
-    <!-- left column -->
+
     <div class="col-md-6">
-      <!-- general form elements -->
+
       <div class="box box-primary">
-<!--         <div class="box-header">
-          <h3 class="box-title">New Product</h3>
-        </div> --><!-- /.box-header -->
-        <!-- form start -->
+        <div class="box-header">
+          <h3 class="box-title">編輯商品</h3>
+        </div>
 
         <%= form_for [:admin, @category ,@product], html: { multipart: true, role: "form" } do |f| %>
         	<div class="box-body">
 
-	        	<% if @product.errors.any? %>
-							<div id="error_explanation">
-
-								<div class="alert alert-danger">
-									The forms contains <%= pluralize(@product.errors.count, "error") %>
-								</div>
-
-								<ul>
-									<% @product.errors.full_messages.each do |msg| %>
-									<li><%= msg %></li>    
-									<% end %>
-								</ul>
-
-							</div>	        	
-	        	<% end %>
+            <%= render 'admin/shared/error_messages', object: @product %>
 
 		        <div class="form-group">
 	            <%= f.label :home_image, "首頁產品圖（最佳尺寸：270 x 320）" %>
@@ -45,7 +25,7 @@
 	          <div class="form-group">
 	          	<%= f.fields_for :pictures, @product.pictures.build do |builder| %>
 	          	<%= builder.label :img, "單一產品頁的此產品圖片（最佳尺寸：600 x 499）" %>
-	            <%= builder.file_field :img, multiple: true, name: "pictures[image]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+	            <%= builder.file_field :img, multiple: true, name: "pictures[image][]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
 	            <% end %>
 	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
 	          </div>
@@ -83,7 +63,8 @@
         	</div>
 
       	  <div class="box-footer">
-          	<button type="submit" class="btn btn-primary">Submit</button>
+          	<button type="submit" class="btn btn-danger">更新</button>
+            <%= link_to "返回上一頁", [:admin, @category], class: "btn btn-primary" %>
           </div>
         <% end %>
 <!--         <form role="form">

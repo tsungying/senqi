@@ -3,6 +3,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def show
+    @category = ProdCategory.find(params[:prod_category_id])
+    @product = @category.products.find(params[:id])
+    @url = prod_category_product_url(@category, @product)    
   end
 
   def new
@@ -16,7 +19,7 @@ class Admin::ProductsController < Admin::BaseController
   	
   	if @product.save
   		params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
-  		redirect_to admin_prod_category_url(@category)
+  		redirect_to [:admin, @category, @product]
   	else
   		render :new
   	end
@@ -28,16 +31,22 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-
     @category = ProdCategory.find(params[:prod_category_id])
     @product = @category.products.find(params[:id])
     
     if @product.update_attributes(product_params)
       params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
-      redirect_to admin_prod_category_url(@category)
+      redirect_to [:admin, @category, @product]
     else
       render :edit
     end    
+  end
+
+  def destroy
+    @category = ProdCategory.find(params[:prod_category_id])
+    @product = @category.products.find(params[:id])
+    @product.destroy
+    redirect_to [:admin, @category]
   end
 
   private

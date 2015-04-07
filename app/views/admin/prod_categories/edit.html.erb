@@ -1,14 +1,14 @@
-<section class="content-header">
-  <h1>修改商品分類名稱
-    <small><%= link_to "返回上一頁", admin_prod_categories_path %></small>
-  </h1>
-</section>
+<% breadcrumb :edit_product_category, @prod_category %>
 
 <section class="content">
 
   <div class="row">
     <div class="col-md-6">
       <div class="box box-primary">
+
+        <div class="box-header with-border">
+          <h3 class="box-title"> 重新命名商品分類</h3>
+        </div>      
 
         <%= form_for [:admin, @prod_category], html: { role: "form" } do |f| %>
           <div class="box-body">
@@ -23,7 +23,8 @@
           </div>
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">送出</button>
+            <%= link_to "返回上一頁", admin_prod_categories_path, class: "btn btn-primary" %>
           </div>
         <% end %>
 

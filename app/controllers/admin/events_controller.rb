@@ -4,6 +4,9 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def show
+    @event_category = EventCategory.find(params[:event_category_id])
+    @event = @event_category.events.find(params[:id])
+    @url = event_category_event_url(@event_category, @event)    
   end
 
   def new
@@ -15,7 +18,7 @@ class Admin::EventsController < Admin::BaseController
    	@event_category = EventCategory.find(params[:event_category_id])
   	@event = @event_category.events.new(event_params)
   	if @event.save
-  		redirect_to admin_event_category_url(@event.event_category)
+  		redirect_to [:admin, @event_category, @event]
   	else
   		render :new
   	end
@@ -40,7 +43,7 @@ class Admin::EventsController < Admin::BaseController
   	@event_category = EventCategory.find(params[:event_category_id])
   	@event = @event_category.events.find(params[:id])
   	@event.destroy
-  	redirect_to admin_event_category_url(@event_category)
+  	redirect_to [:admin, @event_category]
   end
 
   private

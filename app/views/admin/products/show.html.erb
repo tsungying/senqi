@@ -1,2 +1,19 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<% breadcrumb :product, @product %>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+
+        <div class="box-header">
+          <%= link_to "編輯商品", edit_admin_prod_category_product_path, class: "btn btn-danger btn-sm" %>
+        </div>
+
+        <div class="box-body">
+					<iframe src="<%= @url %>" height="500" width="100%"></iframe>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

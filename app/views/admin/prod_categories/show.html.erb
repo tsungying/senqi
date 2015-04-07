@@ -1,15 +1,15 @@
-<section class="content-header">
-  <h1>
-    商品分類 - <%= @prod_category.name %>
-    <small><%= link_to "建立新商品", new_admin_prod_category_product_path(@prod_category) %></small> 
-    <small><%= link_to "返回商品分類列表", admin_prod_categories_path %></small>
-  </h1>
-</section>
+<% breadcrumb :single_product_category, @prod_category %>
 
 <section class="content">
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
+
+        <div class="box-header with-border">
+          <%= link_to new_admin_prod_category_product_path(@prod_category), class: "btn btn-danger btn-sm" do %>
+            <li class="fa fa-fw fa-plus-square"></li> 建立新商品
+          <% end %>
+        </div>
 
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
@@ -31,11 +31,11 @@
               <td><%= product.part_number %></td>
               <td><%= product.original_price %></td>
               <td><%= product.selling_price %></td>
-              <td><%= l(product.updated_at, formate: :short) %></td>
-              <td><%= l(product.created_at, formate: :short) %></td>              
+              <td><%= l(product.updated_at, format: :long) %></td>
+              <td><%= l(product.created_at, format: :long) %></td>              
               <td>
               <%= link_to "編輯", edit_admin_prod_category_product_path(product.prod_category, product) %>
-              <%= link_to "刪除", admin_prod_category_product_path(product), :method => :delete, :confirm => "Are you sure?" %>
+              <%= link_to "刪除", [:admin, product.prod_category, product], method: :delete, data: { confirm: "確定刪除這個商品嗎？" } %>
               </td>
             </tr>
             <% end %>

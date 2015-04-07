@@ -1,15 +1,15 @@
-<section class="content-header">
-  <h1>在< <%= @event_category.name %> >分類 - 建立新活動
-
-    <small><%= link_to "返回活動列表", admin_event_category_path(@event_category) %></small>
-  </h1>
-</section>
+<% breadcrumb :edit_event, @event %>
 
 <section class="content">
 
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
+
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">編輯活動</h3>
+        </div>
 
         <%= form_for [:admin, @event_category, @event], html: { multipart: true, role: "form" } do |f| %>
           <div class="box-body">
@@ -51,7 +51,8 @@
           </div>
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">更新活動內容</button>
+            <button type="submit" class="btn btn-danger" >更新活動內容</button>
+            <%= link_to "返回上一頁", :back, class: "btn btn-primary" %>
           </div>
         <% end %>
 

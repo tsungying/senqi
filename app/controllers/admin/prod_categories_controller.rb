@@ -35,6 +35,12 @@ class Admin::ProdCategoriesController < Admin::BaseController
     end
   end
 
+  def destroy
+    @prod_category = ProdCategory.find(params[:id])
+    @prod_category.destroy
+    redirect_to admin_prod_categories_url
+  end
+
   private
 
     def prod_category_params

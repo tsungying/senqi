@@ -35,6 +35,12 @@ class Admin::EventCategoriesController < Admin::BaseController
   	end
   end
 
+  def destroy
+    @event_category = EventCategory.find(params[:id])
+    @event_category.destroy
+    redirect_to admin_event_categories_url
+  end
+
   private
 
   	def event_category_params
