@@ -125,14 +125,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
 
           <!-- search form (Optional) -->
-<!--           <form action="#" method="get" class="sidebar-form">
+          <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
               <input type="text" name="q" class="form-control" placeholder="Search..."/>
               <span class="input-group-btn">
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
             </div>
-          </form> -->
+          </form>
           <!-- /.search form -->
 
           <!-- Sidebar Menu -->
@@ -140,7 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
             <li><%=link_to "返回前台", root_path %></li>
-            <%= nav_link "公司簡介", "#" %>
+            <%= nav_link "公司簡介", admin_company_profiles_path %>
             <%= nav_link "商品櫥窗", admin_prod_categories_path %>
             <%= nav_link "部落格", admin_blog_categories_path %>
             <%= nav_link "促銷活動", admin_event_categories_path %>

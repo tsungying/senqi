@@ -35,6 +35,8 @@ Miracode::Application.routes.draw do
     resources :event_categories do
       resources :events
     end    
+
+    resources :company_profiles
   end
 
   devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 

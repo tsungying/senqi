@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403034707) do
+ActiveRecord::Schema.define(version: 20150408080725) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 20150403034707) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+
+  create_table "company_profiles", force: :cascade do |t|
+    t.string   "office_image", limit: 255
+    t.integer  "play_order",   limit: 4,   default: 0
+    t.string   "brand_story",  limit: 255
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
   create_table "event_categories", force: :cascade do |t|
     t.string   "name",         limit: 255
