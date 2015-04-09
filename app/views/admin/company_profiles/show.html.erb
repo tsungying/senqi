@@ -1,2 +1,26 @@
-<h1>Admin::CompanyProfiles#show</h1>
-<p>Find me in app/views/admin/company_profiles/show.html.erb</p>
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+
+        <div class="box-header with-border">
+          <h3 class="box-title"> 
+            <%= link_to "修改", edit_admin_company_profile_path(@company_profile, type: params[:type]), class: "btn btn-danger btn-xs" %>
+            <%= link_to "回上一頁", admin_company_profiles_path, class: "btn btn-primary btn-xs" %>
+          </h3>
+        </div>
+
+        <div class="box-body">
+          <% if params[:type] == "office" %>
+          <%= image_tag @company_profile.office_image_url %>
+          <% else %>
+          <%= image_tag @company_profile.brand_story_url %>
+          <% end %>
+        </div>
+
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+</section><!-- /.content -->

@@ -4,13 +4,14 @@
 				background: #FFFFFF !important;
 			}
 
-			.img-responsive-arisu{
+			.img-responsive-revised{
 			  max-width: 100%;
 			  height: auto;
 			}
 
 			.blog-container {
-				  padding: 30px 0 0px;
+				  /*padding: 30px 0 0px;*/
+				  padding: 0 ;
 			}
 
 			.blog-single {
@@ -18,105 +19,33 @@
 			}
 		</style>
 
+		<div class="blog-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<div class="blog-single clearfix">						
 
-
-			<div class="blog-container">
-				<div class="container">
-					<div class="row">
-
-						<div class="col-md-offset-1 col-md-10">
-
-							<div class="blog-single clearfix">						
-
-										<div class="flexslider">
-											<ul class="slides">
-												<li>
-													<img alt="" src="/demo/1170x500-1.png" />
-												</li>
-												<li>
-													<img alt="" src="/demo/1170x500-2.png" />
-												</li>
-												<li>
-													<img alt="" src="/demo/1170x500-3.png" />
-												</li>
-											</ul>
-										</div>
-
-
-										<div class="blogsingle-inner text-center">
-<!-- 				<div class="row">					
-					<div class="col-md-offset-2 col-md-8">	 -->
-					<%= image_tag "/images/about-story.jpg", class: "img-responsive-arisu" %>
-<!-- 					</div>
-				</div> -->
-<!-- <%#= image_tag "/images/about-story.jpg", class: "img-responsive" %> -->
-
-										</div>
-				
-
+							<div class="flexslider">
+								<ul class="slides">
+								<% @about_office.each do |about| %>
+								<li><%= image_tag about.office_image_url %></li>
+								<% end %>
+								</ul>
 							</div>
 
+							<div class="blogsingle-inner text-center">
+							<% if @about_brand_story %>
+							<%= image_tag @about_brand_story.brand_story_url, class: "img-responsive-revised" %>
+							<% end %>
+							</div>				
 
-							</div>
-							</div>
-							</div>
-							</div>
-						
-
-
-<!-- 		<div class="container">
-
-			<div class="slider">
-				<div class="fullwidthbanner-container mb30">
-					<div class="fullwidthbanner" id="intro">
-						<ul>
-
-							<li data-transition="random" data-slotamount="10" data-masterspeed="300">
-							<img src="/demo/1170x500-1.png" data-fullwidthcentering="on" alt="slide">							
-							</li>
-
-							<li data-transition="random" data-slotamount="10" data-masterspeed="300">
-
-							<img src="/demo/1170x500-2.png" data-fullwidthcentering="on" alt="slide">
-
-				
-							</li>
-
-
-							<li data-transition="random" data-slotamount="10" data-masterspeed="300">
-
-							<img src="/demo/1170x500-3.png" data-fullwidthcentering="on" alt="slide">
-
-						
-							</li>
-							
-						</ul>
-						
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-		</div> -->
-
-		<!-- content 
-			================================================== -->
-<!-- 		<div id="content" class="container remove_padding">
-			
-			<div class="xbanners1 clearfix">
-				<div class="row">					
-					<div class="col-md-offset-2 col-md-10">	
-					<%#= image_tag "/images/about-story.jpg", class: "img-responsive" %>
-					</div>
-				</div>
-			</div>
-
-
-		</div> -->
-		<!-- End content -->
-
-
-
-		<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.superfish.js"></script>
 	<script type="text/javascript" src="js/jquery.bxslider.js"></script>
 
@@ -125,11 +54,11 @@
 	<script type="text/javascript" src="js/jquery.flexslider.js"></script>
 	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
 	<script type="text/javascript" src="js/plugins-scroll.js"></script>
-  	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="js/jquery.imagesloaded.min.js"></script>
 	<script type="text/javascript" src="js/jquery.appear.js"></script>
 	<script type="text/javascript" src="js/jquery.countTo.js"></script>
 	<script src="js/jquery.parallax.js"></script>
-     <!-- jQuery KenBurn Slider  -->
-    <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
+  <!-- jQuery KenBurn Slider  -->
+  <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>

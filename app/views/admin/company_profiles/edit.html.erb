@@ -1,2 +1,19 @@
-<h1>Admin::CompanyProfiles#edit</h1>
-<p>Find me in app/views/admin/company_profiles/edit.html.erb</p>
+
+
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+
+        <div class="box-header with-border">
+          <h3 class="box-title"> 編輯<%= params[:type] == "office" ? "辦公室(945x464)" : "品牌故事" %>照片</h3>
+        </div>
+
+        <%= render 'fields' %>
+
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+</section><!-- /.content -->

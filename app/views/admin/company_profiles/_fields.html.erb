@@ -1,0 +1,46 @@
+        <%= form_for [:admin, @company_profile], html: { multipart: true, role: "form" } do |f| %>
+          <div class="box-body">
+
+            <%= render 'admin/shared/error_messages', object: @company_profile %>          
+
+            <% if params[:type] == "office" %>
+
+              <% unless @company_profile.new_record? %>
+              原圖:<br>
+              <%= image_tag @company_profile.office_image_url, class: "img-thumbnail",width: "250", height: 'auto' %>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.label :office_image, "辦公室照片（最佳尺寸：1170 x 500）" %>
+                <%= f.file_field :office_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+                <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
+              </div>
+
+            <% else %>
+
+              <% unless @company_profile.new_record? %>
+              原圖:<br>
+              <%= image_tag @company_profile.brand_story_url, class: "img-thumbnail",width: "250", height: 'auto' %>
+              <% end %>
+            
+              <div class="form-group">
+                <%= f.label :brand_story, "品牌故事照片（最佳尺寸：1170 x 高度不拘）" %>
+                <%= f.file_field :brand_story, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+                <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
+              </div>
+
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :play_order, "播放順序" %>
+              <%=f.number_field :play_order, placeholder: "請輸入1個整數", class: "form-control" %>
+              <p class="help-block">數字愈大愈優先播放</p>
+            </div>
+
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-danger">送出</button>
+            <%= link_to "返回上一頁", admin_company_profiles_path, class: "btn btn-primary" %>
+          </div>
+        <% end %>
