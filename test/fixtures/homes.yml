@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logo: MyString
+  slider: MyString
+  play_order: 1
+
+two:
+  logo: MyString
+  slider: MyString
+  play_order: 1

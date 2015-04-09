@@ -7,8 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="UTF-8">
     <title>Miracode Admin</title>
-  <%= javascript_include_tag 'admin/application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'admin/application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -140,6 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
             <li><%=link_to "返回前台", root_path %></li>
+            <%= nav_link "首頁", admin_home_pages_path %>
             <%= nav_link "公司簡介", admin_company_profiles_path %>
             <%= nav_link "商品櫥窗", admin_prod_categories_path %>
             <%= nav_link "部落格", admin_blog_categories_path %>
