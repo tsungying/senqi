@@ -22,7 +22,7 @@ Miracode::Application.routes.draw do
   resources :comments
 
   namespace :admin do
-    root to: "prod_categories#index"
+    root to: "home_pages#index"
 
     resources :prod_categories do
       resources :products
