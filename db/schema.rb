@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 20150409162838) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "name",             limit: 255
     t.text     "content",          limit: 65535
     t.integer  "commentable_id",   limit: 4
     t.string   "commentable_type", limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "name",             limit: 255
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
