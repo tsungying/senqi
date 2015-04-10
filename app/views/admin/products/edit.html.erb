@@ -16,11 +16,18 @@
 
             <%= render 'admin/shared/error_messages', object: @product %>
 
+            <%= image_tag @product.home_image_url, class: "img-thumbnail", width: "150", height: 'auto'  %>
 		        <div class="form-group">
 	            <%= f.label :home_image, "首頁產品圖（最佳尺寸：270 x 320）" %>
 	            <%= f.file_field :home_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
 	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
 	          </div>
+
+            <% @product.pictures.each do |pic| %>              
+              <%= image_tag pic.img_url, class: "img-thumbnail", width: "150", height: 'auto'  %>
+              <%= check_box_tag "pic[]", pic.id, nil, id: "pic#{pic.id}" %>
+              <%= label_tag "pic#{pic.id}", "刪除此圖" %><br>
+            <% end %>
 
 	          <div class="form-group">
 	          	<%= f.fields_for :pictures, @product.pictures.build do |builder| %>

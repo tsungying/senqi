@@ -36,6 +36,11 @@ class Admin::ProductsController < Admin::BaseController
     
     if @product.update_attributes(product_params)
       params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
+
+      if (params[:pic]||[]).any?
+        Picture.where(id: params[:pic]).each { |p| p.destroy }
+      end
+
       redirect_to [:admin, @category, @product]
     else
       render :edit
