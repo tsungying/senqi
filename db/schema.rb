@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408080725) do
+ActiveRecord::Schema.define(version: 20150409162838) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -91,6 +91,14 @@ ActiveRecord::Schema.define(version: 20150408080725) do
   end
 
   add_index "events", ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
+
+  create_table "home_pages", force: :cascade do |t|
+    t.string   "logo",       limit: 255
+    t.string   "slider",     limit: 255
+    t.integer  "play_order", limit: 4,   default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   create_table "pictures", force: :cascade do |t|
     t.string   "img",         limit: 255

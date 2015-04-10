@@ -3,11 +3,11 @@
 		<div class="fullwidthbanner-container" style="top: -1px">
 			<div class="fullwidthbanner" id="intro">
 				<ul>
-					<% for i in 1..2 %>
+					<% @home_slider.each do |s| %>
 					<!-- First SLIDE -->
 					<li data-transition="random" data-slotamount="10" data-masterspeed="300">
 					<!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-					<%= image_tag "/images/slider-#{i}.jpeg", "data-fullwidthcentering" => "on", alt: "slide" %>
+					<%= image_tag s.slider.url, "data-fullwidthcentering" => "on", alt: "slide" %>
 					<!-- <img src="/images/slider.jpeg" data-fullwidthcentering="on" alt="slide"> -->
 					<!-- THE CAPTIONS IN THIS SLDIE -->
 					<div class="caption small_text lft" 

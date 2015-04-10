@@ -8,12 +8,14 @@
 						</form>
 					</div>
 
+					<% if @home_logo %>
 					<div class="logo">
 						<%= link_to root_path do %>
-							<%= image_tag "/images/logo.png", alt: "" %>
+							<%= image_tag @home_logo.logo_url, alt: "" %>
 						<% end %>			
 					</div>
-					
+					<% end %>
+
 					<div class="cart">
 
 						<div class="card-icon">

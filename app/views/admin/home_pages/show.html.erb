@@ -1,2 +1,26 @@
-<h1>Admin::HomePages#show</h1>
-<p>Find me in app/views/admin/home_pages/show.html.erb</p>
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+
+        <div class="box-header with-border">
+          <h3 class="box-title"> 
+            <%= link_to "修改", edit_admin_home_page_path(@home, type: params[:type]), class: "btn btn-danger btn-xs" %>
+            <%= link_to "回上一頁", :back, class: "btn btn-primary btn-xs" %>
+          </h3>
+        </div>
+
+        <div class="box-body">
+          <% if params[:type] == "logo" %>
+          <%= image_tag @home.logo_url, class: "img-responsive" %>
+          <% else %>
+          <%= image_tag @home.slider_url, class: "img-responsive" %>
+          <% end %>
+        </div>
+
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+</section><!-- /.content -->

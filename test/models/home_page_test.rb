@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HomeTest < ActiveSupport::TestCase
+class HomePageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

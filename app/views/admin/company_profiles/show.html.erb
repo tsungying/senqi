@@ -13,9 +13,9 @@
 
         <div class="box-body">
           <% if params[:type] == "office" %>
-          <%= image_tag @company_profile.office_image_url %>
+          <%= image_tag @company_profile.office_image_url, class: "img-responsive" %>
           <% else %>
-          <%= image_tag @company_profile.brand_story_url %>
+          <%= image_tag @company_profile.brand_story_url, class: "img-responsive" %>
           <% end %>
         </div>
 

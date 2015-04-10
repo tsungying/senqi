@@ -1,0 +1,46 @@
+        <%= form_for [:admin, @home], html: { multipart: true, role: "form" } do |f| %>
+          <div class="box-body">
+
+            <%= render 'admin/shared/error_messages', object: @home %>          
+
+            <% if params[:type] == "logo" %>
+
+              <% unless @home.new_record? %>
+              原圖:<br>
+              <%= image_tag @home.logo_url, class: "img-thumbnail",width: "250", height: 'auto' %>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.label :logo, "Logo照片（最佳尺寸： x ）" %>
+                <%= f.file_field :logo, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+                <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
+              </div>
+
+              <% else %>
+
+              <% unless @home.new_record? %>
+              原圖:<br>
+              <%= image_tag @home.slider_url, class: "img-thumbnail",width: "250", height: 'auto' %>
+              <% end %>
+            
+              <div class="form-group">
+                <%= f.label :slider, "Slider照片（最佳尺寸：x ）" %>
+                <%= f.file_field :slider, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+                <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
+              </div>
+
+              <% end %>
+
+            <div class="form-group">
+              <%= f.label :play_order, "播放順序" %>
+              <%=f.number_field :play_order, placeholder: "請輸入1個整數", class: "form-control" %>
+              <p class="help-block">數字愈大愈優先播放</p>
+            </div>
+
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-danger">送出</button>
+            <%= link_to "返回上一頁", admin_home_pages_path, class: "btn btn-primary" %>
+          </div>
+        <% end %>
