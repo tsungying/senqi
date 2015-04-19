@@ -23,7 +23,7 @@
 	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
 	          </div>
 
-            <% @product.pictures.each do |pic| %>              
+            <% @product.pictures.where(section: "product_photo").each do |pic| %>              
               <%= image_tag pic.img_url, class: "img-thumbnail", width: "150", height: 'auto'  %>
               <%= check_box_tag "pic[]", pic.id, nil, id: "pic#{pic.id}" %>
               <%= label_tag "pic#{pic.id}", "刪除此圖" %><br>
@@ -32,7 +32,7 @@
 	          <div class="form-group">
 	          	<%= f.fields_for :pictures, @product.pictures.build do |builder| %>
 	          	<%= builder.label :img, "單一產品頁的此產品圖片（最佳尺寸：600 x 499）" %>
-	            <%= builder.file_field :img, multiple: true, name: "pictures[image][]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+	            <%= builder.file_field :img, name: "pictures[image][]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
 	            <% end %>
 	            <p class="help-block">請自行將圖片調整為最佳尺寸再進行上傳，謝謝！</p>
 	          </div>
@@ -74,6 +74,19 @@
             <div class="form-group">
               <%= f.label :brief, "產品簡述" %>
               <%=f.text_area :brief, placeholder: "Brief", id: "brief_editor", class: "form-control" %>
+            </div>
+
+            <% @product.pictures.where(section: "product_description").each do |pic| %>              
+              <%= image_tag pic.img_url, class: "img-thumbnail", width: "150", height: 'auto'  %>
+              <%= check_box_tag "pic[]", pic.id, nil, id: "pic#{pic.id}" %>
+              <%= label_tag "pic#{pic.id}", "刪除此圖" %><br>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.fields_for :pictures, @product.pictures.build do |builder| %>
+              <%= builder.label :img, "產品廣告圖（圖片請統一大小，防止頁面跑版）" %>
+              <%= builder.file_field :img, name: "pictures[description][]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+              <% end %>
             </div>
 
         	</div>

@@ -1,0 +1,29 @@
+			<div class="tabs-single">
+				<div class="container">
+
+					<div id="tabs">
+					  <ul>
+					    <li class="active"><a href="#tabs-1">產品介紹</a></li>
+<!-- 					    <li><a href="#tabs-2">ADDITIONAL INFORMATION</a></li>
+					    <li><a href="#tabs-3">REVIEWS</a></li> -->
+					  </ul>
+					  <div class="tab-border"></div>
+
+					  <div id="tabs-1">
+
+							<div class="row">
+
+								<% @product.pictures.where(section: "product_description").each do |picture| %>
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<%= image_tag picture.img_url, class: "img-responsive"%><br/>
+									</div>								
+								<% end %>
+
+							</div> <!-- class="row" -->
+
+						</div>
+					  	
+					  </div>
+
+					  </div>
+					</div>

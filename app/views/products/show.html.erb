@@ -12,7 +12,7 @@
 		<div class="col-md-6">
 			<div class="single-img">
 				<div class="sp-wrap">
-					<% @product.pictures.each do |picture| %>
+					<% @product.pictures.where(section: "product_photo").each do |picture| %>
 						<%= link_to picture.img_url do %>
 							<%= image_tag picture.img_url %>
 						<% end %>
@@ -72,16 +72,7 @@
 </div>
 
 	<!-- End Product Single -->
-	<% case params[:prod_category_id] %>
-		<% when '1' %>
-		<%= render "category_1_description" %>
-		<% when '2' %>
-		<%= render "category_2_description" %>
-		<% when '3' %>
-		<%= render "category_3_description" %>
-		<% when '4' %>
-		<%= render "category_4_description" %>
-	<% end %>
+<%= render "description" %>
 
 
 
