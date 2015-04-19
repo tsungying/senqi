@@ -18,7 +18,10 @@ class Admin::ProductsController < Admin::BaseController
   	@product = @category.products.new(product_params)
   	
   	if @product.save
-  		params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if (params[:pictures]||[]).any?
+      if (params[:pictures]||[]).any?
+        params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if params[:pictures].has_key?('image')
+        params[:pictures]['description'].each { |description| @product.pictures.create(img: description, section: "product_description") } if params[:pictures].has_key?('description')
+      end
   		redirect_to [:admin, @category, @product]
   	else
   		render :new

@@ -70,6 +70,13 @@
               <%=f.text_area :brief, placeholder: "Brief", id: "brief_editor", class: "form-control" %>
             </div>
 
+            <div class="form-group">
+              <%= f.fields_for :pictures, @product.pictures.build do |builder| %>
+              <%= builder.label :img, "產品廣告圖（圖片請統一大小，防止頁面跑版）" %>
+              <%= builder.file_field :img, name: "pictures[description][]", accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+              <% end %>
+            </div>
+
         	</div>
 
       	  <div class="box-footer">
