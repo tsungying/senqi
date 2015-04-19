@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409162838) do
+ActiveRecord::Schema.define(version: 20150419073532) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20150409162838) do
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.string   "home_image",       limit: 255
+    t.text     "youtube_code",     limit: 65535
   end
 
   add_index "products", ["prod_category_id"], name: "index_products_on_prod_category_id", using: :btree

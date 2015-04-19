@@ -37,6 +37,15 @@
 	          </div> -->
 
             <div class="form-group">
+              <%= f.label :youtube_code, "Youtube 影片代碼" %>
+              <%=f.text_field :youtube_code, placeholder: "例如：etHsPVvupdo,etHsPVvupdo,etHsPVvupdo", class: "form-control" %>
+              <p class="help-block">如有多個影片代碼，請用逗號隔開！</p>
+              <p class="help-block">如何取得影片代碼？例如：https://www.youtube.com/watch?v=<span style="color:red">etHsPVvupdo</span></p>
+              <p class="help-block">紅字部份即為影片代碼</p>
+              <p class="help-block">第一個代碼的影片預設會自動播放</p>
+            </div>
+
+            <div class="form-group">
               <%= f.label :name, "產品名稱" %>
               <%=f.text_field :name, placeholder: "Name", class: "form-control" %>
             </div>

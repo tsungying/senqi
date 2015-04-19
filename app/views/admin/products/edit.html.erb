@@ -7,7 +7,7 @@
     <div class="col-md-6">
 
       <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header with-border">
           <h3 class="box-title">編輯商品</h3>
         </div>
 
@@ -41,6 +41,15 @@
 	          	<%#= f.label :prod_category_id, "選擇產品目錄"%>
 	          	<%#= f.select :prod_category_id, ProdCategory.all.collect{ |c| [c.name, c.id] }, { selected: @product.prod_category_id }, { :class => "form-control" } %>
 	          </div> -->
+
+            <div class="form-group">
+              <%= f.label :youtube_code, "Youtube 影片代碼" %>
+              <%=f.text_field :youtube_code, placeholder: "例如：etHsPVvupdo,etHsPVvupdo,etHsPVvupdo", class: "form-control" %>
+              <p class="help-block">如有多個影片代碼，請用逗號隔開！</p>
+              <p class="help-block">如何取得影片代碼？例如：https://www.youtube.com/watch?v=<span style="color:red">etHsPVvupdo</span></p>
+              <p class="help-block">紅字部份即為影片代碼</p>
+              <p class="help-block">第一個代碼的影片預設會自動播放</p>
+            </div>
 
             <div class="form-group">
               <%= f.label :name, "產品名稱" %>
