@@ -15,6 +15,7 @@
           <table class="table table-hover">
             <tr>
               <th>ID</th>
+              <th>首頁圖</th>
               <th>標題</th>
               <th>摘要</th>              
               <th>更新時間</th>
@@ -25,6 +26,11 @@
             <% @events.each do |event| %>
             <tr>
               <td><%= event.id %></td>
+              <td>
+                <%= link_to [:admin, event.event_category, event] do %>
+                  <%= image_tag event.home_image_url, class: "img-thumbnail", width: "150", height: 'auto' %>
+                <% end %>
+              </td>
               <td><%= link_to event.title, admin_event_category_event_path(event.event_category, event) %></td>
               <td><%= raw event.summary %></td>
               <td><%= l(event.updated_at, format: :long) %></td>

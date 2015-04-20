@@ -16,6 +16,7 @@
           <table class="table table-hover">
             <tr>
               <th>ID</th>
+              <th>首頁圖</th>
               <th>標題</th>
               <th>摘要</th>              
               <th>更新時間</th>
@@ -26,6 +27,11 @@
             <% @articles.each do |article| %>
             <tr>
               <td><%= article.id %></td>
+              <td>
+                <%= link_to [:admin, article.blog_category, article] do %>
+                  <%= image_tag article.home_image_url, class: "img-thumbnail", width: "150", height: 'auto' %>
+                <% end %>
+              </td>
               <td><%= link_to article.title, admin_blog_category_article_path(article.blog_category, article) %></td>
               <td><%= raw article.summary %></td>
               <td><%= l(article.updated_at, format: :long) %></td>
