@@ -1,6 +1,5 @@
 <% breadcrumb :edit_article, @article %>
 
-
 <section class="content">
 
   <div class="row">
@@ -13,61 +12,8 @@
 
         <%= form_for [:admin, @blog_category, @article], html: { multipart: true, role: "form" } do |f| %>
           <div class="box-body">
-
             <%= render 'admin/shared/error_messages', object: @article %>   
-
-            <div class="form-group">
-              <%= f.label :home_image, "首頁文章圖（小圖）（建議尺寸：370 x 215）" %>
-              <%= f.file_field :home_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
-              <%= f.hidden_field :home_image_cache %>
-              <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
-            </div>       
-
-            <div class="form-group">
-              <%= f.label :article_image, "封面類型：文章圖（大圖）（建議尺寸：770 x 404）" %>
-              <%= f.file_field :article_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
-              <%= f.hidden_field :article_image_cache %>
-              <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
-            </div> 
-
-            <div class="form-group">
-              <%= f.label :youtube_video, "封面類型：Youtube 影片代碼" %>
-              <%=f.text_field :youtube_video, placeholder: "例如：etHsPVvupdo", class: "form-control" %>
-              <p class="help-block">如何取得影片代碼？例如：https://www.youtube.com/watch?v=<span style="color:red">etHsPVvupdo</span></p>
-              <p class="help-block">紅字部份即為影片代碼</p>
-            </div>
-
-            <div class="form-group">
-              <%= label_tag "設定文章封面類型" %>
-              <div class="radio">          
-                <label>             
-                <%= f.radio_button :cover, "article_image" %>
-                <%= f.label :cover, "以圖片作為封面", value: "article_image" %>
-                </label>  
-              </div>
-              <div class="radio">  
-                <label> 
-                <%= f.radio_button :cover, "youtube_video" %>
-                <%= f.label :cover, "以影片作為封面", value: "youtube_video" %>
-                </label>
-              </div>
-            </div>            
-
-            <div class="form-group has-error">
-              <%= f.label :title, "標題" %>
-              <%=f.text_field :title, placeholder: "Title", class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :summary, "摘要" %>
-              <%=f.text_area :summary, id: "article_summary", placeholder: "Summary", class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :content, "內容" %>
-              <%=f.text_area :content, id: "article_content", placeholder: "Content", class: "form-control" %>
-            </div>
-
+            <%= render 'fields', f: f, object: @article %>
           </div>
 
           <div class="box-footer">

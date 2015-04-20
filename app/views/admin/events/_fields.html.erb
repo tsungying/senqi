@@ -1,0 +1,39 @@
+<% unless object.new_record? %>
+  <%= image_tag object.home_image_url, class: "img-thumbnail", width: "150", height: 'auto' %>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :home_image, "首頁活動圖（小圖）（建議尺寸：370 x 215）" %>
+  <%= f.file_field :home_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+  <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
+</div>       
+
+<% unless object.new_record? %>
+  <%= image_tag object.event_image_url, class: "img-thumbnail", width: "150", height: 'auto' %>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :event_image, "活動圖（大圖）（建議尺寸：770 x 404）" %>
+  <%= f.file_field :event_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
+  <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
+</div> 
+
+<div class="form-group has-error">
+  <%= f.label :title, "標題" %>
+  <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
+</div>
+
+<div class="form-group has-error">
+  <%= f.label :publish_at, "發佈時間" %>
+  <%= f.datetime_select :publish_at, class: "form-control" %>
+</div>            
+
+<div class="form-group">
+  <%= f.label :summary, "摘要" %>
+  <%= f.text_area :summary, id: "event_summary", placeholder: "Summary", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :content, "內容" %>
+  <%= f.text_area :content, id: "event_content", placeholder: "Content", class: "form-control" %>
+</div>
