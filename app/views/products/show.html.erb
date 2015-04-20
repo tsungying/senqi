@@ -32,7 +32,9 @@
 									
 				<div class="single-price">
 				  <ul>
-						<!-- <li><span class="high-price">NT&nbsp;<%#= @product.original_price %></span></li> -->
+						<% if @product.original_price > @product.selling_price %>
+							<li><span class="high-price">NT&nbsp;<%= @product.original_price %></span></li>
+						<% end %>
 						<li><span class="low-price">NT&nbsp;<%= @product.selling_price %></span></li>
 					</ul>
 			  </div>
