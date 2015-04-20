@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419093156) do
+ActiveRecord::Schema.define(version: 20150420064527) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(version: 20150419093156) do
     t.text     "content",          limit: 65535
     t.string   "home_image",       limit: 255
     t.string   "article_image",    limit: 255
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "comments_count",   limit: 4,     default: 0
+    t.string   "youtube_video",    limit: 255
+    t.string   "cover",            limit: 255,   default: "article_image"
   end
 
   add_index "articles", ["blog_category_id"], name: "index_articles_on_blog_category_id", using: :btree
@@ -56,8 +58,8 @@ ActiveRecord::Schema.define(version: 20150419093156) do
     t.text     "content",          limit: 65535
     t.integer  "commentable_id",   limit: 4
     t.string   "commentable_type", limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name",             limit: 255
   end
 

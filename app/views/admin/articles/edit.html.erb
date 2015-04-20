@@ -24,11 +24,34 @@
             </div>       
 
             <div class="form-group">
-              <%= f.label :article_image, "文章圖（大圖）（建議尺寸：770 x 404）" %>
+              <%= f.label :article_image, "封面類型：文章圖（大圖）（建議尺寸：770 x 404）" %>
               <%= f.file_field :article_image, accept: 'image/jpeg, image/gif, image/jpg, image/png' %>
               <%= f.hidden_field :article_image_cache %>
               <p class="help-block">請自行將圖片調整為建議尺寸再進行上傳，謝謝！</p>
             </div> 
+
+            <div class="form-group">
+              <%= f.label :youtube_video, "封面類型：Youtube 影片代碼" %>
+              <%=f.text_field :youtube_video, placeholder: "例如：etHsPVvupdo", class: "form-control" %>
+              <p class="help-block">如何取得影片代碼？例如：https://www.youtube.com/watch?v=<span style="color:red">etHsPVvupdo</span></p>
+              <p class="help-block">紅字部份即為影片代碼</p>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag "設定文章封面類型" %>
+              <div class="radio">          
+                <label>             
+                <%= f.radio_button :cover, "article_image" %>
+                <%= f.label :cover, "以圖片作為封面", value: "article_image" %>
+                </label>  
+              </div>
+              <div class="radio">  
+                <label> 
+                <%= f.radio_button :cover, "youtube_video" %>
+                <%= f.label :cover, "以影片作為封面", value: "youtube_video" %>
+                </label>
+              </div>
+            </div>            
 
             <div class="form-group has-error">
               <%= f.label :title, "標題" %>

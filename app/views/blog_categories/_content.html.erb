@@ -10,10 +10,14 @@
 								<div class="blog-item">
 
 									<div class="blog-img">
-										<%= link_to blog_category_article_path(article.blog_category, article) do %>
-											<%= image_tag article.article_image_url %>
+										<% if article.cover == "article_image" %>
+											<%= link_to blog_category_article_path(article.blog_category, article) do %>
+												<%= image_tag article.article_image_url %>											
+											<% end %>
+										<% else %>
+											<iframe class="videoembed" src="http://www.youtube.com/embed/<%= article.youtube_video %>"></iframe>
 										<% end %>
-										<!-- <a href="#"><img src="upload/blog/部落格A_695x404.png" alt=""></a> -->
+
 										<div class="calendar">
 											<p><%= article.created_at.strftime("%d") %></p>
 											<span><%= article.created_at.strftime("%b") %></span>	

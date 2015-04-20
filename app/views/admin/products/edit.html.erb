@@ -64,6 +64,7 @@
             <div class="form-group">
               <%= f.label :original_price, "原價" %>
               <%=f.number_field :original_price, placeholder: "Original price", class: "form-control" %>
+              <p class="help-block">當原價低於or等於售價時，系統將自動隱藏原始價格</p>
             </div>
 
             <div class="form-group">

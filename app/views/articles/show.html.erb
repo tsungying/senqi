@@ -5,7 +5,11 @@
 							<div class="blog-single clearfix">
 
 								<div class="blog-img">
-									<%= image_tag @article.article_image_url %>
+									<% if @article.cover == "article_image" %>
+										<%= image_tag @article.article_image_url %>
+									<% else %>
+										<iframe class="videoembed" src="http://www.youtube.com/embed/<%= @article.youtube_video %>"></iframe>
+									<% end %>
 								</div>
 
 								<div class="blogsingle-inner">

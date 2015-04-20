@@ -50,7 +50,7 @@ class Admin::ArticlesController < Admin::BaseController
   private
 
   	def article_params
-  		params.require(:article).permit(:title, :article_image, :home_image, :content, :summary)
+  		params.require(:article).permit(:title, :article_image, :home_image, :content, :summary, :youtube_video, :cover)
   	end
 
 end
