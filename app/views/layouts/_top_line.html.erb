@@ -1,0 +1,57 @@
+			<div class="top-line">
+				<div class="container">
+
+					<div class="left-line">
+
+					<% if notice %>
+					  <p class="alert alert-success"><%= notice %></p>
+					<% end %>
+					<% if alert %>
+					  <p class="alert alert-danger"><%= alert %></p>
+					<% end %>
+
+						<div class="mobile-a">
+							<% if user_signed_in? %>
+							<%= link_to edit_user_registration_path do %><i class="fa fa-user"></i><% end %>
+							<%= link_to "#" do %><i class="fa fa-shopping-cart"></i><% end %>
+							<%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i><% end %>
+							<% else %>
+							<%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i><% end %>
+							<% end %>
+						</div>
+					</div>
+
+					<div class="right-line clearfix">
+
+					<ul>
+						<% if user_signed_in? %>
+						  <li class="user_name"><%= current_user.email %></li> 
+						  <li><%= link_to '我的帳戶', edit_user_registration_path %></li> 
+						  <li><%= link_to '結帳', "#" %></li>
+						  <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li> 
+
+						  <% if current_user.try(:admin?) %>
+						  <li><%= link_to "後台", admin_root_path  %></li>
+						  <% end %>
+						<% else %>					 
+						  <li><%= link_to "登入", new_user_session_path %></li>
+						<% end %>
+					</ul>
+
+<!-- 						<ul>
+							<li><a href="#">我的帳戶</a></li>
+							<li><a href="#">結帳</a></li>
+							<li><a href="#login-box" class="login-window">登入</a></li>
+						</ul> -->
+
+						<div class="mobile-version">
+							<div class="cart-icon">
+								<a href="#"><img src="/images/cart-white.png" alt="">
+								<span>8 Items</span></a>	
+							</div>
+						</div>
+
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>

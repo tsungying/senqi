@@ -1,0 +1,66 @@
+<div class="container">
+
+  <div class="title">
+    <h1><i class="fa fa-star"></i> 會員登入<i class="fa fa-star"></i></h1>
+    <div class="title-border"></div>
+  </div>
+
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+
+          <% if alert %>
+              <div class="alert alert-warning fade in red-alert" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <strong><%= alert %></strong>
+              </div>
+          <% end %>
+
+
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+</div>
+
+  <script src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui.js"></script>
+  <script>
+      $( "#tabs" ).tabs();
+      $( "#accordion" ).accordion();
+  </script>
+  <script type="text/javascript" src="/js/jquery.superfish.js"></script>
+  <script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.appear.js"></script>
+  <script type="text/javascript" src="/js/jquery.countTo.js"></script>
+  <script src="/js/jquery.easypiechart.js"></script>
+     <!-- jQuery KenBurn Slider  -->
+    <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>

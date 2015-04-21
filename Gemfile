@@ -33,6 +33,9 @@ gem 'turbolinks'
 gem 'active_attr'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "gretel"
+gem 'omniauth'
+gem 'omniauth-facebook'
+# gem 'mailcatcher'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

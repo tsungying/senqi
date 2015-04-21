@@ -1,8 +1,11 @@
 Miracode::Application.routes.draw do  
 
+  
   root to: "pages#index"
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
+  devise_for :users
+  resources :users
   
   resources :messages, only: [:new, :create] 
   get "contact"   => "messages#new"
@@ -39,7 +42,7 @@ Miracode::Application.routes.draw do
     resources :company_profiles, :home_pages
   end
 
-  devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 
+  #devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

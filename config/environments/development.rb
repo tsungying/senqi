@@ -15,19 +15,19 @@ Miracode::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   # config.action_mailer.delivery_method = :test
-  # host = "localhost:3000"
-  # config.action_mailer.default_url_options = { host: host }
+  host = "localhost:3000"
+  config.action_mailer.default_url_options = { host: host }
 
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'miracode.com',
-    :user_name            => 'miracode.service@gmail.com',
-    :password             => '23882159',
-    :enable_starttls_auto => true,
-    :authentication       => 'plain' 
+    :address              => "localhost",
+    :port                 => 1025
+    # :domain               => 'miracode.com',
+    # :user_name            => 'miracode.service@gmail.com',
+    # :password             => '23882159',
+    # :enable_starttls_auto => true,
+    # :authentication       => 'plain' 
   }
 
   # Print deprecation notices to the Rails logger
@@ -49,5 +49,5 @@ Miracode::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 end
