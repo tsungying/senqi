@@ -4,7 +4,7 @@ Miracode::Application.routes.draw do
   root to: "pages#index"
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   resources :users
   
   resources :messages, only: [:new, :create] 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421082358) do
+ActiveRecord::Schema.define(version: 20150422091536) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20150421082358) do
   end
 
   add_index "articles", ["blog_category_id"], name: "index_articles_on_blog_category_id", using: :btree
+
+  create_table "authorizations", force: :cascade do |t|
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
 
   create_table "blog_categories", force: :cascade do |t|
     t.string   "name",           limit: 255
@@ -133,10 +143,12 @@ ActiveRecord::Schema.define(version: 20150421082358) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  limit: 1,   default: false
+    t.string   "name",                   limit: 255
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "authorizations", "users"
 end

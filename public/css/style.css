@@ -5364,7 +5364,7 @@ padding: 0;
     }
 
 
-.inputs input[type="text"] {
+.inputs input[type="text"], .inputs input[type="email"], .inputs input[type="password"] {
   background-color: #fff;
   border: solid 1px #e4e4e4;
   color: #424242;
