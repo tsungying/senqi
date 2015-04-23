@@ -25,9 +25,9 @@
 
 					<ul>
 						<% if user_signed_in? %>
-						  <li class="user_name">Hi,<%= current_user.name %></li> 
+						  <li class="user_name">嗨，<%= current_user.name %></li> 
 						  <li><%= link_to '會員中心', edit_user_registration_path %></li> 
-						  <li><%= link_to '結帳', "#" %></li>
+						  <!-- <li><%#= link_to '結帳', "#" %></li> -->
 						  <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li> 
 
 						  <% if current_user.try(:admin?) %>
@@ -44,12 +44,12 @@
 							<li><a href="#login-box" class="login-window">登入</a></li>
 						</ul> -->
 
-						<div class="mobile-version">
+<!-- 						<div class="mobile-version">
 							<div class="cart-icon">
 								<a href="#"><img src="/images/cart-white.png" alt="">
 								<span>8 Items</span></a>	
 							</div>
-						</div>
+						</div> -->
 
 					</div>
 					<div class="clear"></div>

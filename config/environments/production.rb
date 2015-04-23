@@ -72,7 +72,7 @@ Miracode::Application.configure do
     :port                 => 587,
     :domain               => 'miracode.com',
     :user_name            => 'miracode.service@gmail.com',
-    :password             => '23882159',
+    :password             => ENV['MAIL_PASS'],
     :enable_starttls_auto => true,
     :authentication       => 'plain' 
   }  

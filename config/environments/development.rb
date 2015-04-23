@@ -23,11 +23,6 @@ Miracode::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "localhost",
     :port                 => 1025
-    # :domain               => 'miracode.com',
-    # :user_name            => 'miracode.service@gmail.com',
-    # :password             => '23882159',
-    # :enable_starttls_auto => true,
-    # :authentication       => 'plain' 
   }
 
   # Print deprecation notices to the Rails logger
