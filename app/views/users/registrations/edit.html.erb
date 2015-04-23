@@ -1,39 +1,69 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- <h2>Edit <%#= resource_name.to_s.humanize %></h2> -->
+<div class="shop-main container">
+  <div class="row">
+    <div class="col-md-3">
+      <aside class="left-shop">
+        <div class="shop-categories mb30">
+          <h1 class="asidetitle">會員中心</h1>
+          <ul>
+            <li><%= link_to "修改會員資料", edit_user_registration_path %></li>
+          </ul>
+        </div>
+      </aside>
+      <!-- End aside shop -->
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="col-md-9">
+      <div class="shop-content">
+      <div class="title">
+        <h1><i class="fa fa-star"></i> 修改會員資料 <i class="fa fa-star"></i></h1>
+        <div class="title-border"></div>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+      <!-- 電子信箱：<%#= current_user.email%> -->
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="inputs">         
+          <%= f.label :email, "電子信箱" %><i>（無法修改）</i>
+          <%= f.email_field :email, autofocus: true, placeholder: "Email", disabled: true, class: "form-control" %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <%= f.label :name, "名稱" %>
+          <%= f.text_field :name, placeholder: "Name", class: "form-control typing" %>
+
+          <%= f.label :password, "密碼" %> <i>（若無變更密碼需求，請留白）</i>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control typing" %>
+
+          <%= f.label :password_confirmation, "密碼確認" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password confirmation", class: "form-control typing" %>
+          
+          <%= f.label :current_password ,"為了確認是您本人的修改，請輸入目前所使用密碼來進行驗證"%>
+          <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current password", class: "form-control typing" %>
+        
+          <%= f.submit "更新", class: "btn btn-danger" %>
+          <%= link_to "回上一頁", :back, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      
+      </div>
+    </div>
   </div>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4"> -->
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+
+
+<!--     </div>
   </div>
+</div> -->
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= render "users/shared/common_js" %>

@@ -1,16 +1,26 @@
-<h2>Resend confirmation instructions</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="title">
+        <h1><i class="fa fa-star"></i> 重新發送驗證信 <i class="fa fa-star"></i></h1>
+        <div class="title-border"></div>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+			<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+			  <div class="inputs">
+			  	<%= devise_error_messages! %>
+			  
+				  <%= f.label :email, "電子信箱" %>
+		      <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control typing" %>			  
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+			  
+			    <%= f.submit "重新發送", class: "btn btn-danger btn-block mb10" %>
+			  </div>
+			<% end %>
 
-<%= render "users/shared/links" %>
+			<%= render "users/shared/links" %>
+		</div>
+	</div>
+</div>
+<%= render "users/shared/common_js" %>
