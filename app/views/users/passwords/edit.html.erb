@@ -1,22 +1,29 @@
-<h2>Change your password</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+      <div class="title">
+        <h1><i class="fa fa-star"></i> 重新設定密碼 <i class="fa fa-star"></i></h1>
+        <div class="title-border"></div>
+      </div>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="inputs">
+          <%= f.label :password, "新密碼" %>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control typing" %>      
+        
+          <%= f.label :password_confirmation, "密碼確認" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password confirmation", class: "form-control typing" %>       
+        
+          <%= f.submit "送出", class: "btn btn-danger btn-block mb10" %>
+        </div>
+
+      <% end %>
+      
+      <%= render "users/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

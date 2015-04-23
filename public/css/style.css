@@ -222,7 +222,7 @@ p{
 /*-------------------------------------------------------*/
 
 .top-line {
-  background: #000;
+  background: #F7F7F7;
   padding: 10px 0;
 }
 
@@ -318,7 +318,8 @@ p{
 }
 
 .right-line a {
-  color: #fff;
+  /*color: #fff;*/
+  color: #7DC05D;
   font-size: 12px;
   font-family: 'Raleway';
 }

@@ -16,7 +16,7 @@
 							<%= link_to "#" do %><i class="fa fa-shopping-cart"></i><% end %>
 							<%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i><% end %>
 							<% else %>
-							<%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i><% end %>
+							<%= link_to new_user_session_path do %>登入<% end %>
 							<% end %>
 						</div>
 					</div>
@@ -25,7 +25,7 @@
 
 					<ul>
 						<% if user_signed_in? %>
-						  <li class="user_name">嗨，<%= current_user.name %></li> 
+						<li class="user_name"><a>嗨，<%= current_user.name %></a></li> 
 						  <li><%= link_to '會員中心', edit_user_registration_path %></li> 
 						  <!-- <li><%#= link_to '結帳', "#" %></li> -->
 						  <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li> 

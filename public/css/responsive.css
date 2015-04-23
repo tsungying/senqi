@@ -453,7 +453,8 @@
 
 	.mobile-a a {
 		font-size: 16px;
-		color: #fff;
+		/*color: #fff;*/
+		color: #7DC05D;
 		margin-right: 5px;
 	}
 
