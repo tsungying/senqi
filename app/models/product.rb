@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   # serialize :youtube_code, Array
   belongs_to :prod_category, counter_cache: true
   has_many :pictures, as: :parent, dependent: :destroy
+  has_many :order_items
   accepts_nested_attributes_for :pictures
   mount_uploader :home_image, PhotoUploader
   before_save :downcase_part_number, :remove_white_spaces

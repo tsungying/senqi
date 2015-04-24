@@ -1,6 +1,5 @@
 Miracode::Application.routes.draw do  
 
-  
   root to: "pages#index"
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
@@ -23,6 +22,8 @@ Miracode::Application.routes.draw do
   end
 
   resources :comments
+  resources :carts, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 
   namespace :admin do
     root to: "home_pages#index"

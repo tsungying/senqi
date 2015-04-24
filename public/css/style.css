@@ -588,12 +588,18 @@ form.signin input::-webkit-input-placeholder {   color: #424242;  }
 }
 
 .card-icon img {
-  color: #010101;
+/*  color: #010101;
   font-size: 30px;
   position: fixed;
   right: 0;
   top: -57px;
-  z-index: 9999;
+  z-index: 9999;*/
+
+  color: #010101;
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+  top: -4px;
 }
 
 .shop-items {
@@ -3156,6 +3162,10 @@ color: #969696;
 
     .list-desc {
       margin: 20px 0;
+    }
+
+    .list-downrow{
+      margin-top: 20px;
     }
 
     .list-downrow .add-cart {
