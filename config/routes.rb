@@ -22,7 +22,7 @@ Miracode::Application.routes.draw do
   end
 
   resources :comments
-  resources :carts, only: [:show]
+  resources :carts, only: [:index]
   resources :order_items, only: [:create, :update, :destroy]
 
   namespace :admin do

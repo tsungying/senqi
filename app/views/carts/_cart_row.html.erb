@@ -1,0 +1,38 @@
+<tr>
+	<td >
+		<%= form_for order_item, remote: true do |f| %>
+		<div class="row">
+			<div class="col-md-3"><%= image_tag product.home_image_url, width: 120, class: "img-rounded" %></div>
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-12">
+						<h6><%= product.name %></h6>
+					</div>
+				</div>
+
+				<div class="row item-tip">
+					<div class="col-md-2">單價</div>
+					<div class="col-md-2">數量</div>
+					<div class="col-md-2">小計</div>
+					<div class="col-md-6"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-2"><%= order_item.unit_price %></div>
+					<div class="col-md-2"><%= f.number_field :quantity, min: 1, style: "width:100%" %></div>
+					<div class="col-md-2"><%= order_item.total_price %></div>
+					<div class="col-md-6">
+						<div class="btn-group btn-group-sm" role="group">
+						<%= f.submit "更新數量", class: "btn btn-success" %>
+						<%= link_to "刪除", order_item, data: { confirm: "確定刪除此物品嗎？" }, method: :delete, remote: true, class: "btn btn-danger" %>							
+						</div>			
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<% end %>
+	</td>								      
+</tr>
+
+<!-- #737373!important -->

@@ -4,6 +4,7 @@ class BlogCategoriesController < ApplicationController
 		@categories = BlogCategory.all
 		@articles = Article.order("id desc").all
 		@comments = Comment.order("id desc").limit(10)
+		
   end
 
   def show

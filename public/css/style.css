@@ -3656,7 +3656,7 @@ color: #969696;
      .check-body a {
       display: block;
       text-align: left;
-      margin-top: -5px;
+      /*margin-top: -5px;*/
      }
 
      .coupon {
@@ -5367,12 +5367,12 @@ padding: 0;
     font-size: 13px;
     padding: 25px 8px !important;
     background: #fff;
-    border-top: 1px solid #ebebeb!important;
+    /*border-top: 1px solid #ebebeb!important;*/
     }
 
-    .check-body td:first-child {
+/*    .check-body td:first-child {
       padding-left: 30px !important;
-    }
+    }*/
 
 
 .inputs input[type="text"], .inputs input[type="email"], .inputs input[type="password"] {
@@ -6139,4 +6139,9 @@ footer h1 {
 
 .user_name{
   color: rgb(125, 192, 93);
+}
+
+.item-tip{
+  margin-bottom: 10px;
+  color: #737373;
 }
