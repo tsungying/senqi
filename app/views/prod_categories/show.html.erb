@@ -1,49 +1,14 @@
 <div class="shop-main container">
 	<div class="row">
-		<div class="col-md-3">
-			<aside class="left-shop">
-				<%= render 'category' %>
-			</aside>
-			<!-- End aside shop -->
-		</div>
+		<%= render 'category' %>
 
 		<div class="col-md-9">
 			<div class="shop-content">
-        <div class="shop-list">
-        <% @products.each do |product| %>
-        	<div class="grid-item2 mb30">
-        		<div class="row">
-
-							<div class="arrival-overlay col-md-4">
-								<%= link_to  prod_category_product_path(product.prod_category, product) do %>
-									<%= image_tag product.home_image_url %>
-								<% end %>
-							</div>
-
-							<div class="col-md-8">
-								<div class="list-content">
-									<h1><%= product.name %></h1>
-										<div class="list-midrow">
-
-											<ul>
-												<% if product.original_price > product.selling_price %>
-													<li><span class="high-price">NT&nbsp;<%= product.original_price %></span></li>
-												<% end %>
-												<li><span class="low-price">NT&nbsp;<%= product.selling_price %></span></li>
-											</ul>
-
-											<div class="clear"></div>
-										</div>
-
-										<p class="list-desc"><%= raw product.brief %></p>		
-
-								</div>
-							</div>
-						</div>
-        	</div>
-				<% end %>        	
+        <div class="shop-list">       	
+	        <% @products.each do |product| %>
+	        	<%= render 'single_product', category: product.prod_category, product: product %>
+					<% end %>  
         </div>
-
 		  </div>
 		</div>
 
@@ -52,23 +17,7 @@
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/jquery-ui.js"></script>
-	<script>
-	    $( "#tabs" ).tabs();
-	    $( "#accordion" ).accordion();
-	    $(function() {
-	    $( "#slider-range" ).slider({
-	      range: true,
-	      min: 0,
-	      max: 500,
-	      values: [ 0, 500 ],
-	      slide: function( event, ui ) {
-	        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-	      }
-	    });
-	    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-	      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-	  });
-	</script>
+
 	<script type="text/javascript" src="/js/jquery.superfish.js"></script>
 	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
 

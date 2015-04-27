@@ -722,7 +722,7 @@ form.signin input::-webkit-input-placeholder {   color: #424242;  }
     width: 100%;
     height: 39px;
     line-height: 39px;
-    background-color: #000;
+    background-color: #ec971f;
     border: 0;
     font-family: 'Merriweather';
     font-size: 13px;
@@ -3447,9 +3447,9 @@ color: #969696;
       margin-bottom: 20px;
      }
       .prod-end {
-      border-top: 1px solid #d4d4d4;
+/*      border-top: 1px solid #d4d4d4;
       border-bottom: 1px solid #d4d4d4;
-      padding-top: 20px;
+      padding-top: 20px;*/
       margin-top: 20px;
       padding-bottom: 20px;
       margin-bottom: 20px;
@@ -3480,7 +3480,7 @@ color: #969696;
       color: #fff !important;
      }
 
-     .prod-end  input[type="text"]{      
+     .prod-end  input[type="text"], .prod-end  input[type="number"]{      
       background: #fff;
       font-family: 'Merriweather';
       font-size: 13px;
@@ -3718,7 +3718,7 @@ color: #969696;
       width: 200px;
       height: 39px;
       line-height: 39px;
-      background-color: #000;
+      background-color: #ec971f;
       border: 0;
       font-family: 'Merriweather';
       font-size: 13px;
@@ -3730,7 +3730,7 @@ color: #969696;
     }
 
      .proceed:hover {
-      background-color: #000;
+      background-color: #d58512;
       color: #fff;
      }
 

@@ -27,6 +27,7 @@
 
 				<div class="middle-single">								
 					<h1><%= @product.name %></h1>
+					<%= image_tag '/miracode/upload/stars.png' %>
 				  <div class="clear"></div>
 				</div>
 									
@@ -55,7 +56,14 @@
 				<%= raw @product.brief %>
 				</div>
 
-				<div class="share">
+			  <div class="prod-end">
+					<%= form_for current_cart, remote: true do |f| %>
+						<%= f.submit "加入購物車", class: "medium-button button-red add-cart" %>
+						<%= f.number_field :quantity, value: 1, min: 1 %>
+						<%= f.hidden_field :product_id, value: @product.id %>						
+					<% end %>			  	
+			  </div>
+<!-- 				<div class="share">
 					<span>Share</span>
 					<ul>
 						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -65,7 +73,7 @@
 						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 						<li><a href="#"><i class="fa fa-envelope"></i></a></li>
 					</ul>
-				</div>
+				</div> -->
 
 			</div>
 		</div>

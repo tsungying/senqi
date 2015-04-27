@@ -35,7 +35,8 @@
 
 								    <div class="coupon">
 								    	<!-- <a href="#" class="update">Update Cart</a> -->
-								    	<a href="#" class="proceed">proceed to checkout</a>
+								    	<%= link_to "前往結帳", [:edit, current_order], class: "proceed" %>
+								    	<!-- <a href="#" class="proceed">前往結帳</a> -->
 								    </div>
 								</div>
 
@@ -45,7 +46,7 @@
 								<div class="check-aside">
 									<div class="orders mb20">
 										<h6>商品結算</h6>
-										<p>購物車總金額：<span>NT <%= current_order.subtotal %></span></p>
+										<p>商品金額小計：<span>NT <%= current_order.subtotal %></span></p>
 										<p>運費：<span>NT 80</span></p>
 										<p class="bd0"><strong>訂單總金額： <span>NT <%= current_order.subtotal + 80 %></span></strong></p>
 									</div>

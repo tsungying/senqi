@@ -1,0 +1,39 @@
+        	<div class="grid-item2 mb30">
+        		<div class="row">
+
+							<div class="arrival-overlay col-md-4">
+								<%= link_to [category, product] do %>
+									<%= image_tag product.home_image_url %>
+								<% end %>
+							</div>
+
+							<div class="col-md-8">
+								<div class="list-content">
+									<h1><%= product.name %></h1>
+										<div class="list-midrow">
+
+											<ul>
+												<% if product.original_price > product.selling_price %>
+													<li><span class="high-price">NT&nbsp;<%= product.original_price %></span></li>
+												<% end %>
+												<li><span class="low-price">NT&nbsp;<%= product.selling_price %></span></li>
+											</ul>
+
+											<div class="clear"></div>
+										</div>
+
+										<p class="list-desc"><%= raw product.brief %></p>		
+
+										<div class="list-downrow">
+											<%= form_for current_cart, remote: true do |f| %>
+												<%= f.hidden_field :quantity, value: 1, min: 1 %>
+												<%= f.hidden_field :product_id, value: product.id %>
+												<%= f.submit "加入購物車", class: "medium-button button-red add-cart" %>
+											<% end %>
+											<div class="clear"></div>															
+										</div>
+										
+								</div>
+							</div>
+						</div>
+        	</div>
