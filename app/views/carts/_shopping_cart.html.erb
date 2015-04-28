@@ -34,8 +34,16 @@
 								    </table>
 
 								    <div class="coupon">
-								    	<!-- <a href="#" class="update">Update Cart</a> -->
+								    	<% if flash[:empty_cart] %>
+								    	<div class="alert alert-warning fade in red-alert" role="alert">
+									      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+									      <%= flash[:empty_cart] %>
+									    </div>
+									    <% end %>
+									    
+									    <% if current_order.cart_items > 0 %>
 								    	<%= link_to "前往結帳", [:edit, current_order], class: "proceed" %>
+								    	<% end %>
 								    	<!-- <a href="#" class="proceed">前往結帳</a> -->
 								    </div>
 								</div>
@@ -47,8 +55,8 @@
 									<div class="orders mb20">
 										<h6>商品結算</h6>
 										<p>商品金額小計：<span>NT <%= current_order.subtotal %></span></p>
-										<p>運費：<span>NT 80</span></p>
-										<p class="bd0"><strong>訂單總金額： <span>NT <%= current_order.subtotal + 80 %></span></strong></p>
+										<p>運費：<span>NT <%=  current_order.cart_items == 0 ? 0 : current_order.shipping_fee %></span></p>
+										<p class="bd0"><strong>訂單總金額： <span>NT <%= current_order.subtotal + current_order.shipping_fee.to_i %></span></strong></p>
 									</div>
 								</div>
 							</div>

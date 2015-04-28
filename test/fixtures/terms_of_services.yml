@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shipping_fee: 9.99
+  terms: MyText
+  policy: MyText
+  disclaimer: MyText
+
+two:
+  shipping_fee: 9.99
+  terms: MyText
+  policy: MyText
+  disclaimer: MyText

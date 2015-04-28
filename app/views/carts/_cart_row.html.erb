@@ -2,33 +2,35 @@
 	<td >
 		<%= form_for order_item, remote: true do |f| %>
 		<div class="row">
-			<div class="col-md-3"><%= image_tag product.home_image_url, width: 120, class: "img-rounded" %></div>
-			<div class="col-md-9">
-				<div class="row">
-					<div class="col-md-12">
-						<h6><%= product.name %></h6>
-					</div>
-				</div>
+			<!-- <div class="col-md-2"><%#= image_tag product.home_image_url, width: 120, class: "img-rounded" %></div> -->
+			<div class="col-md-12">
+				<table class="table table-striped remove_cart_border">
+					<tbody>
+						<tr>
+							<th rowspan="3" width="15%"><%= image_tag product.home_image_url, width: 120, class: "img-rounded" %></th>
+							<th colspan="4" width="85%"><h6 style="margin-bottom:0px"><%= product.name %></h6></th>
+						</tr>
 
-				<div class="row item-tip">
-					<div class="col-md-2">單價</div>
-					<div class="col-md-2">數量</div>
-					<div class="col-md-2">小計</div>
-					<div class="col-md-6"></div>
-				</div>
+						<tr>
+							<td width="20%">單價</td>
+							<td width="20%">數量</td>
+							<td width="20%">小計</td>
+							<td width="25%"></td>
+						</tr>
 
-				<div class="row">
-					<div class="col-md-2"><%= order_item.unit_price %></div>
-					<div class="col-md-2"><%= f.number_field :quantity, min: 1, style: "width:100%;text-align:center" %></div>
-					<div class="col-md-2"><%= order_item.total_price %></div>
-					<div class="col-md-6">
-						<div class="btn-group btn-group-sm" role="group">
-						<%= f.submit "更新數量", class: "btn btn-success" %>
-						<%= link_to "刪除", order_item, data: { confirm: "確定刪除此物品嗎？" }, method: :delete, remote: true, class: "btn btn-danger" %>							
-						</div>			
-					</div>
-				</div>
-
+						<tr>
+							<td><%= order_item.unit_price %></td>
+							<td><%= f.number_field :quantity, min: 1, style: "width:80%;text-align:center" %></td>
+							<td><%= order_item.total_price %></td>
+							<td>						
+								<div class="btn-group btn-group-sm" role="group">
+									<%= f.submit "更新數量", class: "btn btn-success" %>
+									<%= link_to "下次再買", order_item, data: { confirm: "從購物車移除此商品嗎？" }, method: :delete, remote: true, class: "btn btn-danger" %>							
+								</div>	
+							</td>				
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<% end %>

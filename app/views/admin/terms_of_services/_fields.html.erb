@@ -1,0 +1,26 @@
+<%= form_for [:admin, @service] do |f| %>
+    <div class="form-group">
+      <%= f.label :shipping_fee, "運費" %>
+      <%= f.number_field :shipping_fee, placeholder: "請輸入運費", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :terms, "網站使用條款" %>
+      <%= f.text_area :terms, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :policy, "隱私權政策" %>
+      <%= f.text_area :policy, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :disclaimer, "免責聲明" %>
+      <%= f.text_area :disclaimer, class: "form-control" %>
+    </div>
+
+    <div class="box-footer">
+      <button type="submit" class="btn btn-danger">送出</button>
+      <%= link_to "返回上一頁", :back, class: "btn btn-primary" %>
+    </div>
+<% end %>

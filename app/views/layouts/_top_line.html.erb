@@ -13,9 +13,10 @@
 						<div class="mobile-a">
 							<% if user_signed_in? %>
 							<%= link_to edit_user_registration_path do %><i class="fa fa-user"></i><% end %>
-							<%= link_to "#" do %><i class="fa fa-shopping-cart"></i><% end %>
+							<%= link_to "#" do %><i class="fa fa-shopping-cart fa-3"></i><% end %>
 							<%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i><% end %>
 							<% else %>
+
 							<%= link_to new_user_session_path do %>登入<% end %>
 							<% end %>
 						</div>
@@ -46,12 +47,12 @@
 							<li><a href="#login-box" class="login-window">登入</a></li>
 						</ul> -->
 
-<!-- 						<div class="mobile-version">
+						<div class="mobile-version">
 							<div class="cart-icon">
 								<a href="#"><img src="/images/cart-white.png" alt="">
 								<span>8 Items</span></a>	
 							</div>
-						</div> -->
+						</div>
 
 					</div>
 					<div class="clear"></div>

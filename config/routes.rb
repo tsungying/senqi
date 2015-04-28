@@ -3,7 +3,7 @@ Miracode::Application.routes.draw do
   root to: "pages#index"
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
-  # get "/orders/:id" => "orders#edit", :as => :checkout
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :users
   
@@ -22,7 +22,8 @@ Miracode::Application.routes.draw do
     resources :events, only: [:show]
   end
 
-  resources :comments, :orders
+  resources :comments
+  resources :orders, path_names: { edit: 'checkout' }
   resources :carts, only: [:index]
   resources :order_items, only: [:create, :update, :destroy]
 
@@ -42,6 +43,7 @@ Miracode::Application.routes.draw do
     end    
 
     resources :company_profiles, :home_pages
+    resources :terms_of_services
   end
 
   #devise_for :admins, controllers: { sessions: "admin/sessions" }#, :skip => [:passwords, :registrations] 

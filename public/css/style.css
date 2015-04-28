@@ -644,6 +644,7 @@ form.signin input::-webkit-input-placeholder {   color: #424242;  }
   z-index: 1000;
   left: -120px;
   display: none;
+  border: #ebebeb 1px solid;
 }
 
 
@@ -6144,4 +6145,8 @@ footer h1 {
 .item-tip{
   margin-bottom: 10px;
   color: #737373;
+}
+
+.remove_cart_border th, .remove_cart_border td{
+    border-top: none !important;
 }
