@@ -5,7 +5,7 @@
 					<div class="check-anchor clearfix mb40">
 						<div class="holder">
 							<ul>
-								<li class="active"><a href="#"><i class="fa fa-star"></i> 購物車</a></li>
+								<li class="active"><a href="javascript:void(0);"><i class="fa fa-chevron-right"></i> 購物車</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Checkout</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> ORDER COMPLETE <i class="fa fa-star"></i></a></li>
 							</ul>
@@ -41,8 +41,8 @@
 									    </div>
 									    <% end %>
 									    
-									    <% if current_order.cart_items > 0 %>
-								    	<%= link_to "前往結帳", [:edit, current_order], class: "proceed" %>
+									    <% if current_cart.order_items.count > 0 %>
+								    	<%= link_to "前往結帳", new_order_path, class: "proceed" %>
 								    	<% end %>
 								    	<!-- <a href="#" class="proceed">前往結帳</a> -->
 								    </div>
@@ -54,9 +54,9 @@
 								<div class="check-aside">
 									<div class="orders mb20">
 										<h6>商品結算</h6>
-										<p>商品金額小計：<span>NT <%= current_order.subtotal %></span></p>
-										<p>運費：<span>NT <%=  current_order.cart_items == 0 ? 0 : current_order.shipping_fee %></span></p>
-										<p class="bd0"><strong>訂單總金額： <span>NT <%= current_order.subtotal + current_order.shipping_fee.to_i %></span></strong></p>
+										<p>商品金額小計：<span>NT <%= current_cart.subtotal %></span></p>
+										<p>運費：<span>NT <%=  fee = current_cart.order_items.count == 0 ? 0 : shipping_fee %></span></p>
+										<p class="bd0"><strong>訂單總金額： <span>NT <%= current_cart.subtotal + fee %></span></strong></p>
 									</div>
 								</div>
 							</div>

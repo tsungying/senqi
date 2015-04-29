@@ -11,20 +11,15 @@ class OrderItem < ActiveRecord::Base
   # end
   	
   belongs_to :product
-  belongs_to :order
+  belongs_to :cart
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
-  validate :order_present
 
   before_save :finalize
 
   def unit_price
-  	if persisted?
-  		self[:unit_price]
-  	else
-  		product.selling_price
-  	end
+  	product.selling_price
   end
 
   def total_price
@@ -36,12 +31,6 @@ class OrderItem < ActiveRecord::Base
   	def product_present
   		if product.nil?
   			errors.add(:product, '該商品已下架或補貨中！')
-  		end
-  	end
-
-  	def order_present
-  		if order.nil?
-  			errors.add(:order, '無效的訂單')
   		end
   	end
 

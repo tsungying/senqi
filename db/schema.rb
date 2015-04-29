@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428100308) do
+ActiveRecord::Schema.define(version: 20150429062935) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -44,6 +44,11 @@ ActiveRecord::Schema.define(version: 20150428100308) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.integer  "articles_count", limit: 4,   default: 0
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -95,8 +100,8 @@ ActiveRecord::Schema.define(version: 20150428100308) do
   end
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "cart_id",     limit: 4
     t.integer  "product_id",  limit: 4
-    t.integer  "order_id",    limit: 4
     t.decimal  "unit_price",            precision: 10
     t.integer  "quantity",    limit: 4
     t.decimal  "total_price",           precision: 10
@@ -104,7 +109,7 @@ ActiveRecord::Schema.define(version: 20150428100308) do
     t.datetime "updated_at",                           null: false
   end
 
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["cart_id"], name: "index_order_items_on_cart_id", using: :btree
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
 
   create_table "order_statuses", force: :cascade do |t|
@@ -125,8 +130,10 @@ ActiveRecord::Schema.define(version: 20150428100308) do
     t.string   "phone",           limit: 255
     t.string   "address",         limit: 255
     t.string   "order_number",    limit: 255
+    t.integer  "cart_id",         limit: 4
   end
 
+  add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
@@ -197,8 +204,9 @@ ActiveRecord::Schema.define(version: 20150428100308) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "authorizations", "users"
-  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "carts"
   add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "carts"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "users"
 end

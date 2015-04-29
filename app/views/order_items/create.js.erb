@@ -1,5 +1,5 @@
-<% if @order.errors.any? || @order_item.errors.any? %>
-	alert("not valid.")
+<% if @cart.errors.any? || @order_item.errors.any? %>
+	alert('加入購物車失敗~"~')
 <% else %>
   $("div .cart").html("<%= escape_javascript(render 'layouts/cart_text') %>")
 <% end %>
