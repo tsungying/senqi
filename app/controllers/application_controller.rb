@@ -27,8 +27,10 @@ class ApplicationController < ActionController::Base
     current_cart.order_items.new
   end
 
-  def shipping_fee
-    @fee||=TermsOfService.last.shipping_fee
+  def shipping_fee(default_fee: 80)
+    @fee = TermsOfService.last.shipping_fee 
+    rescue NoMethodError
+    @fee = default_fee
   end
 
   protected

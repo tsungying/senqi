@@ -35,7 +35,7 @@ class Order < ActiveRecord::Base
     self.subtotal = cart.order_items.sum(:total_price)
     self.shipping_fee = TermsOfService.last.shipping_fee
     self.total = subtotal + shipping_fee
-    self.order_status_id = 2
+    self.order_status_id = 1
     self.order_number = Time.now.strftime("%Y%m%d%H%M%S%3N")
   end
 
