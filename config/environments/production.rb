@@ -90,4 +90,8 @@ Rails.application.configure do
     :enable_starttls_auto => true,
     :authentication       => 'plain' 
   } 
+
+  # config.after_initialize do
+  #   ActiveMerchant::Billing::Base.integration_mode = :production
+  # end
 end

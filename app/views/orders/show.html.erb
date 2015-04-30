@@ -1,4 +1,118 @@
-<!-- <table class="table">
-	
-</table> -->
-<%= @order.to_json %>
+<!-- <h2>Edit <%#= resource_name.to_s.humanize %></h2> -->
+<div class="shop-main container">
+  <div class="row">
+
+    <%= render "layouts/shared/account_menu" %>
+
+    <div class="col-md-9">
+      <div class="shop-content">
+
+			<% if flash[:placed_order] %>
+				<div class="alert alert-warning fade in green-alert" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<p style="padding:9px"><%= flash[:placed_order] %></p>							
+				</div>
+			<% end %>
+
+      <div class="title">
+        <h1><i class="fa fa-star"></i> 訂單明細 <i class="fa fa-star"></i></h1>
+        <div class="title-border"></div>
+      </div>
+
+    		<table class="table table-bordered table-hover">
+    			<thead>
+    				<tr>
+    					<th>訂單編號</th>
+    					<th>訂購金額</th>
+    					<th>下單日期</th>
+    					<th>訂單狀態</th>
+    				</tr>
+    			</thead>
+
+    			<tbody>
+    				<tr>
+    					<td><%= @order.order_number %></td>
+    					<td><%= @order.total %></td>
+    					<td><%= l(@order.created_at, format: :long) %></td>
+    					<td><%= @order.order_status.name %></td>
+    				</tr>
+    			</tbody>
+
+    			<tfoot>
+    				<tr>
+    					<th>付款方式</th>
+    					<td colspan="3"><%= @order.payment.name %></td>
+    				</tr>
+
+    				<tr>
+    					<th>收貨人</th>
+    					<td colspan="3"><%= @order.name %></td>
+    				</tr>
+
+    				<tr>
+    					<th>聯絡電話</th>
+    					<td colspan="3"><%= @order.phone %></td>
+    				</tr>
+
+    				<tr>
+    					<th>地址</th>
+    					<td colspan="3"><%= @order.address %></td>
+    				</tr>    				
+    			</tfoot>			    								    								    									    			
+    		</table>
+
+    		<table class="table table-bordered table-hover">
+     			<thead>
+    				<tr>
+    					<th>商品明細</th>
+    					<th>品名</th>
+    					<th>單價</th>
+    					<th>數量</th>
+    					<th>小計</th>
+    				</tr>
+    			</thead> 
+
+    			<tbody>
+    				<% @order.cart.order_items.each_with_index do |item, index| %>
+    				<tr>
+    					<td><%= index+1 %></td>
+    					<td><%= item.product.name %></td>
+    					<td><%= item.unit_price %></td>
+    					<td><%= item.quantity %></td>
+    					<td><%= item.total_price %></td>
+    				</tr>
+    				<% end %>
+    			</tbody>
+
+    			<tfoot>
+    				<tr>
+    					<td colspan="3"></td>
+    					<th>運費</th>
+    					<td><%= @order.shipping_fee %></td>
+    				</tr>
+
+    				<tr>
+    					<td colspan="3"></td>
+    					<th>合計</th>
+    					<td><%= @order.total %></td>
+    				</tr>
+    			</tfoot>
+    		</table>    			
+
+    		<%= link_to "返回我的訂單", orders_path, class: "btn btn-primary" %>
+      	<!-- <%# if @order.payment_id == 2 %> -->
+
+    	  <form action="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut" method="post">
+			    <% @params.each do |k, v| %>
+			      <input type="text" name="<%= k %>" value="<%= v %>">
+			    <% end %>
+			    <input type="submit">
+			  </form>
+
+      	<!-- <%# end %> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "users/shared/common_js" %>

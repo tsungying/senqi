@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429062935) do
+ActiveRecord::Schema.define(version: 20150430073057) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -100,13 +100,13 @@ ActiveRecord::Schema.define(version: 20150429062935) do
   end
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "cart_id",     limit: 4
     t.integer  "product_id",  limit: 4
     t.decimal  "unit_price",            precision: 10
     t.integer  "quantity",    limit: 4
     t.decimal  "total_price",           precision: 10
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "cart_id",     limit: 4
   end
 
   add_index "order_items", ["cart_id"], name: "index_order_items_on_cart_id", using: :btree
@@ -131,11 +131,19 @@ ActiveRecord::Schema.define(version: 20150429062935) do
     t.string   "address",         limit: 255
     t.string   "order_number",    limit: 255
     t.integer  "cart_id",         limit: 4
+    t.integer  "payment_id",      limit: 4
   end
 
   add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
+  add_index "orders", ["payment_id"], name: "index_orders_on_payment_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "pictures", force: :cascade do |t|
     t.string   "img",         limit: 255
@@ -208,5 +216,6 @@ ActiveRecord::Schema.define(version: 20150429062935) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "carts"
   add_foreign_key "orders", "order_statuses"
+  add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
 end

@@ -7,7 +7,6 @@
 							<ul>
 								<li><a href="javascript:void(0);"><i class="fa fa-star"></i> 購物車</a></li>
 								<li class="active"><a href="javascript:void(0);"><i class="fa fa-star"></i> 結帳</a></li>
-								<li><a href="javascript:void(0);"><i class="fa fa-star"></i> ORDER COMPLETE <i class="fa fa-star"></i></a></li>
 							</ul>
 							<div class="holder-border"></div>
 						</div>
@@ -26,7 +25,7 @@
 
 								<div id="accordion-container" class="checkout-accordion"> 
 							
-									<h2 class="accordion-header">1. 填寫寄送地址資訊</h2>
+									<h2 class="accordion-header">1. 填寫寄送地址與付款方式</h2>
 									<div class="accordion-content second-row">
 										<%= form_for @order, html: { onsubmit: "return validateCheckbox(this);" } do |f| %>
 											<div class="row">
@@ -42,6 +41,10 @@
 
 											<%= f.label :address do %>地址 <span>*</span><% end %>
 											<%= f.text_field :address, placeholder: 'Address' %>
+
+											<%= f.label :payment_id do %>付款方式（本公司使用第三方支付） <span>*</span><% end %>							
+										  <%= f.select :payment_id, Payment.all.collect{ |c| [c.name, c.id] }, { selected: f.object.payment_id } , class: "select"%>
+										  <%= image_tag "/images/payment.gif" %>
 
 											<div class="checkbox">
 											  <label><input type="checkbox" name="terms_of_service" value="">我已仔細閱讀並明瞭「網站使用條款」、「隱私權政策」、「免責聲明」等所載內容及其意義，

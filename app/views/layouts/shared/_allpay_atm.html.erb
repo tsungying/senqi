@@ -1,0 +1,16 @@
+  <% payment_service_for  @order,
+                          @order.user.email,
+                          :service => :allpay,
+                          :html    => { :id => 'allpay-atm-form', :method => :post } do |service| %>
+    <% service.merchant_trade_no SecureRandom.hex(4) %>     <!-- X廠商交易編號 -->
+    <% service.merchant_trade_date Time.now.strftime('%Y/%m/%d %H:%M:%S') %>      <!-- X廠商交易時間 -->
+    <% service.total_amount @order.total.to_i %>      <!-- X交易金額 -->
+    <% service.description @order.order_number %>       <!-- X交易描述 -->
+    <% service.item_name getItemName(@order) %>     <!-- X商品名稱 -->
+    <% service.choose_payment ActiveMerchant::Billing::Integrations::Allpay::PAYMENT_ATM %>     <!-- 選擇預設付款方式 -->
+    <% service.return_url url_for(:only_path => false, :controller => 'account' , :action => 'notify') %>       <!-- X付款完成通知回傳網址 -->     
+    <% service.client_back_url order_url @order  %>
+    <% service.add_field("PaymentInfoURL" , url_for(:only_path => false , :controller => 'account' , :action => 'paymentInfoATM'))%>
+    <% service.encrypted_data %><!-- X檢查碼 -->
+    <%= submit_tag 'Buy!' %>
+  <% end %>

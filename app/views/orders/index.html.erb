@@ -1,0 +1,49 @@
+<!-- <h2>Edit <%#= resource_name.to_s.humanize %></h2> -->
+<div class="shop-main container">
+  <div class="row">
+
+    <%= render "layouts/shared/account_menu" %>
+
+    <div class="col-md-9">
+      <div class="shop-content">
+      <div class="title">
+        <h1><i class="fa fa-star"></i> 我的訂單 <i class="fa fa-star"></i></h1>
+        <div class="title-border"></div>
+      </div>
+      
+  		<table class="table table-bordered table-hover">
+  			<thead>
+  				<tr>
+  					<th>訂單編號</th>
+  					<th>收貨人</th>
+  					<th>訂購金額</th>
+  					<th>下單日期</th>
+  					<th>訂單狀態</th>
+  					<th>明細</th>
+  				</tr>
+  			</thead>
+
+  			<tbody>
+  				<% @orders.each do |order| %>
+  				<tr>
+  					<td><%= order.order_number %></td>
+  					<td><%= order.name %></td>
+  					<td><%= order.total %></td>
+  					<td><%= l(order.created_at, format: :long) %></td>
+  					<td><%= order.order_status.name %></td>
+  					<td><%= link_to "明細", order %></td>
+  				</tr>
+  				<% end %>
+  			</tbody>			    								    								    									    			
+  		</table>
+
+  		<div class="text-center">
+  			<%= paginate @orders %>
+  		</div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "users/shared/common_js" %>

@@ -1,7 +1,9 @@
 class Order < ActiveRecord::Base
+  # paginates_per 2
   belongs_to :order_status
   belongs_to :cart
   belongs_to :user
+  belongs_to :payment
   # before_create :set_order_status_and_fee
   # before_save :finalize
   validates_presence_of :name, :phone, :address

@@ -12,3 +12,6 @@
 	status.each { |s| OrderStatus.create!(name: s) }
 	Product.all.each { |p| p.update_attributes(active: true) }
 	TermsOfService.create!(shipping_fee: 80, terms: '網站使用條款', policy: '隱私權政策', disclaimer: '免責聲明')
+	Payment.create!(name: "信用卡")
+	Payment.create!(name: "網路ATM／ATM 櫃員機")
+	Order.all.each { |o| o.update_attributes(payment_id: 1) }

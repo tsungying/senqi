@@ -8,7 +8,8 @@ gem 'rails', '4.2.1.rc4'
 gem 'sqlite3'
 gem 'mysql2'
 # gem 'strong_parameters'
-gem 'will_paginate', '3.0.7'
+#gem 'will_paginate', '3.0.7'
+gem 'kaminari'
 gem 'carrierwave'	, 	'0.10.0'
 gem 'mini_magick'	, 	'3.8.0' 
 gem 'devise'
@@ -36,6 +37,9 @@ gem "gretel"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "figaro"
+# gem 'activemerchant', "~> 1.43.3"
+# gem 'active_merchant_allpay', '>=0.1.2'
+# gem 'allpay_client'
 # gem 'mailcatcher'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

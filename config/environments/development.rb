@@ -45,5 +45,8 @@ Rails.application.configure do
     :address              => "localhost",
     :port                 => 1025
   }
-
+  
+  # config.after_initialize do
+  #   ActiveMerchant::Billing::Base.integration_mode = :development
+  # end
 end

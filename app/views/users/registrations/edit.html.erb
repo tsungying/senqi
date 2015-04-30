@@ -1,17 +1,8 @@
 <!-- <h2>Edit <%#= resource_name.to_s.humanize %></h2> -->
 <div class="shop-main container">
   <div class="row">
-    <div class="col-md-3">
-      <aside class="left-shop">
-        <div class="shop-categories mb30">
-          <h1 class="asidetitle">會員中心</h1>
-          <ul>
-            <li><%= link_to "修改會員資料", edit_user_registration_path %></li>
-          </ul>
-        </div>
-      </aside>
-      <!-- End aside shop -->
-    </div>
+
+    <%= render "layouts/shared/account_menu" %>
 
     <div class="col-md-9">
       <div class="shop-content">
@@ -19,8 +10,6 @@
         <h1><i class="fa fa-star"></i> 修改會員資料 <i class="fa fa-star"></i></h1>
         <div class="title-border"></div>
       </div>
-
-      <!-- 電子信箱：<%#= current_user.email%> -->
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
@@ -55,15 +44,5 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-offset-4 col-md-4"> -->
-
-
-
-<!--     </div>
-  </div>
-</div> -->
 
 <%= render "users/shared/common_js" %>
