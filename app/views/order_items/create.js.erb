@@ -2,4 +2,5 @@
 	alert('加入購物車失敗~"~')
 <% else %>
   $("div .cart").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+  $("div .mobile-version").html("<%= escape_javascript(render 'layouts/shared/mobile_version_cart') %>")
 <% end %>

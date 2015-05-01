@@ -12,8 +12,7 @@
 
 						<div class="mobile-a">
 							<% if user_signed_in? %>
-							<%= link_to edit_user_registration_path do %><i class="fa fa-user"></i><% end %>
-							<%= link_to "#" do %><i class="fa fa-shopping-cart fa-3"></i><% end %>
+							<%= link_to edit_user_registration_path do %><i class="fa fa-user"></i><% end %>							
 							<%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i><% end %>
 							<% else %>
 
@@ -28,7 +27,6 @@
 						<% if user_signed_in? %>
 						<li class="user_name"><a>嗨，<%= current_user.name %></a></li> 
 						  <li><%= link_to '會員中心', edit_user_registration_path %></li> 
-						  <!-- <li><%#= link_to '結帳', "#" %></li> -->
 						  <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li> 
 
 						  <% if current_user.try(:admin?) %>
@@ -41,18 +39,7 @@
 						<% end %>
 					</ul>
 
-<!-- 						<ul>
-							<li><a href="#">我的帳戶</a></li>
-							<li><a href="#">結帳</a></li>
-							<li><a href="#login-box" class="login-window">登入</a></li>
-						</ul> -->
-
-						<div class="mobile-version">
-							<div class="cart-icon">
-								<a href="#"><img src="/images/cart-white.png" alt="">
-								<span>8 Items</span></a>	
-							</div>
-						</div>
+					<%= render 'layouts/shared/mobile_version_cart' %>
 
 					</div>
 					<div class="clear"></div>

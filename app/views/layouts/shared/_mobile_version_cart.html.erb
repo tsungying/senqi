@@ -1,0 +1,6 @@
+<div class="mobile-version">
+	<div class="cart-icon">
+		<%= link_to carts_path do %><i class="fa fa-shopping-cart fa-3"></i><% end %>
+		<span><%= current_cart.order_items.sum(:quantity) %></span> 個商品
+	</div>
+</div>

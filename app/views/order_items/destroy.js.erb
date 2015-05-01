@@ -1,2 +1,3 @@
 $("div .cart").html("<%= escape_javascript(render 'layouts/cart_text') %>")
 $(".shopping_cart").html("<%= escape_javascript(render 'carts/shopping_cart', order_items: @order_items) %>")
+$("div .mobile-version").html("<%= escape_javascript(render 'layouts/shared/mobile_version_cart') %>")

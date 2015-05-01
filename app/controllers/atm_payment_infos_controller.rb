@@ -5,4 +5,3 @@ class AtmPaymentInfosController < ApplicationController
 		AtmPaymentInfo.create!(raw_post_data: payment_info)
 	end
 end
-end

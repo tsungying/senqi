@@ -96,23 +96,33 @@
     					<th>合計</th>
     					<td><%= @order.total %></td>
     				</tr>
+
+            <tr>
+              <td colspan="5" class="text-center">
+                <%= image_tag "/images/allpay.png", id: 'payment_btn' %>
+              </td>
+            </tr>
     			</tfoot>
     		</table>    			
 
-    		<%= link_to "返回我的訂單", orders_path, class: "btn btn-primary" %>
-      	<!-- <%# if @order.payment_id == 2 %> -->
+        <%= link_to "返回我的訂單", orders_path, class: "btn btn-primary" %>
 
-    	  <form action="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut" method="post">
+    	  <form action="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut" method="post" name="allpay_checkout">
 			    <% @params.each do |k, v| %>
-			      <input type="text" name="<%= k %>" value="<%= v %>">
+			      <input type="hidden" name="<%= k %>" value="<%= v %>">
 			    <% end %>
-			    <input type="submit">
 			  </form>
 
-      	<!-- <%# end %> -->
       </div>
     </div>
   </div>
 </div>
 
 <%= render "users/shared/common_js" %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#payment_btn').click(function(){
+      $('form[name = allpay_checkout]').submit();
+    });
+  });
+</script>
