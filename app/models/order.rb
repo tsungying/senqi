@@ -28,9 +28,13 @@ class Order < ActiveRecord::Base
   #   self.update_attributes(user_id: user.id, name: user.name)
   # end
 
-  # def cart_items
-  #   order_items.sum(:quantity)
-  # end
+  def cart_item_name
+    str = ''
+    cart.order_items.each do |item|
+      str+="#{item.product.name} x #{item.quantity}#"
+    end
+    str
+  end
 
   def add_cart_info(cart)
     self.cart_id = cart.id

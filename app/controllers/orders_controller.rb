@@ -28,32 +28,22 @@ class OrdersController < ApplicationController
 
   def show
     @order = valid_order.find_by_id(params[:id])
-    # rescue ActiveRecord::RecordNotFound
-
     redirect_to root_url unless @order
 
-    # m = ENV['Test_ALLPAY_Merchant_id']
-    # production_client = Allpay::Client.new({
-    #   merchant_id: 1234567,
-    #   hash_key: ENV['Test_ALLPAY_HashKey'],
-    #   hash_iv: ENV['Test_ALLPAY_HashIV']
-    # })
-    # production_client = Allpay::Client.new(mode: :production)
     test_client = Allpay::Client.new(mode: :test)
 
     @params = test_client.generate_checkout_params({
-      MerchantTradeNo: SecureRandom.hex(4),
-      TotalAmount: 1000,
-      TradeDesc: '腦袋有動工作室',
-      ItemName: '物品一#物品二',
+      TotalAmount: @order.total,
+      TradeDesc: 'Miracode',
+      ItemName: 'qq',
       ReturnURL: 'http://requestb.in/11zuej31',
-      ClientBackURL: 'http://requestb.in/11zuej31?inspect',
-      ChoosePayment: 'Credit',
-      PeriodAmount: 1000,
-      PeriodType: 'D',
-      Frequency: 1,
-      ExecTimes: 12,
-      PeriodReturnURL: 'http://requestb.in/158bu8e1'
+      ClientBackURL: order_url(@order),
+      ChoosePayment: 'WebATM'
+      # PeriodAmount: 1000,
+      # PeriodType: 'D',
+      # Frequency: 1,
+      # ExecTimes: 12,@order.cart_item_name
+      # PeriodReturnURL: 'http://requestb.in/158bu8e1'
     })   
   end
 
@@ -89,9 +79,4 @@ class OrdersController < ApplicationController
       current_user.orders.where(order_status: (1..3).to_a)
     end
 
-  	# def own_order
-  	# 	unless session[:order_id] == current_order.id
-  	# 		redirect_to root_url
-  	# 	end
-  	# end
 end

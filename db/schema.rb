@@ -100,13 +100,13 @@ ActiveRecord::Schema.define(version: 20150430073057) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "cart_id",     limit: 4
     t.integer  "product_id",  limit: 4
     t.decimal  "unit_price",            precision: 10
     t.integer  "quantity",    limit: 4
     t.decimal  "total_price",           precision: 10
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "cart_id",     limit: 4
   end
 
   add_index "order_items", ["cart_id"], name: "index_order_items_on_cart_id", using: :btree
