@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430073057) do
+ActiveRecord::Schema.define(version: 20150501073135) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20150430073057) do
   end
 
   add_index "articles", ["blog_category_id"], name: "index_articles_on_blog_category_id", using: :btree
+
+  create_table "atm_payment_infos", force: :cascade do |t|
+    t.text     "raw_post_data", limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider",   limit: 255
@@ -99,14 +105,20 @@ ActiveRecord::Schema.define(version: 20150430073057) do
     t.datetime "updated_at",                         null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.text     "raw_post_data", limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
+    t.integer  "cart_id",     limit: 4
     t.integer  "product_id",  limit: 4
     t.decimal  "unit_price",            precision: 10
     t.integer  "quantity",    limit: 4
     t.decimal  "total_price",           precision: 10
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "cart_id",     limit: 4
   end
 
   add_index "order_items", ["cart_id"], name: "index_order_items_on_cart_id", using: :btree

@@ -18,6 +18,7 @@
   					<th>收貨人</th>
   					<th>訂購金額</th>
   					<th>下單日期</th>
+            <th>付款方式</th>
   					<th>訂單狀態</th>
   					<th>明細</th>
   				</tr>
@@ -29,7 +30,8 @@
   					<td><%= order.order_number %></td>
   					<td><%= order.name %></td>
   					<td><%= order.total %></td>
-  					<td><%= l(order.created_at, format: :long) %></td>
+  					<td><%= l(order.created_at, format: :short) %></td>
+            <td><%= order.payment.name %></td>
   					<td><%= order.order_status.name %></td>
   					<td><%= link_to "明細", order %></td>
   				</tr>

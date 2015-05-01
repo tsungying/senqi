@@ -8,6 +8,10 @@ class Cart < ActiveRecord::Base
   	order_items.collect { |item| item.valid? ? item.unit_price*item.quantity : 0 }.sum
   end
 
+  def total_quantity
+   	order_items.sum(:quantity)
+  end
+
 	private
 
 	 #  def update_subtotal

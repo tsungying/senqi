@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :events, only: [:show]
   end
 
-  resources :comments
+  resources :comments, :notifications, :atm_payment_infos
   resources :orders, path_names: { new: 'checkout' }
   resources :carts, only: [:index]
   resources :order_items, only: [:create, :update, :destroy]

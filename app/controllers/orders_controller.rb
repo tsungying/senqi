@@ -31,20 +31,25 @@ class OrdersController < ApplicationController
     redirect_to root_url unless @order
 
     test_client = Allpay::Client.new(mode: :test)
+    payment_type = %w[Credit WebATM ATM]
 
-    @params = test_client.generate_checkout_params({
+    # 不論選擇哪種結帳方式都需要傳送的欄位
+    fields = {
       TotalAmount: @order.total,
       TradeDesc: 'Miracode',
-      ItemName: 'qq',
-      ReturnURL: 'http://requestb.in/11zuej31',
+      ItemName: "合計共#{@order.cart.total_quantity}件商品",
+      ReturnURL: notifications_url, # 付款完成通知回傳網址
       ClientBackURL: order_url(@order),
-      ChoosePayment: 'WebATM'
-      # PeriodAmount: 1000,
-      # PeriodType: 'D',
-      # Frequency: 1,
-      # ExecTimes: 12,@order.cart_item_name
-      # PeriodReturnURL: 'http://requestb.in/158bu8e1'
-    })   
+      ChoosePayment: payment_type[@order.payment_id-1]
+    }
+
+    # WebATM=2 or ATM=3 額外增加的欄位
+    if @order.payment_id == 2 || @order.payment_id == 3
+      fields[:PaymentInfoURL] = atm_payment_infos_url
+    end
+
+    @params = test_client.generate_checkout_params(fields)  
+
   end
 
   # def edit

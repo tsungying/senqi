@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
   def cart_item_name
     str = ''
     cart.order_items.each do |item|
-      str+="#{item.product.name} x #{item.quantity}#"
+      str+="#{item.product.name}x#{item.quantity}#"
     end
     str
   end
