@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "pages#index"
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
+  get "test"        => "pages#notify"
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :users

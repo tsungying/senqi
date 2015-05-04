@@ -16,4 +16,9 @@ class PagesController < ApplicationController
   	
   end
 
+  def notify
+    @notification = Notification.all 
+    @atmPaymentInfo = AtmPaymentInfo.all  
+  end
+
 end

@@ -5,4 +5,5 @@ class NotificationsController < ApplicationController
 		Notification.create!(raw_post_data: complete_notification)
 		render text: '1|OK', status: 200
 	end
+
 end

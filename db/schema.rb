@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501073135) do
+ActiveRecord::Schema.define(version: 20150503144819) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -30,9 +30,16 @@ ActiveRecord::Schema.define(version: 20150501073135) do
   add_index "articles", ["blog_category_id"], name: "index_articles_on_blog_category_id", using: :btree
 
   create_table "atm_payment_infos", force: :cascade do |t|
-    t.text     "raw_post_data", limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.text     "raw_post_data",     limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "merchant_trade_no", limit: 255
+    t.string   "trade_no",          limit: 255
+    t.string   "bank_code",         limit: 255
+    t.string   "v_account",         limit: 255
+    t.datetime "expire_date"
+    t.integer  "rtn_code",          limit: 4
+    t.boolean  "verify_mac",        limit: 1
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -131,19 +138,20 @@ ActiveRecord::Schema.define(version: 20150501073135) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",                    precision: 10
-    t.decimal  "shipping_fee",                precision: 10
-    t.decimal  "total",                       precision: 10
-    t.integer  "order_status_id", limit: 4
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "user_id",         limit: 4
-    t.string   "name",            limit: 255
-    t.string   "phone",           limit: 255
-    t.string   "address",         limit: 255
-    t.string   "order_number",    limit: 255
-    t.integer  "cart_id",         limit: 4
-    t.integer  "payment_id",      limit: 4
+    t.decimal  "subtotal",                      precision: 10
+    t.decimal  "shipping_fee",                  precision: 10
+    t.decimal  "total",                         precision: 10
+    t.integer  "order_status_id",   limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "user_id",           limit: 4
+    t.string   "name",              limit: 255
+    t.string   "phone",             limit: 255
+    t.string   "address",           limit: 255
+    t.string   "order_number",      limit: 255
+    t.integer  "cart_id",           limit: 4
+    t.integer  "payment_id",        limit: 4
+    t.string   "merchant_trade_no", limit: 255
   end
 
   add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree

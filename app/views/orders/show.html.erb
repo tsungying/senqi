@@ -97,21 +97,30 @@
     					<td><%= @order.total %></td>
     				</tr>
 
+            <% if @order.order_status_id == 1 %>
             <tr>
               <td colspan="5" class="text-center">
                 <%= image_tag "/images/allpay.png", id: 'payment_btn' %>
               </td>
             </tr>
+            <% end %>
+
     			</tfoot>
     		</table>    			
 
         <%= link_to "返回我的訂單", orders_path, class: "btn btn-primary" %>
 
-    	  <form action="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut" method="post" name="allpay_checkout">
-			    <% @params.each do |k, v| %>
-			      <input type="hidden" name="<%= k %>" value="<%= v %>">
-			    <% end %>
-			  </form>
+        <% if @order.order_status_id == 1 %>
+      	  <form action="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut" method="post" name="allpay_checkout">
+  			    <% @params.each do |k, v| %>
+  			      <input type="hidden" name="<%= k %>" value="<%= v %>">
+  			    <% end %>
+  			  </form>
+
+          <%= form_for @order do |f| %>
+          <% f.hidden_field :merchant_trade_no, value: @params[:MerchantTradeNo] %>
+          <% end %>
+        <% end %>
 
       </div>
     </div>
@@ -123,6 +132,7 @@
   $(document).ready(function(){
     $('#payment_btn').click(function(){
       $('form[name = allpay_checkout]').submit();
+      $('form.edit_order').submit();
     });
   });
 </script>

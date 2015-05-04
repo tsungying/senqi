@@ -3,9 +3,6 @@ class OrdersController < ApplicationController
 	before_action :authenticate_user!	
 	# before_action :own_order, only: [:edit, :update]
 
-
-  #require 'lib/Allpay'
-
   def index
     @orders = valid_order.order(id: :desc).page(params[:page])
   end
@@ -30,25 +27,28 @@ class OrdersController < ApplicationController
     @order = valid_order.find_by_id(params[:id])
     redirect_to root_url unless @order
 
-    test_client = Allpay::Client.new(mode: :test)
-    payment_type = %w[Credit WebATM ATM]
+    if @order.order_status_id == 1
 
-    # 不論選擇哪種結帳方式都需要傳送的欄位
-    fields = {
-      TotalAmount: @order.total,
-      TradeDesc: 'Miracode',
-      ItemName: "合計共#{@order.cart.total_quantity}件商品",
-      ReturnURL: notifications_url, # 付款完成通知回傳網址
-      ClientBackURL: order_url(@order),
-      ChoosePayment: payment_type[@order.payment_id-1]
-    }
+      test_client = Allpay::Client.new(mode: :test)
+      payment_type = %w[Credit WebATM ATM]
 
-    # WebATM=2 or ATM=3 額外增加的欄位
-    if @order.payment_id == 2 || @order.payment_id == 3
-      fields[:PaymentInfoURL] = atm_payment_infos_url
+      # 不論選擇哪種結帳方式都需要傳送的欄位
+      fields = {
+        TotalAmount: @order.total,
+        TradeDesc: 'Miracode',
+        ItemName: "合計共#{@order.cart.total_quantity}件商品",
+        ReturnURL: notifications_url, # 付款完成通知回傳網址
+        ClientBackURL: order_url(@order),
+        ChoosePayment: payment_type[@order.payment_id-1]
+      }
+
+      # ATM=3 額外增加的欄位
+      if @order.payment_id == 3
+        fields[:PaymentInfoURL] = atm_payment_infos_url
+      end
+
+      @params = test_client.generate_checkout_params(fields)  
     end
-
-    @params = test_client.generate_checkout_params(fields)  
 
   end
 
@@ -57,15 +57,10 @@ class OrdersController < ApplicationController
   # 	@order.user_info(current_user)
   # end
 
-  # def update
-  # 	@order = Order.find(params[:id])
-  # 	if @order.update_attributes(order_params)
-  # 		redirect_to carts_url
-  # 	else
-  # 		render :edit
-  # 	end
-
-  # end
+  def update
+  	@order = Order.find(params[:id])
+    @order.update_attributes(order_params)
+  end
 
   private
 
@@ -77,7 +72,7 @@ class OrdersController < ApplicationController
   	end
 
   	def order_params
-  		params.require(:order).permit(:name, :phone, :address, :payment_id)
+  		params.require(:order).permit(:merchant_trade_no)
   	end
 
     def valid_order
