@@ -14,10 +14,9 @@
   		<table class="table table-bordered table-hover">
   			<thead>
   				<tr>
-  					<th>訂單編號</th>
+            <th>下單日期</th>
   					<th>收貨人</th>
-  					<th>訂購金額</th>
-  					<th>下單日期</th>
+  					<th>訂購金額</th>  					
             <th>付款方式</th>
   					<th>訂單狀態</th>
   					<th>明細</th>
@@ -27,10 +26,9 @@
   			<tbody>
   				<% @orders.each do |order| %>
   				<tr>
-  					<td><%= order.order_number %></td>
+            <td><%= l(order.created_at, format: :long) %></td>
   					<td><%= order.name %></td>
-  					<td><%= order.total %></td>
-  					<td><%= l(order.created_at, format: :short) %></td>
+  					<td><%= order.total %></td>  					
             <td><%= order.payment.name %></td>
   					<td><%= order.order_status.name %></td>
   					<td><%= link_to "明細", order %></td>

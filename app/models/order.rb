@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   # paginates_per 2
+
   belongs_to :order_status
   belongs_to :cart
   belongs_to :user
@@ -42,7 +43,15 @@ class Order < ActiveRecord::Base
     self.shipping_fee = TermsOfService.last.shipping_fee
     self.total = subtotal + shipping_fee
     self.order_status_id = 1
-    self.order_number = Time.now.strftime("%Y%m%d%H%M%S%3N")
+    # self.order_number = Time.now.strftime("%Y%m%d%H%M%S%3N")
+  end
+
+  def get_payment_info
+    AtmPaymentInfo.where(merchant_trade_no: self.merchant_trade_no).last
+  end
+
+  def get_payment_time
+    Notification.find_by_merchant_trade_no(self.merchant_trade_no).payment_date
   end
 
   private

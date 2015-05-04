@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503144819) do
+ActiveRecord::Schema.define(version: 20150504114158) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -113,9 +113,14 @@ ActiveRecord::Schema.define(version: 20150503144819) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.text     "raw_post_data", limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.text     "raw_post_data",     limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "merchant_trade_no", limit: 255
+    t.string   "trade_no",          limit: 255
+    t.integer  "rtn_code",          limit: 4
+    t.datetime "payment_date"
+    t.boolean  "verify_mac",        limit: 1
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -148,7 +153,6 @@ ActiveRecord::Schema.define(version: 20150503144819) do
     t.string   "name",              limit: 255
     t.string   "phone",             limit: 255
     t.string   "address",           limit: 255
-    t.string   "order_number",      limit: 255
     t.integer  "cart_id",           limit: 4
     t.integer  "payment_id",        limit: 4
     t.string   "merchant_trade_no", limit: 255

@@ -22,7 +22,7 @@
     		<table class="table table-bordered table-hover">
     			<thead>
     				<tr>
-    					<th>訂單編號</th>
+    					<th>交易訂單編號</th>
     					<th>訂購金額</th>
     					<th>下單日期</th>
     					<th>訂單狀態</th>
@@ -31,7 +31,7 @@
 
     			<tbody>
     				<tr>
-    					<td><%= @order.order_number %></td>
+    					<td><%= @order.merchant_trade_no %></td>
     					<td><%= @order.total %></td>
     					<td><%= l(@order.created_at, format: :long) %></td>
     					<td><%= @order.order_status.name %></td>
@@ -43,6 +43,13 @@
     					<th>付款方式</th>
     					<td colspan="3"><%= @order.payment.name %></td>
     				</tr>
+
+            <% if @order.order_status_id == 2 %>
+            <tr>
+              <th>付款時間</th>
+              <td colspan="3"><%= l(@order.get_payment_time, format: :long) %></td>
+            </tr>
+            <% end %>
 
     				<tr>
     					<th>收貨人</th>
@@ -60,6 +67,24 @@
     				</tr>    				
     			</tfoot>			    								    								    									    			
     		</table>
+
+        <% if @order.order_status_id == 5 %>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>繳費銀行代碼</th>
+              <th>繳費虛擬帳號</th>
+              <th>繳費期限</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <td><%= @order_payment_info.bank_code %></td>
+            <td><%= @order_payment_info.v_account %></td>
+            <td><%= l(@order_payment_info.expire_date, format: :long) %></td>
+          </tbody>
+        </table>
+        <% end %>       
 
     		<table class="table table-bordered table-hover">
      			<thead>
@@ -117,9 +142,9 @@
   			    <% end %>
   			  </form>
 
-          <%= form_for @order do |f| %>
-          <% f.hidden_field :merchant_trade_no, value: @params[:MerchantTradeNo] %>
-          <% end %>
+<!--           <%#= form_for @order do |f| %>
+          <%#= f.hidden_field :merchant_trade_no, value: @params[:MerchantTradeNo] %>
+          <%# end %> -->
         <% end %>
 
       </div>

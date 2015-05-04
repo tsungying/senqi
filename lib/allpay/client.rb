@@ -68,7 +68,8 @@ module Allpay
     def generate_checkout_params overwrite_params = {}
       generate_params({
         MerchantTradeDate: Time.now.strftime('%Y/%m/%d %H:%M:%S'),
-        MerchantTradeNo: SecureRandom.hex(4),
+        # MerchantTradeNo: SecureRandom.hex(4),
+        MerchantTradeNo: Time.now.strftime('%Y%m%d%H%M%S%6N'),
         PaymentType: 'aio'
       }.merge!(overwrite_params))
     end
