@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:notify]
+  before_action :check_admin, only: [:notify]
+
   def index
     @prod_categories = ProdCategory.all
     @articles = Article.order("id desc").limit(3)
@@ -20,5 +23,11 @@ class PagesController < ApplicationController
     @notification = Notification.all 
     @atmPaymentInfo = AtmPaymentInfo.all  
   end
+
+  private
+
+    def check_admin
+      redirect_to root_url unless current_user.admin?
+    end
 
 end

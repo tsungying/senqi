@@ -15,15 +15,32 @@
 
         <div class="box-body table-responsive no-padding">
           <table class="table table-hover">
-            <tr>
-              <th>ID</th>
-              <th>Logo</th>
-              <th>播放順序</th>
-              <th>更新時間</th>
-              <th>建立時間</th>
-              <th>管理</th>
-            </tr>
-
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>運費</th>
+                <th>網站使用條款</th>
+                <th>隱私權政策</th>
+                <th>免責聲明</th>
+                <th>管理</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <% @service.each do |s| %>
+              <tr>
+                <td><%= s.id %></td>
+                <td><%= s.shipping_fee %></td>
+                <td><%= s.terms %></td>
+                <td><%= s.policy %></td>
+                <td><%= s.disclaimer %></td>
+                <td>
+                <%= link_to "編輯", [:edit, :admin, s], class: "btn btn-primary btn-xs" %>
+                <%= link_to "刪除", [:admin, s], method: :delete, data: { confirm: "Are U sure?" }, class: "btn btn-warning btn-xs" %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
 
           </table>
         </div><!-- /.box-body -->

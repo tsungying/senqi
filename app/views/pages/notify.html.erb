@@ -7,14 +7,14 @@
     <div class="col-md-9">
       <div class="shop-content">
       <div class="title">
-        <h1><i class="fa fa-star"></i> Notify <i class="fa fa-star"></i></h1>
+        <h1><i class="fa fa-star"></i> Allpay post info <i class="fa fa-star"></i></h1>
         <div class="title-border"></div>
       </div>
       
   		<table class="table table-bordered table-hover">
   			<thead>
   				<tr>
-  					<th>Raw post 付款完成通知</th>
+  					<th>付款完成通知</th>
   					<th>Hash</th>
   					<th>Verify_mac</th>
   				</tr>
@@ -23,9 +23,9 @@
   			<tbody>
   				<% @notification.each do |n| %>
   				<tr>
-  					<td><%= r = n.raw_post_data %></td>
-            <td><%= params_hash = Rack::Utils.parse_query(r) %></td>
-
+            <% r = n.raw_post_data %>
+  					<td><%= n.id %></td>
+            <td><%= params_hash = Rack::Utils.parse_query(n.raw_post_data) %></td>
             <td><%= test_client.verify_mac(params_hash) %></td>
   				</tr>
   				<% end %>
@@ -35,7 +35,7 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th>Raw post ATM付款資訊</th>
+            <th>付款資訊</th>
             <th>Hash</th>
             <th>Verify_mac</th>
           </tr>
@@ -43,7 +43,8 @@
         <tbody>
           <% @atmPaymentInfo.each do |n| %>
           <tr>
-            <td><%= r = n.raw_post_data %></td>
+            <% r = n.raw_post_data %>
+            <td><%= n.id %></td>
             <td><%= params_hash = Rack::Utils.parse_query(r) %></td>
             <td><%= test_client.verify_mac(params_hash) %></td>
           </tr>

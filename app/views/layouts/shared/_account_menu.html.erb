@@ -5,7 +5,9 @@
       <ul>
         <li><%= link_to "修改會員資料", edit_user_registration_path %></li>
         <li><%= link_to '我的訂單', orders_path %></li>
-        <li><%= link_to 'test_notify', test_path %></li>
+        <% if current_user.admin? %>
+        <li><%= link_to 'Allpay post info', test_path %></li>
+        <% end %>
       </ul>
     </div>
   </aside>

@@ -1,5 +1,6 @@
 class Admin::TermsOfServicesController < Admin::BaseController
   def index
+    @service = TermsOfService.all
   end
 
   def new
