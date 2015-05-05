@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
 		notification = Notification.create!(raw_post_data: complete_notification)
 		notification.analyze_raw_post
 		if notification.verify_mac
-			Order.find_by_merchant_trade_no(self.merchant_trade_no).update_attributes(order_status_id: 2)
+			Order.find_by_merchant_trade_no(notification.merchant_trade_no).update_attributes(order_status_id: 2)
 			render text: '1|OK', status: 200
 		else
 			render text: '0|Fail'
