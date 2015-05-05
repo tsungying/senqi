@@ -2,7 +2,7 @@
 <section class="content">
 
   <div class="row">
-		<!-- logo照片 -->
+
     <div class="col-xs-12">
       <div class="box">
       
@@ -31,9 +31,9 @@
               <tr>
                 <td><%= s.id %></td>
                 <td><%= s.shipping_fee %></td>
-                <td><%= s.terms %></td>
-                <td><%= s.policy %></td>
-                <td><%= s.disclaimer %></td>
+                <td><%= raw s.terms %></td>
+                <td><%= raw s.policy %></td>
+                <td><%= raw s.disclaimer %></td>
                 <td>
                 <%= link_to "編輯", [:edit, :admin, s], class: "btn btn-primary btn-xs" %>
                 <%= link_to "刪除", [:admin, s], method: :delete, data: { confirm: "Are U sure?" }, class: "btn btn-warning btn-xs" %>

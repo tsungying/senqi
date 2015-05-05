@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: "pages#index"
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
@@ -42,7 +43,7 @@ Rails.application.routes.draw do
       resources :events
     end    
 
-    resources :company_profiles, :home_pages
+    resources :company_profiles, :home_pages, :users, :orders
     resources :terms_of_services
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -26,7 +26,7 @@
 					<ul>
 						<% if user_signed_in? %>
 						<li class="user_name"><a>嗨，<%= current_user.name %></a></li> 
-						  <li><%= link_to '會員中心', edit_user_registration_path %></li> 
+						  <li><%= link_to '會員中心', orders_path %></li> 
 						  <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li> 
 
 						  <% if current_user.try(:admin?) %>

@@ -139,15 +139,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
-            <li><%=link_to "返回前台", root_path %></li>
+            <li><%= link_to root_path do %><i class="fa fa-fw fa-reply"></i> 返回前台<% end %></li>
             <%= nav_link "首頁", admin_home_pages_path %>
             <%= nav_link "公司簡介", admin_company_profiles_path %>
             <%= nav_link "商品櫥窗", admin_prod_categories_path %>
             <%= nav_link "部落格", admin_blog_categories_path %>
             <%= nav_link "促銷活動", admin_event_categories_path %>
             <%= nav_link "運費及條款", admin_terms_of_services_path %>
-            <%= nav_link "會員列表", '#' %>
-            <%= nav_link "訂單列表", '#' %>
+            <%= nav_link "會員列表", admin_users_path %>
+            <%= nav_link "訂單 - 尚未付款", admin_orders_path(status: 'pending_orders') %>
+            
             <!-- 
             <li><a href="#"><span>Another Link</span></a></li>
             <li class="treeview">

@@ -1,0 +1,75 @@
+<div id="page-wrapper">
+
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">會員列表</h1>
+        <div class="box">
+          <div class="box-header">
+
+          </div>
+
+          <div class="box-body">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>姓名</th>
+                  <th>E-mail</th>
+                  <th>登入次數</th>
+                  <th>最近登入於</th>
+                  <th>註冊日期</th>
+                  <th>認證狀態</th>
+                  <th>權限</th>
+                  <th>管理</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.id %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.sign_in_count %></td>
+                  <td><%= l(user.current_sign_in_at, format: :long) %></td>
+                  <td><%= l(user.created_at, format: :long) %></td>
+                  <td><%= user.confirmed? %></td>
+
+                  <td>
+                    <span class="label label-<%= user.admin? ? 'danger' : 'primary' %>" >
+                    <%= user.admin? ? "管理員" : "一般會員" %>
+                    </span>
+                  </td>
+
+                  <td>
+                    <% if user.admin? %>
+                    <%= link_to '降為一般會員', [:admin, user], method: :put, remote: true, data: { confirm: "確定執行此操作嗎？" }, class: "btn bg-orange btn-xs" %>
+                    <% else %>
+                    <%= link_to '升為管理員', [:admin, user], method: :put, remote: true, data: { confirm: "確定執行此操作嗎？" },class: "btn bg-maroon btn-xs" %>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="box-footer clearfix">
+          <%= paginate @users %>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container-fluid -->
+
+</div>
