@@ -1,2 +1,135 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div id="page-wrapper">
+
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">訂單明細</h1>
+        <div class="box">
+
+
+
+          <div class="box-body">
+            <table class="table table-bordered">
+              <thead>
+              	<% if @order.order_status_id == 2 || @order.order_status_id == 3 %>
+              	<tr class="warning">
+              		<th>訂單編號</th>
+              		<td><%= @order.merchant_trade_no %></td>
+              	</tr>
+
+              	<% end %>
+
+              	<tr class="success">
+              		<th>訂單資訊</th>
+              	</tr>
+
+                <tr class="info" >
+                  <th width="10%">ID</th>
+                  <th width="18%">訂購時間</th>
+                  <th width="18%">付款方式</th>
+                  <th width="18%">訂單金額</th>
+                  <th width="18%">訂購人</th>
+                  <th width="18%">訂單狀態</th>
+
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td><%= @order.id %></td>
+                  <td><%= l(@order.created_at, format: :long) %></td>
+                  <td><%= @order.payment.name %></td>
+                  <td><%= @order.total %></td>                  
+                  <td><%= @order.user.name %></td>                                                
+                  <td><%= @order.order_status.name %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- class="box-body" -->
+
+          <div class="box-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="success">
+              		<th>送貨資訊</th>
+              	</tr>
+
+                <tr class="info" >
+                  <th width="10%">收貨人</th>
+									<th width="18%">電話</th>
+                  <th width="72%">地址</th>                  
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td><%= @order.name %></td>
+                  <td><%= @order.phone %></td>
+                  <td><%= @order.address %></td>                                                                                                    
+                </tr>
+              </tbody>
+
+            </table>
+          </div><!-- class="box-body" -->
+
+          <div class="box-body">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr class="success">
+              		<th>商品資訊</th>
+              	</tr>
+
+                <tr class="info" >
+                  <th width="10%"></th>
+                  <th width="36%">商品名稱</th>
+                  <th width="18%">單價</th>
+                  <th width="18%">數量</th>
+                  <th width="18%">商品總額</th>
+                </tr>
+              </thead>
+
+              <tbody>
+              	<% @order.cart.order_items.each_with_index do |item, index| %>
+                <tr>
+                  <td><%= index+1 %></td>
+                  <td><%= item.product.name %></td>
+                  <td><%= item.unit_price %></td>
+                  <td><%= item.quantity %></td>                  
+                  <td><%= item.total_price %></td>                                                                                   
+                </tr>
+                <% end %>
+              </tbody>
+
+              <tfoot>
+              	<tr>
+              		<td colspan="3"></td>
+              		<th>運費</th>
+              		<td><%= @order.shipping_fee %></td>              		
+              	</tr>
+              	<tr>
+              		<td colspan="3"></td>
+              		<th>訂單總額</th>
+              		<td><%= @order.total %></td>
+              	</tr>
+              </tfoot>
+            </table>
+          </div><!-- class="box-body" -->
+
+          <div class="box-footer clearfix">
+          <%= link_to "回上一頁", :back, class: 'btn bg-olive ' %>
+          </div>
+
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container-fluid -->
+
+</div>

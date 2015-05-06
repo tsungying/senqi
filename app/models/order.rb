@@ -29,6 +29,10 @@ class Order < ActiveRecord::Base
   #   self.update_attributes(user_id: user.id, name: user.name)
   # end
 
+  def has_order_no?
+    self.order_status_id == 2
+  end
+
   def cart_item_name
     str = ''
     cart.order_items.each do |item|

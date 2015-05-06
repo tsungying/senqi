@@ -2,7 +2,7 @@
 
   <div class="container-fluid">
 
-  <%= render params[:status] %>
+  <%= render (params[:status]||nil).nil? ? 'all_orders' : params[:status]  %>
 
   </div>
   <!-- /.container-fluid -->

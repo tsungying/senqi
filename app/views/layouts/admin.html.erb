@@ -85,16 +85,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <li class="user-header">
                     <img src="/admin/dist/img/miracode_admin.png" class="img-circle" alt="User Image" />
                     <p>
-                      <%= current_user.email %><br/>Web Developer
-                      <small>Member since Nov. 2012</small>
+                      <%= current_user.email %><br/>Miracode 管理員
+                     <!--  <small>Member since Nov. 2012</small> -->
                     </p>
                   </li>
 
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <div class="pull-left">
+                    <!-- <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
+                    </div> -->
                     <div class="pull-right">
                       <%= link_to('登出', destroy_user_session_path, :method => :delete, class: "btn btn-default btn-flat") %>
                       <!-- <a href="#" class="btn btn-default btn-flat">Sign out</a> -->
@@ -140,15 +140,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- <li class="header">HEADER</li> -->
             <!-- Optionally, you can add icons to the links -->
             <li><%= link_to root_path do %><i class="fa fa-fw fa-reply"></i> 返回前台<% end %></li>
+            <li class="header">會員列表 & 訂單</li>
+            <%= nav_link "會員列表", admin_users_path %>
+            <%= nav_link "訂單 - 尚未付款", admin_orders_path(status: 'pending_orders') %>
+            <%= nav_link "訂單 - 已付款", admin_orders_path(status: 'paid_orders') %>
+            <%= nav_link "訂單 - 已出貨", admin_orders_path(status: 'shipped_orders') %>
+            <%= nav_link "訂單 - 取消訂單", admin_orders_path(status: 'cancel_orders') %>    
+            <li class="header">編輯官網</li>        
             <%= nav_link "首頁", admin_home_pages_path %>
             <%= nav_link "公司簡介", admin_company_profiles_path %>
             <%= nav_link "商品櫥窗", admin_prod_categories_path %>
             <%= nav_link "部落格", admin_blog_categories_path %>
             <%= nav_link "促銷活動", admin_event_categories_path %>
             <%= nav_link "運費及條款", admin_terms_of_services_path %>
-            <%= nav_link "會員列表", admin_users_path %>
-            <%= nav_link "訂單 - 尚未付款", admin_orders_path(status: 'pending_orders') %>
-            
             <!-- 
             <li><a href="#"><span>Another Link</span></a></li>
             <li class="treeview">

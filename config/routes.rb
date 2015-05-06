@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy]
 
   namespace :admin do
-    root to: "home_pages#index"
+    root to: "orders#index"
 
     resources :prod_categories do
       resources :products

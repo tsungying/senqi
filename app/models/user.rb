@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
   def admin?
   	self.admin == true
 	end       
+
+  def check_vip
+    if 1 == self.id
+      "<span class='blink' title='ˊ_>ˋy━･~...' >V V I P</span>"
+    else
+      "一般會員"
+    end
+  end
 	
 	# def self.from_omniauth(auth)
 	#   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -40,7 +40,7 @@
 
                   <td>
                     <span class="label label-<%= user.admin? ? 'danger' : 'primary' %>" >
-                    <%= user.admin? ? "管理員" : "一般會員" %>
+                    <%= raw user.admin? ? "管理員" : user.check_vip %>
                     </span>
                   </td>
 
@@ -73,3 +73,17 @@
   <!-- /.container-fluid -->
 
 </div>
+
+<script type="text/javascript" >
+    function blink(selector){
+        $(selector).fadeOut(700, "linear", function(){
+            $(this).fadeIn(700, function(){
+                blink(this);
+            });
+        });
+    }
+     
+    $(document).ready(function(){
+        blink('.blink');    
+    }); 
+</script>
