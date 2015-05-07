@@ -1,7 +1,1 @@
-# Pagination for [Twitter Bootstrap 3](http://getbootstrap.com/components/#pagination)
-
-With support for:
-
-- erb
-- haml
-- slim
+# The project is for [MIRACODE](http://miracode.com/)
