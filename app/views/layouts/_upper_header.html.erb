@@ -2,10 +2,10 @@
 				<div class="container">
 
 					<div class="search-input">
-						<form action="#">
-							<input type="text" placeholder="Type and Search">
-							<input type="submit" value="">
-						</form>
+						<%= form_tag search_product_path, method: :get do %>
+							<%= text_field_tag :product_keyword, params[:product_keyword], placeholder: "搜尋商品" %>
+							<%= submit_tag "", name: nil %>
+						<% end %>
 					</div>
 
 					<% if logo_img %>

@@ -5,4 +5,10 @@ class Article < ActiveRecord::Base
   mount_uploader :home_image, PhotoUploader
   mount_uploader :article_image, PhotoUploader
   # :article_image, :home_image :content, :summary,
+
+  def self.search(search)
+    if search
+      where('title LIKE :search OR summary LIKE :search', search: "%#{search}%")
+    end
+  end  
 end

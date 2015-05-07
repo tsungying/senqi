@@ -10,7 +10,6 @@ class BlogCategoriesController < ApplicationController
   def show
   	@categories = BlogCategory.all
 		@articles = BlogCategory.find(params[:id]).articles.order("id desc")
-		#@articles.where()
 		@comments = Comment.where(:commentable_id => @articles.pluck(:id).uniq).order("id desc").limit(10)
   end
 end

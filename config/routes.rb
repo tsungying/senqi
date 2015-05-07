@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "about"       => "pages#about"
   get "promotions"  => "event_categories#index"
   get "test"        => "pages#notify"
+  get "search_product"      => "products#index"
+  get "search_article"      => "articles#index"
+  get "search_event"        => "events#index"
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :users

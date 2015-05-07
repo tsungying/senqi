@@ -9,7 +9,7 @@
 
 							<div class="col-md-8">
 								<div class="list-content">
-									<h1><%= product.name %></h1>
+									<h1><%= highlight(product.name, params[:product_keyword]) %></h1>
 										<div class="list-midrow">
 
 											<ul>
@@ -22,7 +22,7 @@
 											<div class="clear"></div>
 										</div>
 
-										<p class="list-desc"><%= raw product.brief %></p>		
+										<p class="list-desc"><%= raw highlight(product.brief, params[:product_keyword]) %></p>		
 
 										<div class="list-downrow">
 											<%= form_for add_to_cart, remote: true do |f| %>

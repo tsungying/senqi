@@ -9,6 +9,12 @@ class Product < ActiveRecord::Base
   validates_presence_of :name, :part_number, :original_price, :selling_price, :brief#, :description
   validates :part_number, uniqueness: { case_sensitive: false }
   #attr_accessible :brief, :description, :name, :original_price, :part_number, :selling_price
+
+  def self.search(search)
+    if search
+      where('name LIKE :search OR brief LIKE :search', search: "%#{search}%")
+    end
+  end
   
   private
   	def downcase_part_number

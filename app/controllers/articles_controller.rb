@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
 
   def index
-  
+		@categories = BlogCategory.all
+		@comments = Comment.order("id desc").limit(10)  
+		@articles = Article.search(params[:article_keyword])
   end
 
   def show

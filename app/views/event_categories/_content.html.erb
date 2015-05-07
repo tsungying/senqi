@@ -20,9 +20,9 @@
 										</div>
 										<div class="blog-content">
 
-											<h1><%= event.title %></h1>
+											<h1><%= highlight(event.title, params[:event_keyword]) %></h1>
 											<div class="post-meta"></div>
-											<%= raw event.summary %>
+											<%= raw highlight(event.summary, params[:event_keyword]) %>
 <!-- 											<div class="post-meta">
 												<a href="#"><i class="fa fa-user"></i> Joeby Ragpa</a>
 												<a href="#"><i class="fa fa-bookmark"></i> Design</a>
@@ -57,7 +57,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<%= render 'event_aside' %>
+							<%= render 'event_categories/event_aside' %>
 							<!-- End aside -->
 						</div>
 

@@ -8,13 +8,13 @@ class Admin::OrdersController < Admin::BaseController
   def index
   	case params[:status]
 	  	when 'pending_orders'
-	  		@orders = Order.where(order_status_id: [1, 5]).page(params[:page])
+	  		@orders = Order.where(order_status_id: [1, 5]).order(id: :desc).page(params[:page])
 	  	when 'paid_orders'
-	  		@orders = Order.where(order_status_id: 2).page(params[:page])
+	  		@orders = Order.where(order_status_id: 2).order(id: :desc).page(params[:page])
 	  	when 'shipped_orders'
-	  		@orders = Order.where(order_status_id: 3).page(params[:page])
+	  		@orders = Order.where(order_status_id: 3).order(id: :desc).page(params[:page])
 	  	when 'cancel_orders'
-	  		@orders = Order.where(order_status_id: 4).page(params[:page])
+	  		@orders = Order.where(order_status_id: 4).order(id: :desc).page(params[:page])
 	  	else
 	  		@orders = Order.all.order(id: :desc).page(params[:page])
   	end  	

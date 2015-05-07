@@ -1,8 +1,10 @@
 							<aside>
 
 								<div class="blog-search mb30">
-									<input type="text" placeholder="Search">
-									<input type="submit" value="">
+									<%= form_tag search_event_path, method: :get do %>
+										<%= text_field_tag :event_keyword, params[:event_keyword], placeholder: "搜尋促銷活動" %>
+										<%= submit_tag "", name: nil %>
+									<% end %>
 								</div>
 
 								<div class="shop-categories mb30">
