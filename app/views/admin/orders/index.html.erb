@@ -56,7 +56,11 @@
                 <% @orders.each do |order| %>
                 <tr>
                   <td><%= order.id %></td>
-                  <td><%= raw order.color_merchant_trade_no %></td>
+                  <td>
+                    <%= link_to [:admin, order] do
+                      raw order.color_merchant_trade_no
+                    end %>
+                  </td>
                   <td><%= order.user.name %></td>
                   <td><%= order.total %></td>
                   <td><%= order.payment.name %></td>
