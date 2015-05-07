@@ -13,13 +13,10 @@
           <div class="box-body">
             <table class="table table-bordered">
               <thead>
-              	<% if @order.order_status_id == 2 || @order.order_status_id == 3 %>
               	<tr class="warning">
               		<th>訂單編號</th>
-              		<td><%= @order.merchant_trade_no %></td>
+              		<td><%= raw @order.color_merchant_trade_no %></td>
               	</tr>
-
-              	<% end %>
 
               	<tr class="success">
               		<th>訂單資訊</th>

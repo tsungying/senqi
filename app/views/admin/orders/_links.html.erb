@@ -1,0 +1,18 @@
+<!-- 
+	1 = 尚未付款
+	2 = 已付款
+	3 = 已出貨
+	4 = 取消訂單
+	5 = 取號成功
+ -->
+<% if order.pending? %>
+	<%= link_to '取消此訂單', admin_order_path(order, change_status: 'cancel'), method: :put, remote: true, data: { confirm: "確定取消此訂單嗎？" }, class: "btn bg-maroon btn-xs" %>
+<% end %>
+
+<% if order.paid? %>
+	<%= link_to '更新為已出貨', admin_order_path(order, change_status: 'shipped'), method: :put, remote: true, data: { confirm: "將訂單狀態更新為'已出貨'嗎？" }, class: "btn bg-orange btn-xs" %>
+<% end %>
+
+<% if order.shipped? %>
+	<%= link_to '恢復為已付款', admin_order_path(order, change_status: 'paid'), method: :put, remote: true, data: { confirm: "將訂單狀態恢復為'已付款'嗎？" }, class: "btn bg-olive btn-xs" %>
+<% end %>

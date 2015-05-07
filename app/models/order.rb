@@ -29,8 +29,30 @@ class Order < ActiveRecord::Base
   #   self.update_attributes(user_id: user.id, name: user.name)
   # end
 
+  def pending?
+    self.order_status_id == 1 || self.order_status_id == 5
+  end
+
+  def paid?
+    self.order_status_id == 2
+  end
+
+  def shipped?
+    self.order_status_id == 3
+  end
+
   def has_order_no?
     self.order_status_id == 2
+  end
+
+  def color_merchant_trade_no
+    if self.paid? || self.shipped?
+      y = "<strong class='text-primary'>#{self.merchant_trade_no[0..3]}</strong> "
+      md = "<strong class='text-danger'>#{self.merchant_trade_no[4..7]}</strong> "
+      hms = "<strong class='text-success'>#{self.merchant_trade_no[8..13]}</strong> "
+      n_6_digit = "<strong class='text-warning'>#{self.merchant_trade_no[14..19]}</strong>"
+      str = y+md+hms+n_6_digit
+    end
   end
 
   def cart_item_name
@@ -55,7 +77,7 @@ class Order < ActiveRecord::Base
   end
 
   def get_payment_time
-    Notification.find_by_merchant_trade_no(self.merchant_trade_no).payment_date
+    Notification.find_by_merchant_trade_no(self.merchant_trade_no).payment_date    
   end
 
   private
