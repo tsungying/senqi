@@ -7,8 +7,6 @@ class AtmPaymentInfo < ActiveRecord::Base
   #   add_column :atm_payment_infos, :rtn_code, :integer
   #   add_column :atm_payment_infos, :verify_mac, :boolean	
 
-	before_save :set_expire_date_to_end_of_day
-
 	def analyze_raw_post
 		params_hash = Rack::Utils.parse_query(raw_post_data)
 		test_client = Allpay::Client.new(mode: :test)
@@ -28,11 +26,5 @@ class AtmPaymentInfo < ActiveRecord::Base
 		end
 	
 	end
-
-	private
-
-		def set_expire_date_to_end_of_day
-			self.expire_date = expire_date.end_of_day
-		end
 
 end
