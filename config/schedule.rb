@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :output, "log/cron_log.log"
-every 3.minutes do
-  runner "Comment.auto_comment"
+# set :output, "log/cron_log.log"
+every :day, :at => '00:05 am' do
+  runner "Order.check_atm_timeout"
 end

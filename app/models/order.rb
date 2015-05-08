@@ -29,6 +29,13 @@ class Order < ActiveRecord::Base
   #   self.update_attributes(user_id: user.id, name: user.name)
   # end
 
+  def self.check_atm_timeout
+    where(order_status_id: 5).each do |order|
+      info = AtmPaymentInfo.find_by_merchant_trade_no(order.merchant_trade_no)
+      order.update_attributes(order_status_id: 4) if Time.now > info.expire_date
+    end 
+  end
+
   def pending?
     self.order_status_id == 1 || self.order_status_id == 5
   end
@@ -73,7 +80,8 @@ class Order < ActiveRecord::Base
   end
 
   def get_payment_info
-    AtmPaymentInfo.where(merchant_trade_no: self.merchant_trade_no).last
+    AtmPaymentInfo.find_by_merchant_trade_no(self.merchant_trade_no)
+    # AtmPaymentInfo.where(merchant_trade_no: self.merchant_trade_no).last
   end
 
   def get_payment_time
