@@ -19,7 +19,6 @@ class AtmPaymentInfo < ActiveRecord::Base
 														expire_date: 				Date.parse(params_hash["ExpireDate"]).end_of_day,
 														rtn_code: 					params_hash["RtnCode"],
 														verify_mac: 				result )
-		# self.expire_date = expire_date.end_of_day
 
 		if self.rtn_code == 2 && self.verify_mac
 			Order.find_by_merchant_trade_no(self.merchant_trade_no).update_attributes(order_status_id: 5)

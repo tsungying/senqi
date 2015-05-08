@@ -33,7 +33,7 @@ class Admin::OrdersController < Admin::BaseController
 	  	when 'paid'
 	  		@order.update_attributes(order_status_id: 2)
 	  	when 'cancel'
-	  		@order.update_attributes(order_status_id: 5)
+	  		@order.update_attributes(order_status_id: 4)
   	end
 
   	respond_to do |format|

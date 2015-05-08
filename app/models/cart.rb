@@ -12,10 +12,10 @@ class Cart < ActiveRecord::Base
    	order_items.sum(:quantity)
   end
 
-	private
-
-	 #  def update_subtotal
-		# 	self[:subtotal] = subtotal
-		# end
+  def self.clear_abandoned
+  	cid = Cart.all.pluck(:id)
+  	oid = Order.all.pluck(:cart_id)
+  	Cart.where(id: cid-oid).destroy_all
+  end
 
 end
