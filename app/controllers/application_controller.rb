@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :add_to_cart, :current_cart, :shipping_fee
+  helper_method :add_to_cart, :current_cart, :shipping_fee 
 
   # def current_order
   #   if session[:order_id].nil?
