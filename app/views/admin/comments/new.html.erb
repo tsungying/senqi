@@ -1,0 +1,12 @@
+<div class="box">
+  <div class="box-header">回覆留言：</div>
+  <div class="box-body chat" id="chat-box">
+		<%= render @comment.parent if @comment.parent %>
+	</div>
+
+	<div class="box-footer">
+	<%= render 'form' %>
+  </div>
+
+</div>
+

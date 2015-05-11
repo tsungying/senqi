@@ -1,0 +1,11 @@
+<div class="box">
+  <div class="box-header"></div>
+  <div class="box-body chat" id="chat-box">  
+    <%= render @comments %>
+  </div>
+  
+  <div class="box-footer">
+    <%= paginate @comments %>
+  </div>
+</div>
+

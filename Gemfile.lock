@@ -39,6 +39,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     arel (6.0.0)
     bcrypt (3.1.10)
     builder (3.2.2)
@@ -182,6 +184,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_attr
+  ancestry
   carrierwave (= 0.10.0)
   coffee-rails (~> 4.1.0)
   devise

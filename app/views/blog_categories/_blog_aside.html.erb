@@ -44,6 +44,7 @@
 							    		<div id="latest_comments" style="display: none;">
 							    			<ul>
 							    				<% @comments.each do |comment| %>
+							    				<% if comment.is_root? %>
 							    				<li>
 							    					<%= link_to blog_category_article_path(comment.commentable.blog_category, comment.commentable, section: "comments") do %>
 							    					<%= comment.commentable.title %>
@@ -57,6 +58,7 @@
 								    					</span>
 								    				
 							    				</li>
+													<% end %>
 							    				<% end %>
 
 <!-- 							    				<li><a href="#">

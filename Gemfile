@@ -39,6 +39,7 @@ gem 'omniauth-facebook'
 gem "figaro"
 gem "faker"
 gem 'whenever', :require => false
+gem 'ancestry'
 # gem 'activemerchant', "~> 1.43.3"
 # gem 'active_merchant_allpay', '>=0.1.2'
 # gem 'allpay_client'

@@ -1,0 +1,40 @@
+<% if comment.is_root? %>
+  <div class="item">
+  	<%= image_tag comment.commentable.article_image_url, alt: "user image", class: "online" %>
+    <p class="message">
+    	<%= link_to comment.commentable.title, [:admin, comment.commentable.blog_category, comment.commentable] %>
+    	留言者：<%= comment.name %>   
+    	 	
+      <span class="name">
+        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <%= l(comment.created_at, format: :long ) %></small>
+        <%= comment.content %>
+      </span>
+
+      <% if controller.action_name == 'index' %>
+	    <%= link_to "刪除", [:admin, comment], method: :delete, data: { confirm: "刪除此留言嗎？" }, class: "btn btn-danger btn-xs" %>
+	    <%= link_to "回覆", new_admin_comment_path(parent_id: comment, page: params[:page]||1), class: "btn btn-success btn-xs" %>      
+	    <% end %>
+
+    </p>
+
+    <% if comment.has_children? %>
+    	<% comment.children.each do |reply| %>
+	    <div class="attachment">
+	      <h4><%= reply.name %> 於 <%= l(reply.created_at, format: :long ) %> 回覆</h4>
+	      <p class="filename">
+	        <%= reply.content %>
+	      </p>
+
+	      <% if controller.action_name == 'index' %>
+	      <div class="pull-right">
+	      	<%= link_to '編輯', edit_admin_comment_path(reply, page: params[:page]||1), class: "btn btn-primary btn-sm btn-flat" %>
+	      	<%= link_to '刪除', [:admin, reply, page: params[:page]||1], method: :delete, data: { confirm: "刪除此留言嗎？" }, class: "btn btn-danger btn-sm btn-flat" %>
+	      </div>
+				<% end %>
+
+	    </div>
+			<% end %>
+    <% end %>
+
+  </div>
+<% end %>

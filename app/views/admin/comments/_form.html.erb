@@ -1,0 +1,11 @@
+<%= form_for [:admin, @comment] do |f| %>
+	<%= render 'admin/shared/error_messages', object: @comment %>
+	<%= f.hidden_field :current_page %>
+	<%= f.hidden_field :parent_id %>
+	<%= f.hidden_field :name, value: current_user.name %>
+	<div class="form-group">			
+	<%= f.text_area :content, class: "form-control ", style: "width: 100%" %>
+	</div>
+	<%= f.submit "送出", class: "btn btn-success" %>
+	<%= link_to "回上一頁", admin_comments_path(page: @comment.current_page), class: "btn btn-default" %>
+<% end %>

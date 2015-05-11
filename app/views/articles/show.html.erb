@@ -73,21 +73,34 @@
 										<ul>
 											<% @comments.each do |comment| %>
 											<li>
-												<!-- <img src="upload/user1.jpg" alt=""> -->
 												<div class="comment-text">
 													<div class="user-spec">
-														<h5><i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %></h5>
-														
+														<h5><i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %></h5>														
 														<div class="clear"></div>
 													</div>
-													<p>
-														<%= comment.content %>														
-													</p>
+													<p><%= comment.content %></p>
 													<span class="reply"><%= l(comment.created_at, format: :long ) %></span>
-													<!-- <a href="#" class="reply">Reply <i class="fa fa-comments"></i></a> -->
 												</div>
 												<div class="clear"></div>
 											</li>
+											<!-- reply -->
+<!-- 											<li>
+												<ul class="depth">
+													<li>
+														<div class="comment-text">
+															<div class="user-spec">
+																<h5>Mary Jane</h5>
+																<span>July 15, 2014 at 11:27 pm</span>
+																<div class="clear"></div>
+															</div>
+															<p>So, I thing this is a good Html theme and I want to use it for my travel blog. Thank you for the good design and coding.</p>
+															<a href="#" class="reply">Reply <i class="fa fa-comments"></i></a>
+														</div>
+														<div class="clear"></div>
+													</li>
+												</ul>			
+											</li> -->
+											<!-- reply -->
 											<% end %>
 										</ul>
 										
