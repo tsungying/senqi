@@ -4421,7 +4421,8 @@ font-style: italic;
 }
 
 .depth {
-  padding-left: 100px;
+  /*padding-left: 100px;*/
+  padding-left: 25px;
 }
 
 .depth li {
@@ -6158,4 +6159,8 @@ footer h1 {
 
 #payment_btn:hover{
   opacity: 1;
+}
+
+.admin_photo{
+  border-radius: 50% !important;
 }

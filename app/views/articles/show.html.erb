@@ -16,56 +16,17 @@
 
 									<h1><%= @article.title %></h1>
 									<div class="post-meta">
-										<a href="#comments" class="move_to_comments"><i class="fa fa-comment"></i> <%= @article.comments_count %> 則迴響</a>
-										
-									<!-- </div>
-									<div class="post-meta"> -->
-										<!-- <a href="#"><i class="fa fa-user"></i> Joeby Ragpa</a>
-										<a href="#"><i class="fa fa-bookmark"></i> Design</a> -->
-										
+										<a href="#comments" class="move_to_comments"><i class="fa fa-comment"></i> <%= @article.comments_count %> 則迴響</a>							
 									</div>
 
 									<%= raw @article.content %>
 
-
-
-<!-- 									<blockquote>Remember to avoid translating your dreams too literally. Say you dream you are driving a fast sports car at ninety miles per hour around dangerous curves. You lose control, crash and die. Does this mean you're going to have a car crash and die? Highly unlikely. It is far more probable that the dream is telling you something much less literal about yourself.
-									<span>Elizabeth Gilbert</span>
-									</blockquote> -->
-
 									<div class="blog-tags">
 									<i class="fa fa-clock-o"></i><%= l(@article.created_at, format: :long ) %>
-										<!-- <i class="fa fa-tags"></i>
-										<a href="#">Creative</a>, <a href="#">Elegant</a>,<a href="#"> Clothing</a>, <a href="#">Fashion</a>, <a href="#">Beauty</a> -->
 									</div>
 
-<!-- 									<div class="blog-share">
-									<p>Share</p>			
-										<ul>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-											<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-											<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-										</ul>
-										<div class="clear"></div>
-									</div> -->
-									<!-- End Share -->
 									<div class="clear"></div>
 
-<!-- 									<div class="about-author">
-										<img src="upload/author.jpg" alt="">
-										<div class="author-text">
-											<h4>camille ragpa <span> | Fashion Designer</span></h4>
-											<p>We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. We possess within us two minds.</p>
-										</div>
-										<div class="clear"></div>
-									</div> -->
-
-
-
-									<!-- end related -->
 
 									<div class="comment-tree" id="comments">
 										<h1 class="main-title"><%= @article.comments_count %> 則迴響</h1>
@@ -75,32 +36,38 @@
 											<li>
 												<div class="comment-text">
 													<div class="user-spec">
-														<h5><i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %></h5>														
+														<h5><i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %></h5>		
+																		<span class="xreply"><%= l(comment.created_at, format: :long ) %></span>								
 														<div class="clear"></div>
 													</div>
 													<p><%= comment.content %></p>
-													<span class="reply"><%= l(comment.created_at, format: :long ) %></span>
+													
 												</div>
 												<div class="clear"></div>
 											</li>
-											<!-- reply -->
-<!-- 											<li>
-												<ul class="depth">
-													<li>
-														<div class="comment-text">
-															<div class="user-spec">
-																<h5>Mary Jane</h5>
-																<span>July 15, 2014 at 11:27 pm</span>
-																<div class="clear"></div>
+
+											<% if comment.has_children? %>
+												<% comment.children.each do |reply| %>
+												<li>
+													<ul class="depth">
+														<li>
+															<%= image_tag '/admin/dist/img/miracode_admin.png', class: 'admin_photo' %><!-- <img src="upload/user3.jpg" alt=""> -->
+															<div class="comment-text">
+																<div class="user-spec">
+																	<h5><%= reply.name %></h5>
+																	<span class=""><%= l(comment.created_at, format: :long ) %></span>
+																	<div class="clear"></div>
+																</div>
+																<p><%= reply.content %></p>
+																
 															</div>
-															<p>So, I thing this is a good Html theme and I want to use it for my travel blog. Thank you for the good design and coding.</p>
-															<a href="#" class="reply">Reply <i class="fa fa-comments"></i></a>
-														</div>
-														<div class="clear"></div>
-													</li>
-												</ul>			
-											</li> -->
-											<!-- reply -->
+															<div class="clear"></div>
+														</li>
+													</ul>
+												</li>
+												<% end %>
+											<% end %>
+
 											<% end %>
 										</ul>
 										
@@ -126,7 +93,7 @@
 													<%= f.label :name do %>
 														名稱 <span>*</span>
 													<% end %>
-													<%= f.text_field :name %>					
+													<%= f.text_field :name, value: current_user.name if current_user %>					
 												</div>
 											</div>
 											
@@ -141,12 +108,6 @@
 										<% end %>
 										
 									</div>
-									<!-- <%#= render template: 'comments/new', locals: { comment: @comment } %> -->
-<!-- 									<div class="nextpages">
-										<a href="#" class="prevpage"><i class="fa fa-angle-left"></i> Previous Post</a>
-										<a href="#" class="nextpage">Next Post <i class="fa fa-angle-right"></i></a>
-										<div class="clear"></div>
-									</div> -->
 
 								</div>
 								<!-- end signle inner -->
