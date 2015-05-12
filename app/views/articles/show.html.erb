@@ -93,7 +93,7 @@
 													<%= f.label :name do %>
 														名稱 <span>*</span>
 													<% end %>
-													<%= f.text_field :name, value: current_user.name if current_user %>					
+													<%= f.text_field :name, value: current_user ? current_user.name : nil %>					
 												</div>
 											</div>
 											
