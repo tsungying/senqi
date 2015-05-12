@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-	paginates_per 5
+	#paginates_per 5
 	# t.text :content
 	# t.integer :commentable_id
 	# t.string :commentable_type
