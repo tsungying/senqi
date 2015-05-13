@@ -38,7 +38,7 @@
 
     <div id="miracode-shopping-cart">
     	<%= link_to carts_path do %>
-			<%= image_tag "/images/cart-items.png" %>
+			<%= image_tag "/images/cart-items.png", class: "img-responsive" %>
 
 			<div class="cart-items"><%= current_cart.order_items.sum(:quantity) %></div>
 			<% end %>		
