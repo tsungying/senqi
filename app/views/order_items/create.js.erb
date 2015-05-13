@@ -3,4 +3,5 @@
 <% else %>
   $("div .cart").html("<%= escape_javascript(render 'layouts/cart_text') %>")
   $("div .mobile-version").html("<%= escape_javascript(render 'layouts/shared/mobile_version_cart') %>")
+  $("div.cart-items").text(<%= current_cart.order_items.sum(:quantity) %>)
 <% end %>

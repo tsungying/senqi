@@ -1,2 +1,3 @@
 $("div .cart").html("<%= escape_javascript(render 'layouts/cart_text') %>")
 $("div .shopping_cart").html("<%= escape_javascript(render 'carts/shopping_cart', order_items: @order_items) %>")
+$("div.cart-items").text(<%= current_cart.order_items.sum(:quantity) %>)

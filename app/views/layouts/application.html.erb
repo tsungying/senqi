@@ -35,9 +35,21 @@
 
 	<!-- Container -->
 	<div id="container">
-<!-- 		<div id="hero">
-		<%#= image_tag "/images/small_hero.png" %>
-		</div> --> <!-- End hero -->
+
+    <div id="miracode-shopping-cart">
+    	<%= link_to carts_path do %>
+			<%= image_tag "/images/cart-items.png" %>
+
+			<div class="cart-items"><%= current_cart.order_items.sum(:quantity) %></div>
+			<% end %>		
+		</div>
+
+		<div id="go-to-top">
+			<%= link_to '#top' do %>
+			<%= image_tag "/images/top.png" %>
+			<% end %>
+		</div>
+
 		<!-- Header -->
 		<header class="clearfix green-header">
 			<!-- topline 最上黑色區域部份(My Account, ......., Login) -->
@@ -71,9 +83,14 @@
 <!-- console.log("width = " + width + ", height = " + height); -->
 
 <script type="text/javascript">
+// $(document).ready(function(){
+// 	x = $("div.cart-items").position();
+// 	console.log(x);
+// });
+/*
 	$(document).ready(function(){
 		var $window = $(window), //視窗物件
-				$hero = $('#hero').css('opacity', 0).show(),
+				$hero = $('#hero').css('opacity', 0),
 				width = $hero.width(), //取得 hero 寬度
 				height = $hero.height(), //取得 hero 長度
 				diffX = 10, //hero 與右方邊距
@@ -87,15 +104,16 @@
 			left : $window.width()-width-diffX, //移到右邊定點
 			opacity : 1 //解除透明
 		});
-		// console.log("top : $(document).height() = " + $(document).height());
-		// console.log("left : $window.width()-width-diffX = " + $window.width());
-		// console.log("width = hero 寬度 : " + width);
-		// console.log("width = hero 高度 : " + height);
+
+		console.log("top : $(document).height() = " + $(document).height());
+		console.log("left : $window.width()-width-diffX = " + $window.width()-width-diffX);
+		console.log("width = hero 寬度 : " + width);
+		console.log("width = hero 高度 : " + height);
 
     //加上scroll和resize事件
     $window.on("scroll resize", function(){
       //控制 hero 移動
-      $hero.stop().animate({
+      $hero.stop().a nimate({
           top: $(this).scrollTop() + $(this).height()/2.5 - height - diffY,
           left: $(this).scrollLeft() + $(this).width() - width - diffX
       },speed);
@@ -103,6 +121,8 @@
 
 
 	});
+*/
+
 </script>
 
 </html>
