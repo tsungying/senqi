@@ -477,7 +477,7 @@
 		display: none;
 	}
 
-	.cart {
+	.cart, .top_and_cart{
 		display: none;
 	}
 

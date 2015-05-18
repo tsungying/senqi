@@ -36,18 +36,20 @@
 	<!-- Container -->
 	<div id="container">
 
-    <div id="miracode-shopping-cart">
-    	<%= link_to carts_path do %>
-			<%= image_tag "/images/cart-items.png", class: "img-responsive" %>
+		<div class="top_and_cart">
+			<div id="go-to-top">
+				<%= link_to '#top' do %>
+				<%= image_tag "/images/top.png" %>
+				<% end %>
+			</div>
 
-			<div class="cart-items"><%= current_cart.order_items.sum(:quantity) %></div>
-			<% end %>		
-		</div>
+			<div id="miracode-shopping-cart">
+				<%= link_to carts_path do %>
+				<%= image_tag "/images/cart-items.png", class: "img-responsive" %>
 
-		<div id="go-to-top">
-			<%= link_to '#top' do %>
-			<%= image_tag "/images/top.png" %>
-			<% end %>
+				<div class="cart-items"><%= current_cart.order_items.sum(:quantity) %></div>
+				<% end %>		
+			</div>			
 		</div>
 
 		<!-- Header -->
