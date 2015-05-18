@@ -13,7 +13,7 @@ class NotificationsController < ApplicationController
 	    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 	    phone = number_to_phone(order.cellphone.to_i, country_code: 886) 
 	    body = "Miracode已收到您的付款完成通知，訂單編號#{order.merchant_trade_no}，我們會儘快為您出貨，謝謝！"
-	    msg = @client.messages.create(from: '+15005550006', to: phone, body: body)
+	    msg = @client.messages.create(from: '+18575984857', to: phone, body: body)
 	    Rails.logger.info msg.body			
 
 			render text: '1|OK', status: 200
