@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 	before_action :ensure_order_has_item, only: [:new, :create]
-	before_action :authenticate_user!	
-	# before_action :own_order, only: [:edit, :update]
+	before_action :authenticate_user!	    
+	# before_action :own_order, only: [:edit, :update]  
 
   def index
     @orders = valid_order.order(id: :desc).page(params[:page])
@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
   	end
 
     def order_params_on_create
-      params.require(:order).permit(:name, :phone, :address, :payment_id)
+      params.require(:order).permit(:name, :cellphone, :address, :payment_id)
     end
 
   	def order_params_on_update

@@ -19,7 +19,10 @@
 							<% if @order.errors.any? %>
 								<div class="alert alert-warning fade in blur-alert" role="alert">
 								<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-								<p style="padding:9px">提醒您，寄送資訊所有欄位皆須填寫喔！</p>							
+								<% @order.errors.full_messages.each do|m| %>
+								<p style="padding:9px"><%= m%></p>
+								<% end %>
+								<!-- <p style="padding:9px">提醒您，寄送資訊所有欄位皆須填寫喔！</p>							 -->
 								</div>
 							<% end %>
 
@@ -34,8 +37,8 @@
 													<%= f.text_field :name, placeholder: 'Name' %>
 												</div>
 												<div class="col-md-6">
-													<%= f.label :phone do %>聯絡電話 <span>*</span><% end %>
-													<%= f.text_field :phone, placeholder: 'Phone' %>
+													<%= f.label :cellphone do %>手機 <span>*</span><% end %>
+													<%= f.text_field :cellphone, placeholder: 'Cellphone' %>
 												</div>
 											</div>
 

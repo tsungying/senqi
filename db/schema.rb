@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511051920) do
+ActiveRecord::Schema.define(version: 20150518052537) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 20150511051920) do
     t.datetime "updated_at",                                   null: false
     t.integer  "user_id",           limit: 4
     t.string   "name",              limit: 255
-    t.string   "phone",             limit: 255
+    t.string   "cellphone",         limit: 255
     t.string   "address",           limit: 255
     t.integer  "cart_id",           limit: 4
     t.integer  "payment_id",        limit: 4

@@ -7,8 +7,9 @@ class Order < ActiveRecord::Base
   belongs_to :payment
   # before_create :set_order_status_and_fee
   # before_save :finalize
-  validates_presence_of :name, :phone, :address
-
+  validates_presence_of :name, :cellphone, :address
+  validates :cellphone, format: { with: /\A(\d{10})\z/ }
+  # before_save :
   # t.decimal  "subtotal",        precision: 10
   # t.decimal  "shipping_fee",    precision: 10
   # t.decimal  "total",           precision: 10
