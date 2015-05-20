@@ -2,6 +2,8 @@ class OrderItemsController < ApplicationController
 	
   def create
   	@cart = current_cart
+    
+    # 檢查目前購物車是否已有該商品
     @order_item = @cart.order_items.find_by_product_id(params[:order_item][:product_id])
     if @order_item.nil?
       @order_item = @cart.order_items.new(order_item_params)

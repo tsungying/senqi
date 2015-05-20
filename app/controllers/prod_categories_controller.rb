@@ -6,6 +6,6 @@ class ProdCategoriesController < ApplicationController
 
   def show
   	@prod_categories = ProdCategory.all
-  	@products = ProdCategory.find(params[:id]).products
+  	@products = ProdCategory.find(params[:id]).products.on_sale
   end
 end

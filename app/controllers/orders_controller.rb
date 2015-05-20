@@ -39,6 +39,16 @@ class OrdersController < ApplicationController
 
   end
 
+  def update
+    order = current_user.orders.find_by_id(params[:id])
+    if order && order.cancel
+      flash[:cancel_order_result] = "訂單已成功取消！"
+    else
+      flash[:cancel_order_result] = "無效的操作！"
+    end
+    redirect_to :back
+  end
+
   private
 
   	def ensure_order_has_item	

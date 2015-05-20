@@ -14,7 +14,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :cart
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validate :product_present
+  validate :product_present # 檢查此商品是否存在及上架販售
 
   before_save :finalize
 
@@ -29,8 +29,12 @@ class OrderItem < ActiveRecord::Base
   private
 
   	def product_present
-  		if product.nil?
-  			errors.add(:product, '該商品已下架或補貨中！')
+  		if product.nil? 
+  			errors.add(:product, '未販售此商品！')
+      else
+        unless product.active?
+          errors.add(:product, '該商品已下架或補貨中！')
+        end
   		end
   	end
 

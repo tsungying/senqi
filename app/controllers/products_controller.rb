@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
 	def index
 		@prod_categories = ProdCategory.all
-		@products = Product.search(params[:product_keyword])
+		@products = Product.on_sale.search(params[:product_keyword])
 	end
 
   def show

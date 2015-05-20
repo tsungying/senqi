@@ -6,7 +6,7 @@
 			<div class="shop-content">
         <div class="shop-list">
     			<% @prod_categories.each do |category| %>
-      			<% category.products.each do |product| %> 
+      			<% category.products.on_sale.each do |product| %> 
 							<%= render 'single_product', category: category, product: product %>
 						<% end %>
 					<% end %>

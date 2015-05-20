@@ -21,7 +21,7 @@
 				<ul class="filter-container clearfix">
 
 					<% @prod_categories.each do |category| %>
-						<% category.products.each do |product| %>
+						<% category.products.on_sale.each do |product| %>
 							<li class="class<%= category.id %>">
 								<div class="arrival-overlay product-shadow">
 								<%= link_to prod_category_product_path(category, product) do %>

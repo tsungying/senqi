@@ -14,6 +14,13 @@
 				</div>
 			<% end %>
 
+      <% if flash[:cancel_order_result] %>
+        <div class="alert alert-warning fade in red-alert" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <p style="padding:9px"><%= flash[:cancel_order_result] %></p>              
+        </div>
+      <% end %>
+
       <div class="title">
         <h1><i class="fa fa-star"></i> 訂單明細 <i class="fa fa-star"></i></h1>
         <div class="title-border"></div>
@@ -136,15 +143,15 @@
         <%= link_to "返回我的訂單", orders_path, class: "btn btn-primary" %>
 
         <% if @order.order_status_id == 1 %>
+        <%= link_to "取消訂單", order_path(@order), method: :put, data: { confirm: "確定取消此訂單嗎？" },  class: "btn btn-default" %>
+        <% end %>
+
+        <% if @order.order_status_id == 1 %>
       	  <form action="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut" method="post" name="allpay_checkout">
   			    <% @params.each do |k, v| %>
   			      <input type="hidden" name="<%= k %>" value="<%= v %>">
   			    <% end %>
   			  </form>
-
-<!--           <%#= form_for @order do |f| %>
-          <%#= f.hidden_field :merchant_trade_no, value: @params[:MerchantTradeNo] %>
-          <%# end %> -->
         <% end %>
 
       </div>

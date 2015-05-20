@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   # serialize :youtube_code, Array
+  scope :on_sale, ->{ where(active: true) }
   belongs_to :prod_category, counter_cache: true
   has_many :pictures, as: :parent, dependent: :destroy
   has_many :order_items

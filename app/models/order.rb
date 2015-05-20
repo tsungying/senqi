@@ -89,6 +89,10 @@ class Order < ActiveRecord::Base
     Notification.find_by_merchant_trade_no(self.merchant_trade_no).payment_date    
   end
 
+  def cancel
+    self.order_status_id == 1 ? update_attributes(order_status_id: 4) : false
+  end
+
   private
 
   	# def set_order_status_and_fee

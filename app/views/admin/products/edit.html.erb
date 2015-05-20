@@ -15,6 +15,12 @@
         	<div class="box-body">
 
             <%= render 'admin/shared/error_messages', object: @product %>
+            <div class="form-group has-warning">
+              <label class="control-label">
+                <%= f.check_box :active %>          
+                <b>上架此商品？</b>
+              </label>      
+            </div>
 
             <%= image_tag @product.home_image_url, class: "img-thumbnail", width: "150", height: 'auto'  %>
 		        <div class="form-group">
