@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518052537) do
+ActiveRecord::Schema.define(version: 20150520025248) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -205,12 +205,25 @@ ActiveRecord::Schema.define(version: 20150518052537) do
   add_index "products", ["prod_category_id"], name: "index_products_on_prod_category_id", using: :btree
 
   create_table "terms_of_services", force: :cascade do |t|
-    t.decimal  "shipping_fee",               precision: 10
-    t.text     "terms",        limit: 65535
-    t.text     "policy",       limit: 65535
-    t.text     "disclaimer",   limit: 65535
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.decimal  "shipping_fee",                   precision: 10
+    t.text     "terms",            limit: 65535
+    t.text     "policy",           limit: 65535
+    t.text     "disclaimer",       limit: 65535
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
+    t.string   "company_intro",    limit: 255
+    t.string   "company_name",     limit: 255
+    t.string   "company_address",  limit: 255
+    t.string   "company_phone",    limit: 255
+    t.string   "company_mail",     limit: 255
+    t.string   "facebook_url",     limit: 255
+    t.string   "youtube_url",      limit: 255
+    t.string   "open_time",        limit: 255
+    t.string   "user_sms",         limit: 255
+    t.string   "ceo_sms",          limit: 255
+    t.string   "ceo_phone",        limit: 255
+    t.boolean  "send_sms_to_user", limit: 1,                    default: false
+    t.boolean  "send_sms_to_ceo",  limit: 1,                    default: false
   end
 
   create_table "users", force: :cascade do |t|

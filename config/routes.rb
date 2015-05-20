@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
     resources :company_profiles, :home_pages, :users, :orders
     resources :terms_of_services, :comments
+    resources :web_settings
   end
   get 'order/:order_number' => 'orders#show'
   # The priority is based upon order of creation: first created -> highest priority.

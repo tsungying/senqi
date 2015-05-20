@@ -34,16 +34,16 @@
 							</div>
 							<!-- end contactfort -->
 							<div class="col-md-4 touch">
-
+								<% settings = TermsOfService.first %>
 								<h2>公司資訊</h2>
 
-								<p><i class="fa fa-map-marker"></i> 100 台北市中正區博愛路63號10樓</p>
-								<p><i class="fa fa-phone"></i> (02)2388-2158</p>
-								<a href="#"><p style="color: #ea5748;" class="mb40"><i class="fa fa-envelope"></i> miracode.service@gmail.com</p></a>
+								<p><i class="fa fa-map-marker"></i><%= settings.company_address %></p>
+								<p><i class="fa fa-phone"></i><%= settings.company_phone %></p>
+								<a href="#"><p style="color: #ea5748;" class="mb40"><i class="fa fa-envelope"></i><%= settings.company_mail %></p></a>
 
 								<h2>營業時間</h2>
 
-								<p class="mb50">星期一 至 星期五： 9 am ~ 6 pm	</p>
+								<p class="mb50"><%= settings.open_time %></p>
 															
 								
 

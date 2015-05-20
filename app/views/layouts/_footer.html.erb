@@ -1,21 +1,22 @@
 <footer>
+	<% settings = TermsOfService.first %>
 	<div class="inner-footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
 					<div class="f-about">
 						<h1>關於Miracode</h1>
-						<p class="mb20">每個女人與生俱來都有美麗的密碼，就藏在基因的數碼裡，青春的生命力給了你原初的完美！</p>
+						<p class="mb20"><%= settings.company_intro %></p>
 					</div>
 				</div>
 				
 				<div class="col-md-3">
 					<div class="gettouch">
 						<h1>聯絡我們</h1>
-						<p><i class="fa fa-home"></i>朋鑫國際股份有限公司</p>
-						<p><i class="fa fa-home"></i>100 台北市中正區博愛路63號10樓</p>
-						<p><i class="fa fa-phone"></i> (02)2388-2158</p>
-						<p class="mb20"><i class="fa fa-envelope"></i> miracode.service@gmail.com</p>
+						<p><i class="fa fa-home"></i><%= settings.company_name %></p>
+						<p><i class="fa fa-home"></i><%= settings.company_address %></p>
+						<p><i class="fa fa-phone"></i><%= settings.company_phone %></p>
+						<p class="mb20"><i class="fa fa-envelope"></i><%= settings.company_mail %></p>
 					</div>
 				</div>
 
@@ -35,8 +36,8 @@
 					<div class="account">
 						<h1>粉絲專頁</h1>
 						<ul class="footer-socials">
-							<li><a href="https://www.facebook.com/pages/Mira-Code/355723484532970"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="https://www.youtube.com/watch?v=etHsPVvupdo"><i class="fa fa-youtube"></i></a></li>
+							<li><%= link_to settings.facebook_url do %><i class="fa fa-facebook"></i><% end %></li>
+							<li><%= link_to settings.youtube_url do %><i class="fa fa-youtube"></i><% end %></li>
 						</ul>
 					</div>
 				</div>

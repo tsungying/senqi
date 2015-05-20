@@ -8,6 +8,79 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :company_intro, "公司簡介" %>
+        <%= f.text_field :company_intro , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :company_name, "公司名稱" %>
+        <%= f.text_field :company_name , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :company_address, "公司地址" %>
+        <%= f.text_field :company_address , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :company_phone, "公司電話" %>
+        <%= f.text_field :company_phone , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :company_mail, "公司信箱" %>
+        <%= f.text_field :company_mail , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :facebook_url, "Facebook 粉絲團" %>
+        <%= f.text_field :facebook_url, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :youtube_url, "Youtube 影片網址" %>
+        <%= f.text_field :youtube_url , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :open_time, "營業時間" %>
+        <%= f.text_field :open_time , class: "form-control" %>
+      </div>
+
+      <div class="form-group has-warning">
+        <label class="control-label">
+          <%= f.check_box :send_sms_to_user, class: "flat-red" %>          
+          <b>付款完成後，是否簡訊通知消費者？</b>
+        </label>      
+      </div>
+
+      <div class="form-group">
+        <%= f.label :user_sms, "簡訊通知消費者訊息" %>
+        <%= f.text_field :user_sms , class: "form-control" %>
+        <p class="help-block">註：簡訊前會加有此筆訂單編號</p>
+        <p class="help-block">簡訊範例：訂單編號：<%= Time.now.strftime('%Y%m%d%H%M%S%6N') %>，<%= @service.user_sms %></p>
+      </div>
+
+      <div class="form-group has-warning">
+        <label class="control-label">
+          <%= f.check_box :send_sms_to_ceo %>
+          <b>付款完成後，是否簡訊通知負責人？</b>
+        </label>       
+      </div>
+
+      <div class="form-group">
+        <%= f.label :ceo_sms, "簡訊通知負責人訊息" %>
+        <%= f.text_field :ceo_sms , class: "form-control" %>
+        <p class="help-block">註：簡訊後會加有此筆訂單消費金額與付款時間</p>
+        <p class="help-block">簡訊範例：<%= @service.ceo_sms %>，消費金額為xxx，付款時間：<%= l(Time.now, format: :long ) %></p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :ceo_phone, "負責人手機" %>
+        <%= f.text_field :ceo_phone , class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :terms, "網站使用條款" %>
         <%= f.text_area :terms, class: "form-control editor" %>
       </div>
@@ -20,12 +93,12 @@
       <div class="form-group">
         <%= f.label :disclaimer, "免責聲明" %>
         <%= f.text_area :disclaimer, class: "form-control editor" %>
-      </div>
+      </div>     
 
-      <div class="box-footer">
+       <div class="box-footer">
         <button type="submit" class="btn btn-danger">送出</button>
         <%= link_to "返回上一頁", :back, class: "btn btn-primary" %>
-      </div>
+      </div>     
   <% end %>
 </div>
 

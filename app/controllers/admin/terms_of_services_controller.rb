@@ -1,6 +1,6 @@
 class Admin::TermsOfServicesController < Admin::BaseController
   def index
-    @service = TermsOfService.all
+    @service = TermsOfService.first
   end
 
   def new
@@ -32,6 +32,22 @@ class Admin::TermsOfServicesController < Admin::BaseController
   private
 
   	def terms_of_service_params
-  		params.require(:terms_of_service).permit(:shipping_fee, :terms, :policy, :disclaimer)
+  		params.require(:terms_of_service).permit(:shipping_fee, 
+                                               :terms, 
+                                               :policy, 
+                                               :disclaimer,
+                                               :company_intro,
+                                               :company_name,
+                                               :company_address,
+                                               :company_phone,
+                                               :company_mail,
+                                               :facebook_url,
+                                               :youtube_url,
+                                               :open_time,
+                                               :user_sms,
+                                               :ceo_sms,
+                                               :ceo_phone,
+                                               :send_sms_to_user,
+                                               :send_sms_to_ceo )
   	end
 end
