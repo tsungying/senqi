@@ -36,38 +36,19 @@
 									<%= recaptcha_tags %><br>
 									<%= f.submit "送出", class: "medium-button button-red" %>
 								<% end %>
-								
-								<!-- 								
-									<form id="contact-form" action="#">
-										<input name="name" id="name" type="text" placeholder="*名字">
-
-										<input name="mail" id="mail" type="text"  placeholder="*信箱">
-
-										<input name="subject" id="subject" type="text"  placeholder="問題">	
-
-										<textarea name="comment" id="comment"  placeholder="*描述詢問的問題"></textarea>
-
-				  					<input type="submit" value="Send"  id="submit_contact" class="medium-button button-red">
-					  				<div id="msg" class="message"></div>
-					  			</form>
-					  		-->
 					  		
 							</div>
 							<!-- end contactfort -->
 							<div class="col-md-4 touch">
-
+								<% settings = TermsOfService.first %>
 								<h2>公司資訊</h2>
 
-								<p><i class="fa fa-map-marker"></i> 100 台北市中正區博愛路63號10樓</p>
-								<p><i class="fa fa-phone"></i> (02)2388-2158</p>
-								<a href="#"><p style="color: #ea5748;" class="mb40"><i class="fa fa-envelope"></i> miracode.service@gmail.com</p></a>
+								<p><i class="fa fa-map-marker"></i><%= settings.company_address %></p>
+								<p><i class="fa fa-phone"></i><%= settings.company_phone %></p>
+								<a href="#"><p style="color: #ea5748;" class="mb40"><i class="fa fa-envelope"></i><%= settings.company_mail %></p></a>
 
 								<h2>營業時間</h2>
-
-								<p class="mb50">星期一 至 星期五： 9 am ~ 6 pm	</p>
-															
-								
-
+								<p class="mb50"><%= settings.open_time %></p>																				
 							</div>
 						</div>
 					</div>
