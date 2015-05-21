@@ -16,6 +16,13 @@
         	<div class="box-body">
 
 	        	<%= render 'admin/shared/error_messages', object: @product %>
+            
+            <div class="form-group has-warning">
+              <label class="control-label">
+                <%= f.check_box :active %>          
+                <b>上架此商品？</b>
+              </label>      
+            </div>
 
 		        <div class="form-group">
 	            <%= f.label :home_image, "首頁產品圖（最佳尺寸：270 x 320）" %>

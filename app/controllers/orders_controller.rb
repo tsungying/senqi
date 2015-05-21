@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.new(order_params_on_create)
     @order.add_cart_info(current_cart)
     if @order.save
+      OrderMailer.pending(@order).deliver
       session[:cart_id] = nil
       flash[:placed_order] = '訂單建立成功！感謝您的購買，歡迎您再次蒞臨！'
       redirect_to @order

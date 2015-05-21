@@ -41,6 +41,8 @@ gem "faker"
 gem 'whenever', :require => false
 gem 'ancestry'
 gem 'twilio-ruby', '~> 4.1.0'
+gem 'roadie', '~> 3.0.5'
+gem 'roadie-rails', '~> 1.0.6'
 # gem 'activemerchant', "~> 1.43.3"
 # gem 'active_merchant_allpay', '>=0.1.2'
 # gem 'allpay_client'

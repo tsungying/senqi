@@ -1,5 +1,5 @@
 <% if @cart.errors.any? || @order_item.errors.any? %>
-	alert("<%= @order_item.errors[:product][0] %>")
+	alert("<%= @order_item.errors[:product][0] %>"+"<%= @order_item.errors[:quantity][0] %>")
 	// alert('加入購物車失敗~"~')
 <% else %>
   $("div .cart").html("<%= escape_javascript(render 'layouts/cart_text') %>")

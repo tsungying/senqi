@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Miracode</title>  
+  <meta charset="utf-8" content="text/html" >
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<style type="text/css">
+	.table {
+	  width: 100%;
+	  margin-bottom: 20px;
+	}
+
+	.table-bordered {
+  	border: 1px solid #ddd;
+	}
+
+    .table th {
+          background: rgba(0, 0, 0, 0.6);
+          color: #fff;
+          font-size: 16px;
+          text-transform: uppercase;
+          font-family: 'Noticia Text';
+          padding: 15px !important;
+    }
+	</style>
+</head>
+
+<body>
+	<table class="table table-bordered">
+    			<thead>
+    				<tr>
+    					<th>交易訂單編號</th>
+    					<th>訂購金額</th>
+    					<th>下單日期</th>
+    					<th>訂單狀態</th>
+    				</tr>
+    			</thead>
+
+    			<tbody>
+    				<tr>
+    					<td><%= @order.merchant_trade_no %></td>
+    					<td><%= @order.total %></td>
+    					<td><%= l(@order.created_at, format: :long) %></td>
+    					<td><%= @order.order_status.name %></td>
+    				</tr>
+    			</tbody>
+
+    			<tfoot>
+    				<tr>
+    					<th>付款方式</th>
+    					<td colspan="3"><%= @order.payment.name %></td>
+    				</tr>
+
+    				<tr>
+    					<th>收貨人</th>
+    					<td colspan="3"><%= @order.name %></td>
+    				</tr>
+
+    				<tr>
+    					<th>聯絡電話</th>
+    					<td colspan="3"><%= @order.cellphone %></td>
+    				</tr>
+
+    				<tr>
+    					<th>地址</th>
+    					<td colspan="3"><%= @order.address %></td>
+    				</tr>    				
+    			</tfoot>			    								    								    									    			
+    		</table>     
+
+    		<table class="table table-bordered">
+     			<thead>
+    				<tr>
+    					<th>商品明細</th>
+    					<th>品名</th>
+    					<th>單價</th>
+    					<th>數量</th>
+    					<th>小計</th>
+    				</tr>
+    			</thead> 
+
+    			<tbody>
+    				<% @order.cart.order_items.each_with_index do |item, index| %>
+    				<tr>
+    					<td><%= index+1 %></td>
+    					<td><%= item.product.name %></td>
+    					<td><%= item.unit_price %></td>
+    					<td><%= item.quantity %></td>
+    					<td><%= item.total_price %></td>
+    				</tr>
+    				<% end %>
+    			</tbody>
+
+    			<tfoot>
+    				<tr>
+    					<td colspan="3"></td>
+    					<th>運費</th>
+    					<td><%= @order.shipping_fee %></td>
+    				</tr>
+
+    				<tr>
+    					<td colspan="3"></td>
+    					<th>合計</th>
+    					<td><%= @order.total %></td>
+    				</tr>
+    			</tfoot>
+    		</table>    			
+
+</body>
+
+</html>

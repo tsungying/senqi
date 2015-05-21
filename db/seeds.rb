@@ -18,11 +18,3 @@
 # 
 # Order.all.each { |o| o.update_attributes(payment_id: 1) }
 # OrderStatus.create!(name: "取號成功")
-
-homepage = HomePage.find(1)
-homepage.settings(:company_info).intro = "每個女人與生俱來都有美麗的密碼，就藏在基因的數碼裡，青春的生命力給了你原初的完美！"
-homepage.settings(:company_info).company_name = "朋鑫國際股份有限公司"
-homepage.settings(:company_info).company_address = "100 台北市中正區博愛路63號10樓"
-homepage.settings(:company_info).phone = "(02)2388-2158"
-homepage.settings(:company_info).email = "miracode.service@gmail.com"
-homepage.save!

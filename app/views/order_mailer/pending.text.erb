@@ -1,0 +1,18 @@
+親愛的 <%= @order.name %>︰恭喜﹗你已經成功訂購商品
+
+--------------------------- 訂單明細 ---------------------------
+下單日期：<%= l(@order.created_at, format: :long) %>
+訂購金額：<%= @order.total %>
+訂單狀態：<%= @order.order_status.name %>
+付款方式：<%= @order.payment.name %>
+收 貨 人：<%= @order.name %>
+聯絡電話：<%= @order.cellphone %>
+地		 址：<%= @order.address %>
+
+--------------------------- 商品明細 ---------------------------
+<% @order.cart.order_items.each_with_index do |item, index| %>
+<%= index+1 %> <%= item.product.name %> <%= item.unit_price %>元 x <%= item.quantity %> = <%= item.total_price %><%= "\r\n" %>
+<% end %>
+運費：<%= @order.shipping_fee %>
+
+<%= link_to "前往Miracode查看訂單並付款", order_path(@order) %>
