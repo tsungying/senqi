@@ -1,4 +1,5 @@
 class OrderMailer < ActionMailer::Base
+  include Roadie::Rails::Automatic
 	default from: "miracode.service@gmail.com"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
