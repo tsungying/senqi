@@ -4436,6 +4436,10 @@ font-style: italic;
   width: 80%
 }
 
+.leave-comment {
+  margin-bottom: 25px;
+}
+
 .leave-comment h1 {
   font-size: 18px;
   color: #000;
