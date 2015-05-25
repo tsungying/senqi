@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
     end
 
     def get_checkout_params(order)
-      test_client = Allpay::Client.new(mode: :test)
+      client = Allpay::Client.new(mode: :production)
       payment_type = %w[Credit WebATM ATM]
 
       # 不論選擇哪種結帳方式都需要傳送的欄位
@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
         fields[:PaymentInfoURL] = atm_payment_infos_url
       end
       
-      @params = test_client.generate_checkout_params(fields) 
+      @params = client.generate_checkout_params(fields) 
       order.update_attributes(merchant_trade_no: @params[:MerchantTradeNo])
       return @params
     end    

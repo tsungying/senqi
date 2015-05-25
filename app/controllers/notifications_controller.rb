@@ -13,23 +13,23 @@ class NotificationsController < ApplicationController
 			settings = TermsOfService.first
 
 			if settings.send_sms_to_user?
-		    @client = Twilio::REST::Client.new(ENV['TEST_TWILIO_ACCOUNT_SID'], ENV['TEST_TWILIO_AUTH_TOKEN'])
+		    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 		    phone = number_to_phone(order.cellphone.to_i, country_code: 886) 
 		    body = "訂單編號：#{notification.merchant_trade_no}，"+settings.user_sms 
-		    msg = @client.messages.create(from: '+15005550006', to: phone, body: body)
+		    msg = @client.messages.create(from: '+18575984857', to: phone, body: body)
 		    Rails.logger.info msg.body			
 		  end
 
 			if settings.send_sms_to_ceo?
-		    @client = Twilio::REST::Client.new(ENV['TEST_TWILIO_ACCOUNT_SID'], ENV['TEST_TWILIO_AUTH_TOKEN'])
+		    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
 		    phone = number_to_phone(settings.ceo_phone.to_i, country_code: 886) 
 		    body = settings.ceo_sms+"，消費金額為#{order.total}，付款時間：#{ l(notification.payment_date, format: :long ) }"
-		    msg = @client.messages.create(from: '+15005550006', to: phone, body: body)
+		    msg = @client.messages.create(from: '+18575984857', to: phone, body: body)
 		    Rails.logger.info msg.body			
 		  end
 
 		  OrderMailer.paid(order).deliver
-		  # OrderMailer.ready_to_ship(order).deliver
+		  OrderMailer.ready_to_ship(order).deliver
 
 			render text: '1|OK', status: 200
 		else
