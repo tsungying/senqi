@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def index
     @prod_categories = ProdCategory.all
-    @articles = Article.order("id desc").limit(3)
+    @articles = current_language_articles.limit(3)
     @events = Event.order("publish_at desc").limit(3)    
     @home_slider = HomePage.where( logo: nil ).order("play_order desc")
   end

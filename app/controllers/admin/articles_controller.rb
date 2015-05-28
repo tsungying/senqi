@@ -6,7 +6,7 @@ class Admin::ArticlesController < Admin::BaseController
   def show
     @blog_category = BlogCategory.find(params[:blog_category_id])
     @article = @blog_category.articles.find(params[:id])      
-    @url = blog_category_article_url(@blog_category, @article)
+    @url = blog_category_article_url(@blog_category, @article, locale: @blog_category.language)
   end
 
   def new

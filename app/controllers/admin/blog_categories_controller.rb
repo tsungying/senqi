@@ -44,7 +44,7 @@ class Admin::BlogCategoriesController < Admin::BaseController
   private
 
   	def blog_category_params
-  		params.require(:blog_category).permit(:name)
+  		params.require(:blog_category).permit(:name, :language)
   	end
 
 end

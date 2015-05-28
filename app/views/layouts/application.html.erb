@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Miracode</title>  
+  <title>SENQI</title>  
   <meta charset="utf-8">
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
@@ -27,8 +27,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css" media="screen">
 	
-	<link rel="shortcut icon" href="/images/favicon.png" type="image/png" />
-	<link rel="icon" href="/images/favicon.png" type="image/png" />
+	<!-- <link rel="shortcut icon" href="/images/favicon.png" type="image/png" /> -->
+	<!-- <link rel="icon" href="/images/favicon.png" type="image/png" /> -->
 </head>
 <body>
 
@@ -81,50 +81,5 @@
 	</div>	<!-- End Container -->
 
 </body>
-
-<!-- console.log("width = " + width + ", height = " + height); -->
-
-<script type="text/javascript">
-// $(document).ready(function(){
-// 	x = $("div.cart-items").position();
-// 	console.log(x);
-// });
-/*
-	$(document).ready(function(){
-		var $window = $(window), //視窗物件
-				$hero = $('#hero').css('opacity', 0),
-				width = $hero.width(), //取得 hero 寬度
-				height = $hero.height(), //取得 hero 長度
-				diffX = 10, //hero 與右方邊距
-				diffY = 10, //hero 與下方邊距
-				speed = 300; //移動速度，花多少ms完成移動，越小越快
-
-				
-		//先將 hero 移到定點		
-		$hero.css({
-			top : $(document).height(), //移到最下面
-			left : $window.width()-width-diffX, //移到右邊定點
-			opacity : 1 //解除透明
-		});
-
-		console.log("top : $(document).height() = " + $(document).height());
-		console.log("left : $window.width()-width-diffX = " + $window.width()-width-diffX);
-		console.log("width = hero 寬度 : " + width);
-		console.log("width = hero 高度 : " + height);
-
-    //加上scroll和resize事件
-    $window.on("scroll resize", function(){
-      //控制 hero 移動
-      $hero.stop().a nimate({
-          top: $(this).scrollTop() + $(this).height()/2.5 - height - diffY,
-          left: $(this).scrollLeft() + $(this).width() - width - diffX
-      },speed);
-    }).scroll(); //啟動scroll
-
-
-	});
-*/
-
-</script>
 
 </html>

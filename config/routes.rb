@@ -1,36 +1,39 @@
 Rails.application.routes.draw do
 
-  root to: "pages#index"
-  get "about"       => "pages#about"
-  get "promotions"  => "event_categories#index"
-  get "test"        => "pages#notify"
-  get "search_product"      => "products#index"
-  get "search_article"      => "articles#index"
-  get "search_event"        => "events#index"
-
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
-  resources :users
   
-  resources :messages, only: [:new, :create] 
-  get "contact"   => "messages#new"
+  scope '(:locale)', locale: /en|zh-TW/ do
+    root "pages#index"
+    get "about"       => "pages#about"
+    get "promotions"  => "event_categories#index"
+    get "test"        => "pages#notify"
+    get "search_product"      => "products#index"
+    get "search_article"      => "articles#index"
+    get "search_event"        => "events#index"
+    
+    resources :users
+    
+    resources :messages, only: [:new, :create] 
+    get "contact"   => "messages#new"
 
-  resources :prod_categories, only: [:index, :show] do
-    resources :products, only: [:show]
+    resources :prod_categories, only: [:index, :show] do
+      resources :products, only: [:show]
+    end
+    
+    resources :blog_categories, only: [:index, :show] do
+      resources :articles, only: [:show]
+    end 
+
+    resources :event_categories, only: [:index, :show] do
+      resources :events, only: [:show]
+    end
+
+    resources :comments, :notifications, :atm_payment_infos
+    resources :orders, path_names: { new: 'checkout' }
+    resources :carts, only: [:index]
+    resources :order_items, only: [:create, :update, :destroy]
   end
   
-  resources :blog_categories, only: [:index, :show] do
-    resources :articles, only: [:show]
-  end 
-
-  resources :event_categories, only: [:index, :show] do
-    resources :events, only: [:show]
-  end
-
-  resources :comments, :notifications, :atm_payment_infos
-  resources :orders, path_names: { new: 'checkout' }
-  resources :carts, only: [:index]
-  resources :order_items, only: [:create, :update, :destroy]
-
   namespace :admin do
     root to: "orders#index"
 

@@ -43,21 +43,8 @@ gem 'ancestry'
 gem 'twilio-ruby', '~> 4.1.0'
 gem 'roadie', '~> 3.0.5'
 gem 'roadie-rails', '~> 1.0.6'
-# gem 'activemerchant', "~> 1.43.3"
-# gem 'active_merchant_allpay', '>=0.1.2'
-# gem 'allpay_client'
-# gem 'mailcatcher'
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+group :development, :test do
+	gem "better_errors"
+	gem 'rack-mini-profiler', require: false
+end

@@ -1,130 +1,130 @@
-			<div class="blog-container">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8">
-							<div class="blog-single clearfix">
+<div class="blog-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="blog-single clearfix">
 
-								<div class="blog-img">
-									<% if @article.cover == "article_image" %>
-										<%= image_tag @article.article_image_url %>
-									<% else %>
-										<iframe class="videoembed" src="http://www.youtube.com/embed/<%= @article.youtube_video %>"></iframe>
-									<% end %>
-								</div>
+					<div class="blog-img">
+						<% if @article.cover == "article_image" %>
+							<%= image_tag @article.article_image_url %>
+						<% else %>
+							<iframe class="videoembed" src="http://www.youtube.com/embed/<%= @article.youtube_video %>"></iframe>
+						<% end %>
+					</div>
 
-								<div class="blogsingle-inner">
+					<div class="blogsingle-inner">
 
-									<h1><%= @article.title %></h1>
-									<div class="post-meta">
-										<a href="#comments" class="move_to_comments"><i class="fa fa-comment"></i> <%= @article.comments_count %> 則迴響</a>							
-									</div>
+						<h1><%= @article.title %></h1>
+						<div class="post-meta">
+							<a href="#comments" class="move_to_comments"><i class="fa fa-comment"></i> <%= @article.comments_count %> <%= t('blog_content.comment_counts') %></a>							
+						</div>
 
-									<%= raw @article.content %>
+						<%= raw @article.content %>
 
-									<div class="blog-tags">
-									<i class="fa fa-clock-o"></i><%= l(@article.created_at, format: :long ) %>
-									</div>
+						<div class="blog-tags">
+						<i class="fa fa-clock-o"></i><%= l(@article.created_at, format: :long ) %>
+						</div>
 
-									<div class="clear"></div>
+						<div class="clear"></div>
 
-									<div class="leave-comment clearfix" id="leave_comment">
-										<h1 class="main-title">發表迴響</h1>
-										<div class="main-border"></div>
+						<div class="leave-comment clearfix" id="leave_comment">
+							<h1 class="main-title"><%= t('blog_content.leave_a_comment') %></h1>
+							<div class="main-border"></div>
 
-										<%= form_for @comment do |f| %>
+							<%= form_for @comment do |f| %>
 
-											<div class="row">
+								<div class="row">
 
-												<% if flash.any? %>
-												<div class="col-md-12">
-													<% flash.each do |message_type, message| %>
-														<%= content_tag(:div, message, class: "alert alert-#{message_type}" ) %>
-													<% end %>
-												</div>
-												<% end %>
-
-												<div class="col-md-4">
-													<%= f.label :name do %>
-														名稱 <span>*</span>
-													<% end %>
-													<%= f.text_field :name, value: current_user ? current_user.name : nil %>					
-												</div>
-											</div>
-											
-											<%= f.label :content do %>
-												內容 <span>*</span>
-											<% end %>
-											<%= f.text_area :content %>
-
-											<%= hidden_field_tag 'path', request.path %>
-
-											<%= f.submit "張貼迴響", class: "medium-button button-red" %>
+									<% if flash.any? %>
+									<div class="col-md-12">
+										<% flash.each do |message_type, message| %>
+											<%= content_tag(:div, message, class: "alert alert-#{message_type}" ) %>
 										<% end %>
+									</div>
+									<% end %>
+
+									<div class="col-md-4">
+										<%= f.label :name do %>
+											<%= t('blog_content.comment_name') %> <span>*</span>
+										<% end %>
+										<%= f.text_field :name, value: current_user ? current_user.name : nil %>					
+									</div>
+								</div>
+								
+								<%= f.label :content do %>
+									<%= t('blog_content.comment_content') %> <span>*</span>
+								<% end %>
+								<%= f.text_area :content %>
+
+								<%= hidden_field_tag 'path', request.path %>
+
+								<%= f.submit t('blog_content.post_a_comment'), class: "medium-button button-red" %>
+							<% end %>
+							
+						</div>
+
+						<div class="comment-tree" id="comments">
+							<h1 class="main-title"><%= @article.comments_count %> <%= t('blog_content.comment_counts') %></h1>
+							
+							<ul>
+								<% @comments.each do |comment| %>
+								<li>
+									<div class="comment-text">
+										<div class="user-spec">
+											<h5><i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %></h5>		
+															<span class="xreply"><%= l(comment.created_at, format: :long ) %></span>								
+											<div class="clear"></div>
+										</div>
+										<p><%= comment.content %></p>
 										
 									</div>
+									<div class="clear"></div>
+								</li>
 
-									<div class="comment-tree" id="comments">
-										<h1 class="main-title"><%= @article.comments_count %> 則迴響</h1>
-										
-										<ul>
-											<% @comments.each do |comment| %>
+								<% if comment.has_children? %>
+									<% comment.children.each do |reply| %>
+									<li>
+										<ul class="depth">
 											<li>
+												<%= image_tag '/admin/dist/img/miracode_admin.png', class: 'admin_photo' %><!-- <img src="upload/user3.jpg" alt=""> -->
 												<div class="comment-text">
 													<div class="user-spec">
-														<h5><i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %></h5>		
-																		<span class="xreply"><%= l(comment.created_at, format: :long ) %></span>								
+														<h5><%= reply.name %></h5>
+														<span class=""><%= l(comment.created_at, format: :long ) %></span>
 														<div class="clear"></div>
 													</div>
-													<p><%= comment.content %></p>
+													<p><%= reply.content %></p>
 													
 												</div>
 												<div class="clear"></div>
 											</li>
-
-											<% if comment.has_children? %>
-												<% comment.children.each do |reply| %>
-												<li>
-													<ul class="depth">
-														<li>
-															<%= image_tag '/admin/dist/img/miracode_admin.png', class: 'admin_photo' %><!-- <img src="upload/user3.jpg" alt=""> -->
-															<div class="comment-text">
-																<div class="user-spec">
-																	<h5><%= reply.name %></h5>
-																	<span class=""><%= l(comment.created_at, format: :long ) %></span>
-																	<div class="clear"></div>
-																</div>
-																<p><%= reply.content %></p>
-																
-															</div>
-															<div class="clear"></div>
-														</li>
-													</ul>
-												</li>
-												<% end %>
-											<% end %>
-
-											<% end %>
 										</ul>
-										<%= paginate @comments %>
-									</div>
+									</li>
+									<% end %>
+								<% end %>
 
-
-
-								</div>
-								<!-- end signle inner -->
-
-							</div>
-							<!-- End Signle Blog -->
+								<% end %>
+							</ul>
+							<%= paginate @comments %>
 						</div>
-						<!-- End Main Blog -->
 
-						<div class="col-md-4">
-							<%= render 'blog_categories/blog_aside' %>
-							<!-- End aside -->
-						</div>
+
+
 					</div>
+					<!-- end signle inner -->
+
 				</div>
+				<!-- End Signle Blog -->
 			</div>
+			<!-- End Main Blog -->
+
+			<div class="col-md-4">
+				<%= render 'blog_categories/blog_aside' %>
+				<!-- End aside -->
+			</div>
+		</div>
+	</div>
+</div>
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.superfish.js"></script>

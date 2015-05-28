@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   		redirect_to blog_category_article_path(@category, @commentable, section: "comments")
   	else
   		# render template: 'articles/show'
-  		flash[:warning] = "欄位不能空白！"
+  		flash[:warning] = I18n.locale == :en ? "Comment can't be blank ! " : "欄位不能空白！"
   		redirect_to blog_category_article_path(@category, @commentable, section: "leave_comment")
 
   	end
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   	def load_commentable
   		# 藉由 form 傳遞 params[:path] 參數進來
   		# http://localhost:3000/blog_categories/2/articles/3
-  		parent_resource, parent_id, resource, id = params[:path].to_s.split('/')[1,4]
+  		parent_resource, parent_id, resource, id = params[:path].to_s.split('/')[2,4]
   		@category = parent_resource.singularize.classify.constantize.find(parent_id)
   		@commentable = resource.singularize.classify.constantize.find(id)
   	end

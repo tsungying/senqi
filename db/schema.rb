@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520025248) do
+ActiveRecord::Schema.define(version: 20150527072614) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20150520025248) do
     t.text     "content",          limit: 65535
     t.string   "home_image",       limit: 255
     t.string   "article_image",    limit: 255
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "comments_count",   limit: 4,     default: 0
     t.string   "youtube_video",    limit: 255
     t.string   "cover",            limit: 255,   default: "article_image"
@@ -54,9 +54,10 @@ ActiveRecord::Schema.define(version: 20150520025248) do
 
   create_table "blog_categories", force: :cascade do |t|
     t.string   "name",           limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "articles_count", limit: 4,   default: 0
+    t.string   "language",       limit: 255, default: "en"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -87,8 +88,8 @@ ActiveRecord::Schema.define(version: 20150520025248) do
 
   create_table "event_categories", force: :cascade do |t|
     t.string   "name",         limit: 255
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "events_count", limit: 4,   default: 0
   end
 
@@ -99,8 +100,8 @@ ActiveRecord::Schema.define(version: 20150520025248) do
     t.text     "content",           limit: 65535
     t.string   "home_image",        limit: 255
     t.string   "event_image",       limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "publish_at"
   end
 
@@ -175,15 +176,15 @@ ActiveRecord::Schema.define(version: 20150520025248) do
     t.string   "img",         limit: 255
     t.integer  "parent_id",   limit: 4
     t.string   "parent_type", limit: 255
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "section",     limit: 255, default: "product_photo"
   end
 
   create_table "prod_categories", force: :cascade do |t|
     t.string   "name",           limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "products_count", limit: 4,   default: 0
   end
 
@@ -195,8 +196,8 @@ ActiveRecord::Schema.define(version: 20150520025248) do
     t.decimal  "selling_price",                  precision: 10
     t.text     "brief",            limit: 65535
     t.text     "description",      limit: 65535
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "home_image",       limit: 255
     t.text     "youtube_code",     limit: 65535
     t.boolean  "active",           limit: 1,                    default: false

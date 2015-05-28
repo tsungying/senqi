@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :add_to_cart, :current_cart, :shipping_fee 
+  before_action :set_locale
 
   # def current_order
   #   if session[:order_id].nil?
@@ -33,6 +34,18 @@ class ApplicationController < ActionController::Base
     @fee = default_fee
   end
 
+  def default_url_options(options = {})
+  {locale: I18n.locale}
+  end
+
+  def current_language_blog_categories
+    @categories = BlogCategory.where(language: I18n.locale)
+  end
+
+  def current_language_articles
+    articles = Article.where(blog_category_id: current_language_blog_categories.pluck(:id).uniq).order("id desc")
+  end
+
   protected
 
     def configure_permitted_parameters
@@ -40,4 +53,10 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :password, :password_confirmation, :current_password) }
     end
 
+  private
+
+    def set_locale
+      I18n.locale = params[:locale] if params[:locale].present?
+
+    end
 end

@@ -1,66 +1,66 @@
 <aside>
 
-	<div class="blog-search mb30">								
-		<%= form_tag search_article_path, method: :get do %>
-			<%= text_field_tag :article_keyword, params[:article_keyword], placeholder: "搜尋文章" %>
-			<%= submit_tag "", name: nil %>
-		<% end %>
-	</div>
+  <div class="blog-search mb30">                
+    <%= form_tag search_article_path, method: :get do %>
+      <%= text_field_tag :article_keyword, params[:article_keyword], placeholder: t('blog_aside.search') %>
+      <%= submit_tag "", name: nil %>
+    <% end %>
+  </div>
 
-	<div class="shop-categories mb30">
-		<h1 class="asidetitle">文章分類</h1>
-		<ul>
-			<% @categories.each do |category| %>
-			<li>
-				<%= link_to blog_category_path(category) do %>
-					<%= category.name %>	<span>(<%= category.articles_count %>)</span>
-				<% end %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
+  <div class="shop-categories mb30">
+    <h1 class="asidetitle"><%= t('blog_aside.category') %></h1>
+    <ul>
+      <% @categories.each do |category| %>
+      <li>
+        <%= link_to blog_category_path(category) do %>
+          <%= category.name %>  <span>(<%= category.articles_count %>)</span>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 
-	<div class="normal-tabs left-widget mb30">
-		<div class="tabs-widget clearfix">
-    		<ul class="tab-links clearfix">
-    			<li class="active"><a href="#latest_articles">最新文章</a></li>
-    			<li class=""><a href="#latest_comments">最新迴響</a></li>
-    		</ul>
+  <div class="normal-tabs left-widget mb30">
+    <div class="tabs-widget clearfix">
+        <ul class="tab-links clearfix">
+          <li class="active"><a href="#latest_articles"><%= t('blog_aside.latest_posts') %></a></li>
+          <li class=""><a href="#latest_comments"><%= t('blog_aside.latest_comments') %></a></li>
+        </ul>
 
-    		<div id="latest_articles" style="display: block;">
-    			<ul>
-    				<% @latest_articles.each do |article| %>
-    				<li>
-    					<%= link_to blog_category_article_path(article.blog_category, article) do %>
-    						<%= article.title %>
-    						<%= raw article.summary %>
-    						<span><i class="fa fa-clock-o"></i><%= I18n.l(article.created_at, format: :long ) %></span>
-    					<% end %>
-    				</li>
-    				<% end %>
-    			</ul>
-    		</div>
+        <div id="latest_articles" style="display: block;">
+          <ul>
+            <% @latest_articles.each do |article| %>
+            <li>
+              <%= link_to blog_category_article_path(article.blog_category, article) do %>
+                <%= article.title %>
+                <%= raw article.summary %>
+                <span><i class="fa fa-clock-o"></i><%= I18n.l(article.created_at, format: :long ) %></span>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
 
-    		<div id="latest_comments" style="display: none;">
-    			<ul>
-    				<% @comments.each do |comment| %>
-	    				<% if comment.is_root? %>
-	    				<li>
-	    					<%= link_to comment.commentable.title, blog_category_article_path(comment.commentable.blog_category, comment.commentable, section: "comments") %>    				
-	    					<%= comment.content %>		    					
-	    					<span>
-		    					<i class="fa fa-clock-o"></i><%= l(comment.created_at, format: :long ) %>&nbsp;
-									<i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %>
-	    					</span>		    				
-	    				</li>
-							<% end %>
-    				<% end %>
-    			</ul>
-    		</div>
+        <div id="latest_comments" style="display: none;">
+          <ul>
+            <% @comments.each do |comment| %>
+              <% if comment.is_root? %>
+              <li>
+                <%= link_to comment.commentable.title, blog_category_article_path(comment.commentable.blog_category, comment.commentable, section: "comments") %>           
+                <%= comment.content %>                  
+                <span>
+                  <i class="fa fa-clock-o"></i><%= l(comment.created_at, format: :long ) %>&nbsp;
+                  <i class="fa fa-user" style="margin-right: 10px"></i> <%= comment.name %>
+                </span>               
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
 
-		</div>
-		
-	</div>
-	<!-- End Normal Tabs -->
+    </div>
+    
+  </div>
+  <!-- End Normal Tabs -->
 
 </aside>

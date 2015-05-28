@@ -1,40 +1,40 @@
-			<!-- blog -->
-			<div class="blog">
-				<div class="container">
-					<div class="title">
-						<h1><i class="fa fa-star"></i> 部落格 <i class="fa fa-star"></i></h1>
-						<div class="title-border"></div>
-					</div>
+<!-- blog -->
+<div class="blog">
+  <div class="container">
+    <div class="title">
+      <h1><i class="fa fa-star"></i> <%= t('homepage.section.blog') %> <i class="fa fa-star"></i></h1>
+      <div class="title-border"></div>
+    </div>
 
-					<div class="row">
+    <div class="row">
 
-					<% @articles.each do |article| %>
+    <% @articles.each do |article| %>
 
-						<div class="col-md-4">
-							<div class="blog-item">
-								<div class="blog-img">
-									<%= link_to blog_category_article_path(article.blog_category, article) do %>
-										<%= image_tag article.home_image_url %>
-									<% end %>
+      <div class="col-md-4">
+        <div class="blog-item">
+          <div class="blog-img">
+            <%= link_to blog_category_article_path(article.blog_category, article) do %>
+              <%= image_tag article.home_image_url %>
+            <% end %>
 
-									<div class="calendar">
-										<p><%= article.created_at.strftime("%d") %></p>
-										<span><%= article.created_at.strftime("%b") %></span>	
-									</div>
-									<%= link_to blog_category_article_path(article.blog_category, article) do %>
-										<h3><%= article.title %></h3>
-									<% end %>									
+            <div class="calendar">
+              <p><%= article.created_at.strftime("%d") %></p>
+              <span><%= article.created_at.strftime("%b") %></span> 
+            </div>
+            <%= link_to blog_category_article_path(article.blog_category, article) do %>
+              <h3><%= article.title %></h3>
+            <% end %>                 
 
-									<div class="blog-border"></div>
-									<%= raw article.summary %>
+            <div class="blog-border"></div>
+            <%= raw article.summary %>
 
-								</div>
-							</div>
-						</div>
+          </div>
+        </div>
+      </div>
 
-					<% end %>	
+    <% end %> 
 
-					</div>
-				</div>
-			</div>
-			<!-- end blog -->
+    </div>
+  </div>
+</div>
+<!-- end blog -->

@@ -18,3 +18,4 @@
 # 
 # Order.all.each { |o| o.update_attributes(payment_id: 1) }
 # OrderStatus.create!(name: "取號成功")
+TermsOfService.create(shipping_fee: 60)

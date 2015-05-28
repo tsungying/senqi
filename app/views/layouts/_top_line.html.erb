@@ -25,18 +25,20 @@
 
 					<ul>
 						<% if user_signed_in? %>
-						<li class="user_name"><a>嗨，<%= current_user.name %></a></li> 
-						  <li><%= link_to '會員中心', orders_path %></li> 
-						  <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li> 
+						<li class="user_name"><a><%= t('top_line.greeting') %><%= current_user.name %></a></li> 
+						  <li><%= link_to t('top_line.account'), orders_path %></li> 
+						  <li><%= link_to t('top_line.logout'), destroy_user_session_path, method: :delete %></li> 
 
 						  <% if current_user.try(:admin?) %>
-						  <li><%= link_to "後台", admin_root_path  %></li>
+						  <li><%= link_to t('top_line.backend'), admin_root_path  %></li>
 						  <% end %>
 						<% else %>					 
-						  <li><%= link_to "登入", new_user_session_path %></li>
-							<li><%= link_to "Facebook登入", user_omniauth_authorize_path(:facebook) %></li>
-							<li><%= link_to "加入會員", new_user_registration_path %></li>
+						  <li><%= link_to t('top_line.login'), new_user_session_path %></li>
+							<li><%= link_to t('top_line.fb_login'), user_omniauth_authorize_path(:facebook) %></li>
+							<li><%= link_to t('top_line.register'), new_user_registration_path %></li>
 						<% end %>
+						<li><%= link_to t('top_line.cht'), locale: "zh-TW" %><li>
+						<%= link_to t('top_line.en'), locale: "en" %>
 					</ul>
 
 					<%= render 'layouts/shared/mobile_version_cart' %>

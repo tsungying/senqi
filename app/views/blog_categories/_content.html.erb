@@ -1,87 +1,81 @@
-			<div class="blog-container">
-				<div class="container">
-					<div class="row">
+<div class="blog-container">
+  <div class="container">
+    <div class="row">
 
-						<div class="col-md-8">
+      <div class="col-md-8">
 
-							<% @articles.each do |article| %>
-							<div class="blog-post mb50">
+        <% @articles.each do |article| %>
+        <div class="blog-post mb50">
 
-								<div class="blog-item">
+          <div class="blog-item">
 
-									<div class="blog-img">
-										<% if article.cover == "article_image" %>
-											<%= link_to blog_category_article_path(article.blog_category, article) do %>
-												<%= image_tag article.article_image_url %>											
-											<% end %>
-										<% else %>
-											<iframe class="videoembed" src="http://www.youtube.com/embed/<%= article.youtube_video %>"></iframe>
-										<% end %>
+            <div class="blog-img">
+              <% if article.cover == "article_image" %>
+                <%= link_to blog_category_article_path(article.blog_category, article) do %>
+                  <%= image_tag article.article_image_url %>                      
+                <% end %>
+              <% else %>
+                <iframe class="videoembed" src="http://www.youtube.com/embed/<%= article.youtube_video %>"></iframe>
+              <% end %>
 
-										<div class="calendar">
-											<p><%= article.created_at.strftime("%d") %></p>
-											<span><%= article.created_at.strftime("%b") %></span>	
-										</div>
-										<div class="blog-content">
+              <div class="calendar">
+                <p><%= article.created_at.strftime("%d") %></p>
+                <span><%= article.created_at.strftime("%b") %></span> 
+              </div>
+              <div class="blog-content">
 
-											<h1><%= highlight(article.title, params[:article_keyword]) %></h1>
-											<div class="post-meta">
-												<%= link_to blog_category_article_path(article.blog_category, article, section: "comments") do %>
-													<i class="fa fa-comment"></i> <%= article.comments_count %> 則迴響
-												<% end %>
-												
-											</div>
-											<%= raw highlight(article.summary, params[:article_keyword]) %>
-<!-- 											<div class="post-meta">
-												<a href="#"><i class="fa fa-user"></i> Joeby Ragpa</a>
-												<a href="#"><i class="fa fa-bookmark"></i> Design</a>
-												<a href="#"><i class="fa fa-comment"></i> <%= article.comments_count %> 則留言</a>
-											</div> -->
-											
-<!-- 											<p>We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. Our subconscious mind contains such power and complexity that it literally staggers the imagination.</p> -->
-											<%= link_to "詳細內容", blog_category_article_path(article.blog_category, article), class: "small-button button-red mb10" %>
-											<!-- <a href="#" class="small-button button-red mb10">Read More</a> -->
+                <h1><%= highlight(article.title, params[:article_keyword]) %></h1>
+                <div class="post-meta">
+                  <%= link_to blog_category_article_path(article.blog_category, article, section: "comments") do %>
+                    <i class="fa fa-comment"></i> <%= article.comments_count %> <%= t('blog_content.comment_counts') %>
+                  <% end %>
+                  
+                </div>
+                <%= raw highlight(article.summary, params[:article_keyword]) %>
 
-										</div>
-									</div>
-								</div>
+                <%= link_to t('blog_content.read_more'), blog_category_article_path(article.blog_category, article), class: "small-button button-red mb10" %>
+                <!-- <a href="#" class="small-button button-red mb10">Read More</a> -->
 
-							</div>
-							<% end %>
+              </div>
+            </div>
+          </div>
 
-							 				  
-								<!-- <div class="pagenation blog-pagenation clearfix"> -->
-									<%= paginate @articles %>
-								<!-- </div>  -->
-							
-			        	<div class="clear"></div>
+        </div>
+        <% end %>
 
-						</div>
+                  
+          <!-- <div class="pagenation blog-pagenation clearfix"> -->
+            <%= paginate @articles %>
+          <!-- </div>  -->
+        
+          <div class="clear"></div>
 
-						<div class="col-md-4">
-							<%= render 'blog_categories/blog_aside' %>
-							<!-- End aside -->
-						</div>
+      </div>
 
-					</div>
-				</div>
-			</div>
+      <div class="col-md-4">
+        <%= render 'blog_categories/blog_aside' %>
+        <!-- End aside -->
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
-	<script type="text/javascript" src="/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.superfish.js"></script>
-	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.superfish.js"></script>
+  <script type="text/javascript" src="/js/jquery.bxslider.js"></script>
 
-	<script type="text/javascript" src="/js/bootstrap.js"></script>
-	<script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
-	<script type="text/javascript" src="/js/plugins-scroll.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+  <script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
+  <script type="text/javascript" src="/js/plugins-scroll.js"></script>
   <script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.appear.js"></script>
-	<script type="text/javascript" src="/js/jquery.countTo.js"></script>
-	<script src="/js/jquery.parallax.js"></script>
+  <script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.appear.js"></script>
+  <script type="text/javascript" src="/js/jquery.countTo.js"></script>
+  <script src="/js/jquery.parallax.js"></script>
   <!-- jQuery KenBurn Slider  -->
   <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script>
-	<script type="text/javascript" src="/js/script.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>

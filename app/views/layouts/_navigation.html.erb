@@ -1,28 +1,26 @@
-			
+<div class="container">
+	<!-- Navigation -->
+	<nav id="nav">
+		<ul id="navlist" class="sf-menu clearfix">
+			<li class="current">
+				<%= link_to t('navigation.home'), root_path %>
+			</li>
 
-			<div class="container">
-				<!-- Navigation -->
-				<nav id="nav">
-					<ul id="navlist" class="sf-menu clearfix">
-						<li class="current">
-							<%= link_to "首頁", root_path %>
-						</li>
+			<li><%= link_to t('navigation.about_us'), about_path %>	</li>
 
-						<li><%= link_to "公司簡介", about_path %>	</li>
+			<li><%= link_to t('navigation.products'), prod_categories_path %>
+				<ul class="sub-menu">
+					<% ProdCategory.all.each do |category| %>
+					<li><%= link_to category.name, prod_category_path(category) %></li>
+					<% end %>
+				</ul>
+			</li>
 
-						<li><%= link_to "商品櫥窗", prod_categories_path %>
-							<ul class="sub-menu">
-								<% ProdCategory.all.each do |category| %>
-								<li><%= link_to category.name, prod_category_path(category) %></li>
-								<% end %>
-							</ul>
-						</li>
+			<li><%= link_to t('navigation.blog'), blog_categories_path %>	</li>
+			<li><%= link_to t('navigation.events'), promotions_path %></li>
+			<li><%= link_to t('navigation.contact_us'), contact_path %></li>
 
-						<li><%= link_to "部落格", blog_categories_path %>	</li>
-						<li><%= link_to "促銷活動", promotions_path %></li>
-						<li><%= link_to "聯絡我們", contact_path %></li>
-
-					</ul>
-				</nav>
-		    	<!-- Navigation -->
-			</div>
+		</ul>
+	</nav>
+  	<!-- Navigation -->
+</div>

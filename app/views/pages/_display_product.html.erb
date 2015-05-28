@@ -6,7 +6,7 @@
 			<div class="filter clearfix">
 				<div class="holder">
 					<ul>
-						<li><a href="#" class="active" data-filter="*">全部商品</a></li>
+						<li><a href="#" class="active" data-filter="*"><%= t('homepage.section.products') %></a></li>
 						<% @prod_categories.each do |category| %>
 						<li><a href="#" class="choose" data-filter=".class<%= category.id%>"><i class="fa fa-star"></i><%= category.name %></a></li>
 						<% end %>
