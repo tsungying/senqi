@@ -262,6 +262,8 @@ zh-TW:
       products: "全部商品"
       promotions: "促銷活動"
       shopping_cart: "購物車"
+  upper_header:
+    search_product: "搜尋商品"    
   blog_aside:
     search: "搜尋文章"
     category: "文章分類"
@@ -274,3 +276,7 @@ zh-TW:
     comment_name: "名稱"
     comment_content: "內容"
     post_a_comment: "張貼迴響"
+  cart:
+    item_quantity: "數量:"
+    subtotal: "消費金額："
+    view_cart: "查看購物車"

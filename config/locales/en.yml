@@ -226,6 +226,8 @@ en:
       products: "ALL"
       promotions: "PROMOTIONS"
       shopping_cart: "CART"
+  upper_header:
+    search_product: "Search Products"
   blog_aside:
     search: "Search Articles"
     category: "CATEGORIES"
@@ -238,3 +240,7 @@ en:
     comment_name: "Name"
     comment_content: "Your Comment"
     post_a_comment: "Post A Comment"
+  cart:
+    item_quantity: "Quantity:"
+    subtotal: "Cart Subtotal:"
+    view_cart: "View Cart"

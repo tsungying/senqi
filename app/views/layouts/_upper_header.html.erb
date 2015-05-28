@@ -3,7 +3,7 @@
 
 					<div class="search-input">
 						<%= form_tag search_product_path, method: :get do %>
-							<%= text_field_tag :product_keyword, params[:product_keyword], placeholder: "搜尋商品" %>
+							<%= text_field_tag :product_keyword, params[:product_keyword], placeholder: t('upper_header.search_product') %>
 							<%= submit_tag "", name: nil %>
 						<% end %>
 					</div>
