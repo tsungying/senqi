@@ -1,66 +1,62 @@
 <footer>
-	<% settings = TermsOfService.first %>
-	<div class="inner-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="f-about">
-						<h1>關於SENQI</h1>
-						<p class="mb20"><%= settings.company_intro %></p>
-					</div>
-				</div>
-				
-				<div class="col-md-3">
-					<div class="gettouch">
-						<h1>聯絡我們</h1>
-						<p><i class="fa fa-home"></i><%= settings.company_name %></p>
-						<p><i class="fa fa-home"></i><%= settings.company_address %></p>
-						<p><i class="fa fa-phone"></i><%= settings.company_phone %></p>
-						<p class="mb20"><i class="fa fa-envelope"></i><%= settings.company_mail %></p>
-					</div>
-				</div>
+  <% settings = TermsOfService.first %>
+  <div class="inner-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="f-about">
+            <h1><%= t('footer.about') %></h1>
+            <p class="mb20"><%= t('footer.company_intro') %></p>
+          </div>
+        </div>
+        
+        <div class="col-md-3">
+          <div class="gettouch">
+            <h1><%= t('footer.contact') %></h1>
+            <p><i class="fa fa-home"></i><%= t('footer.company_name') %></p>
+            <p><i class="fa fa-home"></i><%= t('footer.company_addr') %></p>
+            <p><i class="fa fa-phone"></i><%= t('footer.company_phone') %></p>
+            <p class="mb20"><i class="fa fa-envelope"></i><%= t('footer.company_email') %></p>
+          </div>
+        </div>
 
-				<div class="col-md-3">
-					<div class="infos">
-						<h1>網站導覽</h1>
-						<ul>
-							<li><%= link_to "• 公司簡介", about_path %></li>
-							<li><%= link_to "• 商品櫥窗", prod_categories_path %></li> 
-							<li><%= link_to "• 部落格", blog_categories_path %></li>
-							<li><%= link_to "• 促銷活動", promotions_path %></li>
-						</ul>
-					</div>
-				</div>
+        <div class="col-md-3">
+          <div class="infos">
+            <h1><%= t('footer.web_map') %></h1>
+            <ul>
+              <li><%= link_to "• "+t('navigation.about_us'), about_path %></li>
+              <li><%= link_to "• "+t('navigation.products'), prod_categories_path %></li> 
+              <li><%= link_to "• "+t('navigation.blog'), blog_categories_path %></li>
+              <li><%= link_to "• "+t('navigation.events'), promotions_path %></li>
+            </ul>
+          </div>
+        </div>
 
-				<div class="col-md-3">
-					<div class="account">
-						<h1>粉絲專頁</h1>
-						<ul class="footer-socials">
-							<li><%= link_to settings.facebook_url do %><i class="fa fa-facebook"></i><% end %></li>
-							<li><%= link_to settings.youtube_url do %><i class="fa fa-youtube"></i><% end %></li>
-						</ul>
-					</div>
-				</div>
+        <div class="col-md-3">
+          <div class="account">
+            <h1><%= t('footer.find_us') %></h1>
+            <ul class="footer-socials">
+              <li><%= link_to settings.facebook_url do %><i class="fa fa-facebook"></i><% end %></li>
+              <li><%= link_to settings.youtube_url do %><i class="fa fa-youtube"></i><% end %></li>
+            </ul>
+          </div>
+        </div>
 
-			</div>
-		</div>
+      </div>
+    </div>
 
-<!-- 		<div id="back-to-top">
-			<a href="#top">Back to Top</a>
-		</div> -->
+  </div>
+  <!-- end contanir & inner-footer -->
 
-	</div>
-	<!-- end contanir & inner-footer -->
-
-	<div class="container">
-		<div class="last-div">
-			<div class="row">
-				<div class="copyright">
-					© 2015 Senqi.co ltd.  |  <a href="#">Designed by Senqi</a>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="last-div">
+      <div class="row">
+        <div class="copyright">
+          © 2015 Senqi.co ltd.  |  <a href="#">Designed by Senqi</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
  
 </footer>

@@ -280,3 +280,13 @@ zh-TW:
     item_quantity: "數量:"
     subtotal: "消費金額："
     view_cart: "查看購物車"
+  footer:
+    about: "關於 SENQI"
+    contact: "聯絡我們"
+    web_map: "網站導覽"
+    find_us: "粉絲專頁"
+    company_intro: ""
+    company_name: "神啟有限公司"
+    company_addr: "台北市內湖區康寧路三段189巷22號2樓"
+    company_phone: "02-26333330"
+    company_email: "services@senqi.com"    

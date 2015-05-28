@@ -244,3 +244,13 @@ en:
     item_quantity: "Quantity:"
     subtotal: "Cart Subtotal:"
     view_cart: "View Cart"
+  footer:
+    about: "About Senqi"
+    contact: "Get in Touch with us"
+    web_map: "Information"
+    find_us: "FIND US ON"
+    company_intro: ""
+    company_name: "SENQI FZCO (Dubai)"
+    company_addr: "Office C83 - 4 Floor, Alliance Business Centers Network, Dubai Silicon Oasis Headquaters, P.O. Box 341041 Dubai UAE"
+    company_phone: ""
+    company_email: "services@senqi.com"
