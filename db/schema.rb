@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527072614) do
+ActiveRecord::Schema.define(version: 20150528091724) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 20150527072614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "products_count", limit: 4,   default: 0
+    t.string   "language",       limit: 255, default: "en"
   end
 
   create_table "products", force: :cascade do |t|

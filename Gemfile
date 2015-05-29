@@ -46,5 +46,6 @@ gem 'roadie-rails', '~> 1.0.6'
 
 group :development, :test do
 	gem "better_errors"
-	gem 'rack-mini-profiler', require: false
+	# gem 'rack-mini-profiler', require: false
+	gem "binding_of_caller"
 end

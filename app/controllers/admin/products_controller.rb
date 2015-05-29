@@ -5,27 +5,27 @@ class Admin::ProductsController < Admin::BaseController
   def show
     @category = ProdCategory.find(params[:prod_category_id])
     @product = @category.products.find(params[:id])
-    @url = prod_category_product_url(@category, @product)    
+    @url = prod_category_product_url(@category, @product, locale: I18n.locale)    
   end
 
   def new
-  	@category = ProdCategory.find(params[:prod_category_id])
-    @product = @category.products.new  	
+    @category = ProdCategory.find(params[:prod_category_id])
+    @product = @category.products.new   
   end
 
   def create
     @category = ProdCategory.find(params[:prod_category_id])
-  	@product = @category.products.new(product_params)
-  	
-  	if @product.save
+    @product = @category.products.new(product_params)
+    
+    if @product.save
       if (params[:pictures]||[]).any?
         params[:pictures]['image'].each { |image| @product.pictures.create(img: image) } if params[:pictures].has_key?('image')
         params[:pictures]['description'].each { |description| @product.pictures.create(img: description, section: "product_description") } if params[:pictures].has_key?('description')
       end
-  		redirect_to [:admin, @category, @product]
-  	else
-  		render :new
-  	end
+      redirect_to [:admin, @category, @product]
+    else
+      render :new
+    end
   end
 
   def edit
@@ -63,8 +63,8 @@ class Admin::ProductsController < Admin::BaseController
 
   private
 
-   	def product_params
-   		params.require(:product).permit(:name, :part_number, :original_price, :selling_price, :brief, :home_image, :youtube_code, :active, pictures_attributes: [:img, :section])
-   	end
+    def product_params
+      params.require(:product).permit(:name, :part_number, :original_price, :selling_price, :brief, :home_image, :youtube_code, :active, pictures_attributes: [:img, :section])
+    end
 
 end

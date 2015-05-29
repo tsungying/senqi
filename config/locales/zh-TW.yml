@@ -289,4 +289,9 @@ zh-TW:
     company_name: "神啟有限公司"
     company_addr: "台北市內湖區康寧路三段189巷22號2樓"
     company_phone: "02-26333330"
-    company_email: "services@senqi.com"    
+    company_email: "services@senqi.com" 
+  products:
+    category: "商品分類"
+    add_to_cart: "加入購物車"
+    description: "產品介紹"
+    detail: "商品詳細介紹"

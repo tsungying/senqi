@@ -1,17 +1,17 @@
-		<div class="col-md-3">
-			<aside class="left-shop">				
-				<div class="shop-categories mb30">
-					<h1 class="asidetitle">商品分類</h1>
-					<ul>
-						<% @prod_categories.each do |category| %>
-						<li>
-							<%= link_to prod_category_path(category) do %>
-								<%= category.name %>	<span>（<%= category.products_count %>）</span>
-							<% end %>
-						</li>
-						<% end %>
-					</ul>
-				</div>
-			</aside>
-			<!-- End aside shop -->
-		</div>		
+<div class="col-md-3">
+  <aside class="left-shop">       
+    <div class="shop-categories mb30">
+      <h1 class="asidetitle"><%= t('products.category') %></h1>
+      <ul>
+        <% @prod_categories.each do |category| %>
+        <li>
+          <%= link_to prod_category_path(category) do %>
+            <%= category.name %>  <span>（<%= category.products_count %>）</span>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </aside>
+  <!-- End aside shop -->
+</div>    

@@ -10,23 +10,7 @@
           <h3 class="box-title"> 重新命名商品分類</h3>
         </div>      
 
-        <%= form_for [:admin, @prod_category], html: { role: "form" } do |f| %>
-          <div class="box-body">
-
-            <%= render 'admin/shared/error_messages', object: @prod_category %>          
-
-            <div class="form-group">
-              <%= f.label :name, "分類名稱" %>
-              <%=f.text_field :name, placeholder: "Name", class: "form-control" %>
-            </div>
-
-          </div>
-
-          <div class="box-footer">
-            <button type="submit" class="btn btn-danger">送出</button>
-            <%= link_to "返回上一頁", :back, class: "btn btn-primary" %>
-          </div>
-        <% end %>
+        <%= render 'fields' %>
 
       </div><!-- /.box -->
     </div>

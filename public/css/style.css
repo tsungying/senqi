@@ -319,7 +319,7 @@ p{
 
 .right-line a {
   /*color: #fff;*/
-  color: #FAAC57;
+  color: #D42647;
   font-size: 12px;
   font-family: 'Raleway';
 }
@@ -5738,7 +5738,8 @@ padding: 0;
 /*Footer*/
 
 footer {
-  background: url(/images/footer.jpg) 0 repeat;
+  /*background: url(/images/footer.jpg) 0 repeat;*/
+  background: url(/images/footer_logo_bg.jpg)
   /*background: #000;*/
 }
 
@@ -5746,7 +5747,7 @@ footer h1 {
   font-size: 18px;
   font-family: 'Noticia Text';
   text-transform: uppercase;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid #C3C1C1;
   padding-bottom: 18px;
   margin-bottom: 18px;
   margin-top: 0;
@@ -6118,8 +6119,10 @@ footer h1 {
 
 /* custom */
 .green-header{
-  background: #FAAC57;
+  /*background: #FAAC57;*/
+  background: url(/images/menu_bg_outer.jpg);
 }
+
 
 /*.hero{
   position: absolute;
@@ -6197,4 +6200,8 @@ footer h1 {
   z-index: 10000;
   bottom: 0px;
   outline: 0 !important;
+}
+
+.footer_p{
+  color: #e3e3e3
 }

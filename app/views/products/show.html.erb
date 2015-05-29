@@ -1,123 +1,98 @@
 <div class="product-page container"> 
-	
-	<div class="row">
+  
+  <div class="row">
 
-		<% @video.each_with_index do |code, index| %>
-		  <iframe class=" col-lg-offset-3 col-lg-6 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/<%= code %><%= '?autoplay=1' if 0 == index %>" frameborder="0" allowfullscreen></iframe>
-	  	<div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>			
-		<% end %>
-		
-		<div class="clear"></div>
+    <% @video.each_with_index do |code, index| %>
+      <iframe class=" col-lg-offset-3 col-lg-6 col-md-12 col-sm-12 col-xs-12" width="" height="315" src="https://www.youtube.com/embed/<%= code %><%= '?autoplay=1' if 0 == index %>" frameborder="0" allowfullscreen></iframe>
+      <div class="col-md-12 col-sm-12 col-xs-12">&nbsp;</div>     
+    <% end %>
+    
+    <div class="clear"></div>
 
-		<div class="col-md-6">
-			<div class="single-img">
-				<div class="sp-wrap">
-					<% @product.pictures.where(section: "product_photo").each do |picture| %>
-						<%= link_to picture.img_url do %>
-							<%= image_tag picture.img_url %>
-						<% end %>
-					<% end %>
-				</div>
-				<div id="test"></div>
-			</div>
-		</div>
+    <div class="col-md-6">
+      <div class="single-img">
+        <div class="sp-wrap">
+          <% @product.pictures.where(section: "product_photo").each do |picture| %>
+            <%= link_to picture.img_url do %>
+              <%= image_tag picture.img_url %>
+            <% end %>
+          <% end %>
+        </div>
+        <div id="test"></div>
+      </div>
+    </div>
 
-		<div class="col-md-6">
-			<div class="single-desc">
+    <div class="col-md-6">
+      <div class="single-desc">
 
-				<div class="middle-single">								
-					<h1><%= @product.name %></h1>
-					<%= image_tag '/miracode/upload/stars.png' %>
-				  <div class="clear"></div>
-				</div>
-									
-				<div class="single-price">
-				  <ul>
-						<% if @product.original_price > @product.selling_price %>
-							<li><span class="high-price">NT&nbsp;<%= @product.original_price %></span></li>
-						<% end %>
-						<li><span class="low-price">NT&nbsp;<%= @product.selling_price %></span></li>
-					</ul>
-			  </div>
+        <div class="middle-single">               
+          <h1><%= @product.name %></h1>
+          <%= image_tag '/miracode/upload/stars.png' %>
+          <div class="clear"></div>
+        </div>
+                  
+        <div class="single-price">
+          <ul>
+            <% if @product.original_price > @product.selling_price %>
+              <li><span class="high-price"><%= number_to_currency(@product.original_price, locale: I18n.locale) %></span></li>
+            <% end %>
+            <li><span class="low-price"><%= number_to_currency(@product.selling_price, locale: I18n.locale) %></span></li>
+          </ul>
+        </div>     
 
-<!-- 				<div class="single-inputs row">
-					<div class="col-md-6">
-						<select class="select">
-							<option value="Select Color">商品規格</option>
-							<option value="White">自然棕</option>
-							<option value="Black">自然黑</option>
-							<option value="Red">酒紅棕</option>
-							<option value="Blue">深邃黑</option>
-						</select>
-					</div>
-				</div>	 -->		   
+        <div class="single-descript">
+        <%= raw @product.brief %>
+        </div>
 
-				<div class="single-descript">
-				<%= raw @product.brief %>
-				</div>
+        <div class="prod-end">
+          <%= form_for add_to_cart, remote: true do |f| %>
+            <%= f.submit t('products.add_to_cart'), class: "medium-button button-red add-cart" %>
+            <%= f.number_field :quantity, value: 1, min: 1 %>
+            <%= f.hidden_field :product_id, value: @product.id %>           
+          <% end %>         
+        </div>
 
-			  <div class="prod-end">
-					<%= form_for add_to_cart, remote: true do |f| %>
-						<%= f.submit "加入購物車", class: "medium-button button-red add-cart" %>
-						<%= f.number_field :quantity, value: 1, min: 1 %>
-						<%= f.hidden_field :product_id, value: @product.id %>						
-					<% end %>			  	
-			  </div>
-<!-- 				<div class="share">
-					<span>Share</span>
-					<ul>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-						<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-					</ul>
-				</div> -->
-
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
-	<!-- End Product Single -->
+  <!-- End Product Single -->
 <%= render "description" %>
 
-
-
-	<script type="text/javascript" src="/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/jquery-ui.js"></script>
-	<script>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui.js"></script>
+  <script>
     $( "#tabs" ).tabs();
     $( "#accordion" ).accordion();
-	</script>
-	<script type="text/javascript" src="/js/smoothproducts.min.js"></script>
-	<script type="text/javascript">
-		/* wait for images to load */
-		$(window).load( function() {
-			$('.sp-wrap').smoothproducts();
-		});
-	</script>
-	
-	<script type="text/javascript" src="/js/jquery.superfish.js"></script>
-	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+  </script>
+  <script type="text/javascript" src="/js/smoothproducts.min.js"></script>
+  <script type="text/javascript">
+    /* wait for images to load */
+    $(window).load( function() {
+      $('.sp-wrap').smoothproducts();
+    });
+  </script>
+  
+  <script type="text/javascript" src="/js/jquery.superfish.js"></script>
+  <script type="text/javascript" src="/js/jquery.bxslider.js"></script>
 
-	<script type="text/javascript" src="/js/bootstrap.js"></script>
-	<script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/plugins-scroll.js"></script>
-	<script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.appear.js"></script>
-	<script type="text/javascript" src="/js/jquery.countTo.js"></script>
-	<script src="/js/jquery.parallax.js"></script>
-	<!-- jQuery KenBurn Slider  -->
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="/js/plugins-scroll.js"></script>
+  <script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.appear.js"></script>
+  <script type="text/javascript" src="/js/jquery.countTo.js"></script>
+  <script src="/js/jquery.parallax.js"></script>
+  <!-- jQuery KenBurn Slider  -->
   <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script>
-	<script type="text/javascript" src="/js/script.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
 
- 	<!-- include jQuery + carouFredSel plugin -->
+  <!-- include jQuery + carouFredSel plugin -->
   <script type="text/javascript" src="/js/jquery.carouFredSel.js"></script>
 
   <!-- optionally include helper plugins -->

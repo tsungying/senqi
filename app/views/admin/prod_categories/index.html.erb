@@ -16,6 +16,7 @@
             <tr>
               <th>ID</th>
               <th>分類名稱</th>
+              <th>語言</th>
               <th>商品數</th>
               <th>更新時間</th>
               <th>建立時間</th>
@@ -26,6 +27,7 @@
             <tr>
               <td><%= category.id %></td>
               <td><%= link_to category.name, admin_prod_category_path(category) %></td>
+              <td><%= translate_language_name(category.language) %></td>
               <td><%= category.products_count %></td>              
               <td><%= l(category.updated_at, format: :long) %></td>
               <td><%= l(category.created_at, format: :long) %></td>

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :add_to_cart, :current_cart, :shipping_fee 
+  helper_method :add_to_cart, :current_cart, :shipping_fee, :current_language_product_categories
   before_action :set_locale
 
   # def current_order
@@ -37,6 +37,17 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
   {locale: I18n.locale}
   end
+
+  # Product part
+  def current_language_product_categories
+    @prod_categories = ProdCategory.where(language: I18n.locale)
+  end
+
+  def current_language_products
+    products = Product.where(prod_category_id: current_language_product_categories.pluck(:id).uniq).order("id desc")
+  end
+
+  # Blog part
 
   def current_language_blog_categories
     @categories = BlogCategory.where(language: I18n.locale)

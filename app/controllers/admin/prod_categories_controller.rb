@@ -1,7 +1,7 @@
 class Admin::ProdCategoriesController < Admin::BaseController 
-	
+  
   def index
-  	@categories = ProdCategory.all
+    @categories = ProdCategory.all
   end
 
   def show
@@ -44,6 +44,6 @@ class Admin::ProdCategoriesController < Admin::BaseController
   private
 
     def prod_category_params
-      params.require(:prod_category).permit(:name)
+      params.require(:prod_category).permit(:name, :language)
     end
 end

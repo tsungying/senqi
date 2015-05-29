@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_action :check_admin, only: [:notify]
 
   def index
-    @prod_categories = ProdCategory.all
+    @prod_categories = current_language_product_categories
     @articles = current_language_articles.limit(3)
     @events = Event.order("publish_at desc").limit(3)    
     @home_slider = HomePage.where( logo: nil ).order("play_order desc")
@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def contact
-  	
+    
   end
 
   def notify
