@@ -26,6 +26,7 @@ gem 'kaminari'
 
 # file upload
 gem 'carrierwave'
+gem 'simple_form_fancy_uploads'
 
 # image processor
 gem 'mini_magick'
@@ -50,4 +51,5 @@ group :development, :test do
 	gem "faker"
 	gem "better_errors"
 	gem "binding_of_caller"
+  gem 'hirb-unicode'
 end

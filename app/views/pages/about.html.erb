@@ -1,64 +1,70 @@
-		<style type="text/css">
-			#content {
-				padding-top: 0px !important;
-				background: #FFFFFF !important;
-			}
+    <style type="text/css">
+      #content{background: #FFFFFF !important;}
+    </style>
 
-			.img-responsive-revised{
-			  max-width: 100%;
-			  height: auto;
-			}
+    <div id="content" >
+      <div class="collection clearfix">
+        <div class="container">
 
-			.blog-container {
-				  /*padding: 30px 0 0px;*/
-				  padding: 0 ;
-			}
+          <div class="row">
 
-			.blog-single {
-			  padding-bottom: 0px; 
-			}
-		</style>
+            <% @company_infos.each do |company_info| %>
+            <div class="col-md-4">
+              <div class="coll-item clearfix">
 
-		<div class="blog-container">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-offset-1 col-md-10">
-						<div class="blog-single clearfix">						
+                <div class="coll-box">
+                  <%= link_to "javascript:void(0)" do %>
+                    <%= image_tag company_info.image, alt: "", name: "img#{company_info.id}" %>
+                  <% end %>
 
-							<div class="flexslider">
-								<ul class="slides">
-								<% @about_office.each do |about| %>
-								<li><%= image_tag about.office_image_url %></li>
-								<% end %>
-								</ul>
-							</div>
+                  <div class="senqi-coll-text">
+                    <p><%= company_info.title %></p>
+                  </div>
+                </div>
 
-							<div class="blogsingle-inner text-center">
-							<% if @about_brand_story %>
-							<%= image_tag @about_brand_story.brand_story_url, class: "img-responsive-revised" %>
-							<% end %>
-							</div>				
+              </div>
+            </div>
+            <% end %>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+          </div>
 
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.superfish.js"></script>
-	<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+          <div class="row margin-left-right-zero">
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/retina-1.1.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-	<script type="text/javascript" src="js/plugins-scroll.js"></script>
-  <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-	<script type="text/javascript" src="js/jquery.imagesloaded.min.js"></script>
-	<script type="text/javascript" src="js/jquery.appear.js"></script>
-	<script type="text/javascript" src="js/jquery.countTo.js"></script>
-	<script src="js/jquery.parallax.js"></script>
+            <% @company_infos.each_with_index do |company_info, index| %>
+            <div class="col-md-12 about-description" id="img<%= company_info.id %>" style="<%= 0 == index ? nil : 'display:none;'  %>">
+              <%= raw company_info.content %>
+            </div>
+
+           <% end %>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.superfish.js"></script>
+  <script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+  <script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
+  <script type="text/javascript" src="/js/plugins-scroll.js"></script>
+  <script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.imagesloaded.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.appear.js"></script>
+  <script type="text/javascript" src="/js/jquery.countTo.js"></script>
+  <script src="/js/jquery.parallax.js"></script>
   <!-- jQuery KenBurn Slider  -->
-  <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="/js/jquery.themepunch.revolution.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('img').click(function(){
+      $('.about-description').hide();
+      $('#'+$(this).attr('name')).fadeIn('slow');
+    })
+  });
+  </script>

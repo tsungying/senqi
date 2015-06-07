@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528091724) do
+ActiveRecord::Schema.define(version: 20150607022127) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "blog_category_id", limit: 4
@@ -78,12 +78,13 @@ ActiveRecord::Schema.define(version: 20150528091724) do
   add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
-  create_table "company_profiles", force: :cascade do |t|
-    t.string   "office_image", limit: 255
-    t.integer  "play_order",   limit: 4,   default: 0
-    t.string   "brand_story",  limit: 255
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+  create_table "company_infos", force: :cascade do |t|
+    t.string   "image",      limit: 255
+    t.string   "title",      limit: 255
+    t.text     "content",    limit: 65535
+    t.string   "language",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "event_categories", force: :cascade do |t|

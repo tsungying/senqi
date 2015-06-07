@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
-  
+
   scope '(:locale)', locale: /en|zh-TW/ do
     root "pages#index"
     get "about"       => "pages#about"
@@ -10,19 +10,19 @@ Rails.application.routes.draw do
     get "search_product"      => "products#index"
     get "search_article"      => "articles#index"
     get "search_event"        => "events#index"
-    
+
     resources :users
-    
-    resources :messages, only: [:new, :create] 
+
+    resources :messages, only: [:new, :create]
     get "contact"   => "messages#new"
 
     resources :prod_categories, only: [:index, :show] do
       resources :products, only: [:show]
     end
-    
+
     resources :blog_categories, only: [:index, :show] do
       resources :articles, only: [:show]
-    end 
+    end
 
     resources :event_categories, only: [:index, :show] do
       resources :events, only: [:show]
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :carts, only: [:index]
     resources :order_items, only: [:create, :update, :destroy]
   end
-  
+
   namespace :admin do
     root to: "orders#index"
 
@@ -47,10 +47,10 @@ Rails.application.routes.draw do
 
     resources :event_categories do
       resources :events
-    end    
+    end
 
     resources :company_profiles, :home_pages, :users, :orders
-    resources :terms_of_services, :comments
+    resources :terms_of_services, :comments, :company_infos
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

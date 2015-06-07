@@ -1,0 +1,24 @@
+<section class="content">
+  <div class='row'>
+    <div class='col-md-12'>
+
+      <div class='box'>
+        <div class='box-header'>
+          <h3 class='box-title'><%= set_title(@company_info) %></h3>
+        </div><!-- /.box-header -->
+
+        <div class='box-body pad'>
+        <%= simple_form_for([:admin, @company_info]) do |f| %>
+          <%= f.input :image, label: false, as: :file, as: :image_preview, input_html: { preview_version: :thumb } %>
+          <%= f.input :title, label: false, placeholder: "圖片標題" %>
+          <%= f.input :content, label: false, placeholder: "內容", input_html: { class: 'wysihtml5', style: 'height:300px' } %>
+          <%= f.input :language, label: false, prompt: "請選擇語言", collection: [["中文", "zh-TW"],["英文", "en"]] %>
+          <%= f.submit set_button_name(@company_info), class: "btn btn-danger" %>
+          <%= link_to "回上一頁", :back, class: "btn btn-primary" %>
+        <% end %>
+        </div>
+      </div>
+
+    </div><!-- /.col-->
+  </div><!-- ./row -->
+</section><!-- /.content -->
